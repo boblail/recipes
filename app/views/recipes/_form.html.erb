@@ -1,0 +1,86 @@
+<%= form_for @recipe, html: {class: "form-horizontal", role: "form"} do |f| %>
+  <% if @recipe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+      <ul>
+      <% @recipe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :ingredients, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_area :ingredients, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :instructions, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_area :instructions, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :tags, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :tags, value: @recipe.tags.join(","), "data-role" => "tagsinput", class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group rating-effort">
+    <%= f.label :effort, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :effort, class: "rating", "data-min" => 1, "data-max" => 3, "data-clearable" => "Clear" %>
+    </div>
+  </div>
+
+  <div class="form-group rating-cost">
+    <%= f.label :cost, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :cost, class: "rating", "data-min" => 1, "data-max" => 3, "data-clearable" => "Clear" %>
+    </div>
+  </div>
+
+  <div class="form-group rating-health">
+    <%= f.label :healthiness, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :healthiness, class: "rating", "data-min" => 1, "data-max" => 3, "data-clearable" => "Clear" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :bob, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :bob, class: "rating", "data-min" => 1, "data-max" => 5, "data-clearable" => "Clear" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :rachel, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :rachel, class: "rating", "data-min" => 1, "data-max" => 5, "data-clearable" => "Clear" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-10 col-sm-offset-2">
+      <button type="submit" class="btn btn-primary">Update Recipe</button>
+      
+      <% if @recipe.persisted? %>
+        <%= link_to "Destroy", @recipe, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

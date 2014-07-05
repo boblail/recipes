@@ -1,0 +1,14 @@
+<h1>Recipes</h1>
+
+<ul class="recipes">
+  <% @recipes.each do |recipe| %>
+    
+    <li class="recipe">
+      <span class="recipe-name"><%= link_to recipe.name, recipe %></span>
+      <span class="recipe-tags"><%= tags recipe.tags %></span>
+      <p class="recipe-snippet"><%= snippet recipe %></p>
+      <%= ratings_for recipe %>
+    </li>
+
+  <% end %>
+</ul>

@@ -1,0 +1,168 @@
+form {
+  max-width: 800px;
+}
+
+body {
+  padding-top: 50px;
+}
+
+.label {
+  padding: .1em .3em .2em;
+  font-weight: 500;
+}
+
+h4, label.control-label {
+  text-transform: uppercase;
+  color: #999;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.brand-name {
+  font-size: 1.25em;
+  font-weight: 200;
+}
+
+h1 {
+  font-weight: 200;
+}
+
+h4 {
+  margin-top: 2em;
+}
+
+.form-horizontal .control-label { padding-right: 0; }
+
+.form-group { margin-bottom: 8px; }
+
+textarea {
+  min-height: 12em;
+}
+
+.rating-input {
+  padding: 8px 0 0 0;
+  cursor: pointer;
+  
+  .glyphicon-star {
+    color: #5bc0de;
+  }
+  
+  .glyphicon-star-empty {
+    color: #ddd;
+    &::before { content: "\e006"; }
+  }
+  
+  a.rating-clear {
+    font-size: 0.8em;
+    color: #ddd;
+    
+    &:hover {
+      text-decoration: none;
+      color: red;
+    }
+  }
+}
+
+.rating-cost .rating-input {
+  .glyphicon-star, .glyphicon-star-empty {
+    &::before { content: "\e148"; }
+  }
+}
+
+.rating-effort .rating-input {
+  .glyphicon-star, .glyphicon-star-empty {
+    &::before { content: "\2a"; }
+  }
+}
+
+.rating-health .rating-input {
+  .glyphicon-star, .glyphicon-star-empty {
+    &::before { content: "\e005"; }
+  }
+}
+
+.bootstrap-tagsinput {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.ingredients {
+  padding: 0;
+  
+  li {
+    list-style: none;
+    padding: 4px;
+    border-bottom: 1px solid #efefef;
+  }
+  
+  li:last-child { border-bottom: none; }
+}
+
+span.rating {
+  display: inline-block;
+  position: relative;
+  
+  .rating-range .glyphicon { color: #ddd; }
+  .rating-value .glyphicon { color: #5bc0de; }
+  
+  .rating-value {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+.ratings {
+  table {
+    float: right;
+    
+    th, td {
+      width: 5em;
+      white-space: nowrap;
+    }
+    
+    th {
+      font-size: 0.66em;
+      font-weight: 500;
+      text-indent: 1px;
+    }
+  }
+}
+
+ul.recipes {
+  padding: 0;
+  
+  li {
+    list-style: none;
+    margin-top: 1.5em;
+    clear: both;
+    position: relative;
+  }
+  
+  .ratings {
+    position: absolute;
+    top: 2em;
+    left: 50%;
+    padding-left: 2em;
+  }
+}
+
+.recipe-name {
+  font-size: 1.25em;
+}
+
+.recipe-snippet {
+  max-width: 40%;
+  max-height: 2.66em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.33em;
+}
+
+
+// Ingredients in one row
+.recipe-snippet { white-space: nowrap; max-width: 50%; }
+ul.recipes .ratings { top: 1em; }

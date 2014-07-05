@@ -1,0 +1,13 @@
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <%= link_to recipes_path, class: "navbar-brand" do %>
+        <span class="glyphicon glyphicon-cutlery"></span>
+        <span class="brand-name">Recipes</span>
+      <% end %>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><%= link_to "New Recipe", new_recipe_path %></li>
+    </ul>
+  </div>
+</div>

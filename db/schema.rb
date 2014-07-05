@@ -11,9 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140705193315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "recipes", force: true do |t|
+    t.string   "name",                      null: false
+    t.text     "ingredients",               null: false
+    t.text     "instructions",              null: false
+    t.string   "tags",         default: [],              array: true
+    t.integer  "effort"
+    t.integer  "cost"
+    t.integer  "healthiness"
+    t.integer  "bob"
+    t.integer  "rachel"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "recipes", ["tags"], name: "index_recipes_on_tags", using: :gin
 
 end

@@ -6,6 +6,8 @@ gem "rails", "4.1.1"
 
 gem "pg"
 
+gem "redcarpet"
+
 # Use SCSS for stylesheets
 gem "sass-rails", "~> 4.0.3"
 

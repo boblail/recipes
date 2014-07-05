@@ -1,0 +1,20 @@
+<h1>
+  <%= @recipe.name %>
+  <%= link_to "Edit", edit_recipe_path(@recipe), class: "btn btn-primary" %>
+</h1>
+
+<%= ratings_for @recipe %>
+
+<%= tags @recipe.tags %>
+
+<h4>Ingredients</h4>
+<ul class="ingredients">
+  <% @recipe.ingredients.to_s.split(/\n/).each do |ingredient| %>
+    <li class="ingredient"><%= ingredient %></li>
+  <% end %>
+</ul>
+
+<h4>Instructions</h4>
+<div class="instructions">
+  <%= mdown @recipe.instructions %>
+</div>
