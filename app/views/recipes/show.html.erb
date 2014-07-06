@@ -1,7 +1,14 @@
-<h1>
+<h1 class="snug">
   <%= @recipe.name %>
   <%= link_to "Edit", edit_recipe_path(@recipe), class: "btn btn-primary" if can? :update, @recipe %>
 </h1>
+
+<div class="recipe-author">
+  Created by
+  <%= avatar_for @recipe.created_by, size: 16 %>
+  <b><%= @recipe.created_by.name %></b>
+  <span class="recipe-created" title="<%= @recipe.created_at.strftime("%b %e %Y, %l:%M %p") %>"><%= time_ago_in_words @recipe.created_at %> ago</span>
+</div>
 
 <%= ratings_for @recipe %>
 

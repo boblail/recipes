@@ -25,6 +25,8 @@ h4, label.control-label {
 
 h1 {
   font-weight: 200;
+  
+  &.snug { margin-bottom: 0; }
 }
 
 h4 {
@@ -170,4 +172,13 @@ ul.recipes .ratings { top: 1em; }
 .navbar-nav > li > a.nav-link-large {
   padding-top: 7px;
   padding-bottom: 7px;
+}
+
+.recipe-author {
+  font-size: 0.88em;
+}
+
+.recipe-created {
+  font-weight: 500;
+  color: #ccc;
 }

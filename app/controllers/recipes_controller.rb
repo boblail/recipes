@@ -22,6 +22,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     authorize! :create, @recipe
 
+    @recipe.created_by = current_user
     if @recipe.save
       redirect_to @recipe, notice: 'Recipe was successfully created.'
     else
