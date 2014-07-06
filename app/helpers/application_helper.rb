@@ -40,7 +40,7 @@ module ApplicationHelper
           <td>#{rating recipe.healthiness, max: 3, glyph: "heart"}</td>
           <td>#{rating recipe.effort, max: 3, glyph: "asterisk"}</td>
           <td>#{rating recipe.cost, max: 3, glyph: "usd"}</td>
-          <td>#{rating recipe.yumminess}</td>
+          <td>#{rating recipe.yumminess(current_user)}</td>
       </table>
     </div>
     HTML

@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     put "users/:id", to: "users/registrations#update", as: :user_registration
   end
   
-  resources :recipes
+  resources :recipes do
+    put "ratings", to: "recipe_ratings#update"
+  end
   
   root to: "recipes#index"
   

@@ -41,8 +41,9 @@ textarea {
   min-height: 12em;
 }
 
+.form-horizontal .rating-input { padding: 8px 0 0 0; }
+
 .rating-input {
-  padding: 8px 0 0 0;
   cursor: pointer;
   
   .glyphicon-star {
@@ -181,4 +182,8 @@ ul.recipes .ratings { top: 1em; }
 .recipe-created {
   font-weight: 500;
   color: #ccc;
+}
+
+table.ratings-per-person {
+  th, td { padding: 0.25em 1em 0.25em 0; }
 }

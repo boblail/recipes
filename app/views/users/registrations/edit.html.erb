@@ -11,6 +11,15 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :family_members, class: "col-sm-2 control-label" %>
+    <div class="col-sm-4">
+      <%= f.text_area :family_members, value: @user.family_members.join("\n"), class: "form-control" %>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="form-group">
     <%= f.label :email, class: "col-sm-2 control-label" %>
     <div class="col-sm-4">
       <%= f.email_field :email, class: "form-control" %>
@@ -50,6 +59,8 @@
     </div>
   </div>
 <% end %>
+
+
 
 <!-- <h3>Cancel my account</h3>
 

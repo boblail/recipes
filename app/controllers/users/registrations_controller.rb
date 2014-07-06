@@ -94,7 +94,9 @@ protected
   end
 
   def account_update_params
-    devise_parameter_sanitizer.sanitize(:account_update).merge(params[:user].slice(:name))
+    attributes = devise_parameter_sanitizer.sanitize(:account_update)
+    attributes.merge!(params[:user].slice(:name))
+    attributes.merge(family_members: params[:user][:family_members].to_s.split(/\n/))
   end
 
   def resource_name
