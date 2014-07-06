@@ -9,4 +9,8 @@ class Recipe < ActiveRecord::Base
     [bob, rachel].compact.avg
   end
   
+  def tags=(value)
+    super Array(value).reject(&:blank?).map(&:downcase).uniq
+  end
+  
 end
