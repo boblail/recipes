@@ -32,7 +32,7 @@ module ApplicationHelper
       <table>
         <tr>
           <th>Healthiness</th>
-          <th>Effort</th>
+          <th>Difficulty</th>
           <th>Cost</th>
           <th>Yumminess</th>
         </tr>
