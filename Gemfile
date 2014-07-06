@@ -6,6 +6,8 @@ gem "rails", "4.1.1"
 
 gem "pg"
 
+gem "cancan"
+gem "devise"
 gem "redcarpet"
 
 # Use SCSS for stylesheets

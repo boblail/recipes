@@ -1,6 +1,6 @@
 <h1>
   <%= @recipe.name %>
-  <%= link_to "Edit", edit_recipe_path(@recipe), class: "btn btn-primary" %>
+  <%= link_to "Edit", edit_recipe_path(@recipe), class: "btn btn-primary" if can? :update, @recipe %>
 </h1>
 
 <%= ratings_for @recipe %>

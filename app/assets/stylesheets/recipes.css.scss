@@ -166,3 +166,8 @@ ul.recipes {
 // Ingredients in one row
 .recipe-snippet { white-space: nowrap; max-width: 50%; }
 ul.recipes .ratings { top: 1em; }
+
+.navbar-nav > li > a.nav-link-large {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
