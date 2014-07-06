@@ -1,7 +1,6 @@
 class RecipesController < ApplicationController
   before_action :find_recipe, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :new, :create, :update, :destroy]
-  load_and_authorize_resource
 
   def index
     @recipes = Recipe.all
@@ -12,13 +11,16 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    authorize! :create, @recipe
   end
 
   def edit
+    authorize! :update, @recipe
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
+    authorize! :create, @recipe
 
     if @recipe.save
       redirect_to @recipe, notice: 'Recipe was successfully created.'
@@ -28,6 +30,8 @@ class RecipesController < ApplicationController
   end
 
   def update
+    authorize! :update, @recipe
+    
     if @recipe.update(recipe_params)
       redirect_to @recipe, notice: 'Recipe was successfully updated.'
     else
@@ -51,7 +55,7 @@ private
   def recipe_params
     attributes = params
       .require(:recipe)
-      .permit(:name, :instructions, :ingredients, :tags, :effort, :cost, :healthiness, :bob, :rachel)
+      .permit(:name, :ingredients, :instructions, :tags, :effort, :cost, :healthiness, :bob, :rachel)
     attributes.merge(tags: attributes[:tags].to_s.split(","))
   end
 
