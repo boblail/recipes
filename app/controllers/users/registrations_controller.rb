@@ -94,7 +94,7 @@ protected
   end
 
   def account_update_params
-    devise_parameter_sanitizer.sanitize(:account_update)
+    devise_parameter_sanitizer.sanitize(:account_update).merge(params[:user].slice(:name))
   end
 
   def resource_name

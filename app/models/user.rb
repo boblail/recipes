@@ -11,8 +11,4 @@ class User < ActiveRecord::Base
          # :omniauthable,
          :validatable
   
-  def name
-    ""
-  end
-  
 end
