@@ -34,13 +34,13 @@ module ApplicationHelper
           <th>Healthiness</th>
           <th>Difficulty</th>
           <th>Cost</th>
-          <th>Yumminess</th>
+          #{"<th>Yumminess</th>" if current_user}
         </tr>
         <tr>
           <td>#{rating recipe.healthiness, max: 3, glyph: "heart"}</td>
           <td>#{rating recipe.effort, max: 3, glyph: "asterisk"}</td>
           <td>#{rating recipe.cost, max: 3, glyph: "usd"}</td>
-          <td>#{rating recipe.yumminess(current_user)}</td>
+          #{"<td>#{rating recipe.yumminess(current_user)}</td>" if current_user}
       </table>
     </div>
     HTML
