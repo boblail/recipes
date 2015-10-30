@@ -4,6 +4,7 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.order(:name)
+    @recipes = @recipes.search params[:q] unless params[:q].blank?
   end
 
   def show

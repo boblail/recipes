@@ -5,6 +5,7 @@ ruby "2.1.2"
 gem "rails", "4.1.1"
 
 gem "pg"
+gem "pg_search"
 
 gem "cancan"
 gem "devise"
@@ -32,9 +33,6 @@ gem "spring", group: :development
 
 # For deploying to Heroku
 gem "rails_12factor", group: :production
-
-# Use unicorn as the app server
-gem "unicorn"
 
 # Use PRY for debugging
 gem "pry", group: [:development, :test]

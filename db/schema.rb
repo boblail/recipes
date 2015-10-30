@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140706221724) do
+ActiveRecord::Schema.define(version: 20151030173149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,8 +38,10 @@ ActiveRecord::Schema.define(version: 20140706221724) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "created_by_id",              null: false
+    t.tsvector "search_vector"
   end
 
+  add_index "recipes", ["search_vector"], name: "index_recipes_on_search_vector", using: :gin
   add_index "recipes", ["tags"], name: "index_recipes_on_tags", using: :gin
 
   create_table "users", force: true do |t|

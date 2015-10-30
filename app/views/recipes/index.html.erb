@@ -1,5 +1,9 @@
 <h1>Recipes</h1>
 
+<form method="get">
+  <%= text_field_tag :q, params[:q], autofocus: true, class: "form-control" %>
+</form>
+
 <ul class="recipes">
   <% @recipes.each do |recipe| %>
     
@@ -12,3 +16,9 @@
 
   <% end %>
 </ul>
+
+<script type="text/javascript">
+  $(function() {
+    $('#q').focus().select();
+  });
+</script>
