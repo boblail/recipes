@@ -11,10 +11,12 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    @tags = Recipe.pluck(:tags).flatten.uniq
     authorize! :create, @recipe
   end
 
   def edit
+    @tags = Recipe.pluck(:tags).flatten.uniq
     authorize! :update, @recipe
   end
 
@@ -32,7 +34,7 @@ class RecipesController < ApplicationController
 
   def update
     authorize! :update, @recipe
-    
+
     if @recipe.update(recipe_params)
       redirect_to @recipe, notice: 'Recipe was successfully updated.'
     else

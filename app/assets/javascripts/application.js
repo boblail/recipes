@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery_ujs
+//= require typeahead
 //= require bootstrap-tagsinput
 //= require bootstrap-rating-input.min.js
 //= require_tree .
