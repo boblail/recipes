@@ -1,17 +1,16 @@
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
-    <div class="navbar-header">
-      <%= link_to recipes_path, class: "navbar-brand" do %>
-        <span class="glyphicon glyphicon-cutlery"></span>
-        <span class="brand-name">Recipes</span>
-      <% end %>
-    </div>
+    <%= link_to recipes_path, class: "navbar-brand" do %>
+      <span class="glyphicon glyphicon-cutlery"></span>
+      <span class="brand-name">Recipes</span>
+    <% end %>
+
     <ul class="nav navbar-nav">
       <% if can? :create, Recipe %>
         <li><%= link_to "New Recipe", new_recipe_path %></li>
       <% end %>
     </ul>
-    
+
     <ul class="nav navbar-nav pull-right">
       <% if current_user -%>
         <li class="dropdown ">

@@ -1,0 +1,49 @@
+form {
+  max-width: 800px;
+}
+
+body {
+  padding-top: 50px;
+}
+
+.label {
+  padding: .1em .3em .2em;
+  font-weight: 500;
+}
+
+h4, label.control-label {
+  text-transform: uppercase;
+  color: #999;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.brand-name {
+  font-size: 1.25em;
+  font-weight: 200;
+}
+
+h1 {
+  font-weight: 200;
+
+  &.snug { margin-bottom: 0; }
+}
+
+h4 {
+  margin-top: 2em;
+}
+
+.navbar-nav {
+  float: left;
+  margin: 0;
+}
+
+.navbar-nav > li > a {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.navbar-nav > li > a.nav-link-large {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}

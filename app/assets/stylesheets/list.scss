@@ -1,0 +1,72 @@
+.ratings {
+  table {
+    th, td {
+      width: 5em;
+      white-space: nowrap;
+    }
+
+    th {
+      font-size: 0.66em;
+      font-weight: 500;
+      text-indent: 1px;
+    }
+  }
+}
+
+ul.recipes {
+  padding: 0;
+
+  li {
+    list-style: none;
+    margin: 1.5em 0 3em;
+    clear: both;
+    position: relative;
+  }
+}
+
+.recipe-name {
+  font-size: 1.25em;
+}
+
+.recipe-snippet {
+  max-height: 2.66em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.33em;
+}
+
+
+@media (min-width: 600px) {
+  ul.recipes li {
+    margin-bottom: 0;
+  }
+
+  ul.recipes .ratings {
+    position: absolute;
+    top: 2em;
+    left: 50%;
+    padding-left: 2em;
+  }
+
+  .ratings table {
+    float: right;
+  }
+
+  .recipe-snippet {
+    white-space: nowrap;
+    max-width: 50%;
+  }
+}
+
+
+// Ingredients in one row
+ul.recipes .ratings { top: 1em; }
+
+.recipe-author {
+  font-size: 0.88em;
+}
+
+.recipe-created {
+  font-weight: 500;
+  color: #ccc;
+}
