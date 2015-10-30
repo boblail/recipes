@@ -410,12 +410,6 @@
          default:
              // ignore
          }
-
-        // Reset internal input's size
-        var textLength = $input.val().length,
-            wordSpace = Math.ceil(textLength / 5),
-            size = textLength + wordSpace + 1;
-        $input.attr('size', Math.max(this.inputSize, $input.val().length));
       }, self));
 
       self.$container.on('keypress', 'input', $.proxy(function(event) {
@@ -433,12 +427,13 @@
             $input.val('');
             event.preventDefault();
          }
+      }, self));
 
-         // Reset internal input's size
-         var textLength = $input.val().length,
-            wordSpace = Math.ceil(textLength / 5),
-            size = textLength + wordSpace + 1;
-         $input.attr('size', Math.max(this.inputSize, $input.val().length));
+      self.$container.on('keyup', 'input', $.proxy(function(event) {
+         var $input = $(event.target);
+
+        // Reset internal input's size
+       $input.attr('size', Math.ceil($input.val().length * 1.3));
       }, self));
 
       // Remove icon clicked
