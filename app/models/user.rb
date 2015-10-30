@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  
+
   devise :database_authenticatable,
          # :registerable,
          # :recoverable,
@@ -10,5 +10,5 @@ class User < ActiveRecord::Base
          # :timeoutable,
          # :omniauthable,
          :validatable
-  
+
 end

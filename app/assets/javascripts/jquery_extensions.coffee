@@ -5,11 +5,11 @@ $.extend
     if jQuery.isFunction(data)
       callback = data
       data = {}
-    
+
     data = data || {}
     data['_method'] = 'put'
     jQuery.post(url, data, callback, type)
-  
+
   destroy: (url, data, callback, type)->
     if jQuery.isFunction(data)
       callback = data
