@@ -371,7 +371,7 @@
         switch (event.which) {
           // BACKSPACE
           case 8:
-            if (doGetCaretPosition($input[0]) === 0) {
+            if (doGetCaretPosition($input[0]) === 0 && !isRangeSelected($input[0])) {
               var prev = $inputWrapper.prev();
               if (prev) {
                 self.remove(prev.data('item'));
@@ -589,6 +589,14 @@
       iCaretPos = oField.selectionStart;
     }
     return (iCaretPos);
+  }
+
+  function isRangeSelected(oField) {
+    if (document.selection) {
+      return false; // not implemented
+    } else {
+      return oField.selectionEnd > oField.selectionStart;
+    }
   }
 
   /**
