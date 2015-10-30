@@ -39,7 +39,18 @@ class Recipe < ActiveRecord::Base
     SQL
   end
 
+  def tags=(tags)
+    super Array(tags)
+      .map { |tag| normalize_tag(tag) }
+      .uniq
+      .sort
+  end
+
 protected
+
+  def normalize_tag(tag)
+    tag.strip.downcase.gsub(/[^a-z0-9]/, "-").gsub(/\-{2,}/, "-")
+  end
 
   def search_vector_should_change?
     (changed & %w{tags name ingredients instructions}).any?

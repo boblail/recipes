@@ -85,6 +85,7 @@
 
       if (typeof item === "string" && this.$element[0].tagName === 'INPUT') {
         var items = item.split(',');
+
         if (items.length > 1) {
           for (var i = 0; i < items.length; i++) {
             this.add(items[i], true);
@@ -94,6 +95,14 @@
             self.pushVal();
           return;
         }
+      }
+
+      // Normalize values
+      if (typeof item === "string") {
+        var item = $.trim(item)
+          .toLowerCase()
+          .replace(/[^a-z0-9]/g, "-")
+          .replace(/\-{2,}/g, "-");
       }
 
       var itemValue = self.options.itemValue(item),
