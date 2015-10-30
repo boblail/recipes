@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :new, :create, :update, :destroy]
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.order(:name)
   end
 
   def show
