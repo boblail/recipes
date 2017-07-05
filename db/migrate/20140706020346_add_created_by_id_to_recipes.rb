@@ -2,8 +2,10 @@ class AddCreatedByIdToRecipes < ActiveRecord::Migration
   def up
     add_column :recipes, :created_by_id, :integer
 
-    Recipe.reset_column_information
-    Recipe.update_all created_by_id: User.first.id
+    if Recipe.count > 0
+      Recipe.reset_column_information
+      Recipe.update_all created_by_id: User.first.id
+    end
 
     change_column_null :recipes, :created_by_id, false
   end
