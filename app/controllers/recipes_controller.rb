@@ -59,7 +59,7 @@ private
   def recipe_params
     attributes = params
       .require(:recipe)
-      .permit(:name, :ingredients, :instructions, :tags, :effort, :cost, :healthiness)
+      .permit(:name, :ingredients, :instructions, :tags, :effort, :cost)
     attributes.merge(tags: attributes[:tags].to_s.split(","))
   end
 
