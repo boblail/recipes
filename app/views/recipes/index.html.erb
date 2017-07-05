@@ -6,7 +6,7 @@
 
 <ul class="recipes">
   <% @recipes.each do |recipe| %>
-    
+
     <li class="recipe">
       <span class="recipe-name"><%= link_to recipe.name, recipe %></span>
       <span class="recipe-tags"><%= tags recipe.tags %></span>
