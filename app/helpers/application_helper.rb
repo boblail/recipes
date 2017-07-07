@@ -10,15 +10,16 @@ module ApplicationHelper
     max = options.fetch(:max, 5)
     glyph = options.fetch(:glyph, "star")
     width = value * 100.0 / max if value
+    css = "rating-#{options.fetch(:class)}" if options.key?(:class)
 
-    html = "<span class=\"rating\"><span class=\"rating-range\">"
-    max.times do |i|
-      html << "<span class=\"glyphicon glyphicon-#{glyph}\"></span>"
+    html = "<span class=\"rating #{css} rating-#{value.to_i}\"><span class=\"rating-range\">"
+    max.times do
+      html << "<span class=\"fa fa-#{glyph}\"></span>"
     end
     if width
       html << "</span><span class=\"rating-value\" style=\"width: #{width}%\">"
-      max.times do |i|
-        html << "<span class=\"glyphicon glyphicon-#{glyph}\"></span>"
+      max.times do
+        html << "<span class=\"fa fa-#{glyph}\"></span>"
       end
     end
     html << "</span></span>"
@@ -26,26 +27,48 @@ module ApplicationHelper
     html.html_safe
   end
 
-  def ratings_for(recipe)
-    <<-HTML.html_safe
-    <div class="ratings">
+  def metrics_for(recipe)
+    <<~HTML.html_safe
+    <div class="metrics">
       <table>
         <tr>
           <th>Difficulty</th>
-          <th>Cost</th>
-          #{"<th>Yumminess</th>" if current_user}
+          <td>#{rating recipe.effort, max: 3, class: "effort", glyph: "asterisk"}</td>
         </tr>
         <tr>
-          <td>#{rating recipe.effort, max: 3, glyph: "asterisk"}</td>
-          <td>#{rating recipe.cost, max: 3, glyph: "usd"}</td>
-          #{"<td>#{rating recipe.yumminess(current_user)}</td>" if current_user}
+          <th>Cost</th>
+          <td>#{rating recipe.cost, max: 3, class: "cost", glyph: "usd"}</td>
+        </tr>
       </table>
     </div>
     HTML
   end
 
+  def ratings_for(recipe)
+    html = '<div class="ratings"><table>'
+    current_user.family_members.each do |user|
+      if user == current_user
+        html << <<~HTML
+          <tr>
+            <th>#{user.name}</th>
+            <td class="rating-yumminess"><form action="#{recipe_url(recipe)}"><input class="rating" data-clearable="Clear" data-max="5" data-min="1" type="number" name="#{user.name}" value="#{recipe.rating_for(user)}" /></form></td>
+          </tr>
+        HTML
+      else
+        html << <<~HTML
+          <tr>
+            <th>#{user.name}</th>
+            <td>#{rating recipe.yumminess(user), class: "yumminess", glyph: "heart"}</td>
+          </tr>
+        HTML
+      end
+    end
+    html << "</table></div>"
+    html.html_safe
+  end
+
   def snippet(recipe)
-    recipe.ingredients.to_s.split(/\n/).map(&:chomp).join(", ")[0..100]
+    recipe.ingredients.to_s.split(/\n/).map(&:chomp).join(", ") # [0..100]
   end
 
 end

@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
          # :omniauthable,
          :validatable
 
+  def family_members
+    @family_members ||= User.all
+  end
+
 end

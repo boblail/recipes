@@ -11,11 +11,11 @@ textarea {
 .rating-input {
   cursor: pointer;
 
-  .glyphicon-star {
+  .fa-star {
     color: #5bc0de;
   }
 
-  .glyphicon-star-empty {
+  .fa-star-empty {
     color: #ddd;
     &::before { content: "\e006"; }
   }
@@ -26,28 +26,54 @@ textarea {
 
     &:hover {
       text-decoration: none;
-      color: red;
+      color: #f35827;
     }
   }
 }
 
+.rating .fa-usd {
+  width: 11px;
+  font-size: 13px;
+  font-weight: bold;
+  padding-left: 2px;
+  margin-right: 2px;
+}
+
+.rating .fa-heart {
+  width: 13.5px;
+  font-size: 12px;
+}
+
 .rating-cost .rating-input {
-  .glyphicon-star, .glyphicon-star-empty {
-    &::before { content: "\e148"; }
+  .fa-star, .fa-star-empty {
+    width: 11px;
+    font-size: 13px;
+    font-weight: bold;
+
+    &::before { content: "\f155"; }
   }
 }
 
 .rating-effort .rating-input {
-  .glyphicon-star, .glyphicon-star-empty {
-    &::before { content: "\2a"; }
+  .fa-star, .fa-star-empty {
+    &::before { content: "\f069"; }
   }
 }
 
-.rating-health .rating-input {
-  .glyphicon-star, .glyphicon-star-empty {
-    &::before { content: "\e005"; }
+.rating-yumminess .rating-input {
+  .fa-star, .fa-star-empty {
+    width: 13.5px;
+    font-size: 12px;
+
+    &::before { content: "\f004"; }
   }
 }
+
+.rating-yumminess.rating-1 .rating-value .fa, .rating-yumminess .rating-input[data-value="1"] .fa-star { color: #f35827; }
+.rating-yumminess.rating-2 .rating-value .fa, .rating-yumminess .rating-input[data-value="2"] .fa-star { color: #fa851e; }
+.rating-yumminess.rating-3 .rating-value .fa, .rating-yumminess .rating-input[data-value="3"] .fa-star { color: #BADB00; }
+.rating-yumminess.rating-4 .rating-value .fa, .rating-yumminess .rating-input[data-value="4"] .fa-star { color: #8DCE0A; }
+.rating-yumminess.rating-5 .rating-value .fa, .rating-yumminess .rating-input[data-value="5"] .fa-star { color: #28BF37; } // text-shadow: 0 0 2px #64e070; }
 
 .bootstrap-tagsinput {
   width: 100%;
@@ -70,8 +96,10 @@ span.rating {
   display: inline-block;
   position: relative;
 
-  .rating-range .glyphicon { color: #ddd; }
-  .rating-value .glyphicon { color: #5bc0de; }
+  .rating-range .fa { color: #ddd; }
+  .rating-value .fa { color: #5bc0de; }
+
+  .rating-range, .rating-value { padding-left: 1px; }
 
   .rating-value {
     position: absolute;

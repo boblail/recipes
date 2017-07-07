@@ -10,7 +10,7 @@
   <span class="recipe-created" title="<%= @recipe.created_at.strftime("%b %e %Y, %l:%M %p") %>"><%= time_ago_in_words @recipe.created_at %> ago</span>
 </div>
 
-<%= ratings_for @recipe %>
+<%= metrics_for @recipe %>
 
 <%= tags @recipe.tags %>
 
@@ -25,22 +25,3 @@
 <div class="instructions">
   <%= mdown @recipe.instructions %>
 </div>
-
-<% if current_user %>
-  <h4>Yumminess</h4>
-  <%= form_for @recipe do |f| %>
-    <table class="ratings-per-person">
-      <tr>
-        <th><%= current_user.name %></th>
-        <td><input class="rating" data-clearable="Clear" data-max="5" data-min="1" type="number" name="<%= current_user.name %>" value="<%= @recipe.rating_for(current_user) %>" /></td>
-      </tr>
-      
-    <% current_user.family_members.each do |family_member| %>
-      <tr>
-        <th><%= family_member %></th>
-        <td><input class="rating" data-clearable="Clear" data-max="5" data-min="1" type="number" name="<%= family_member %>" value="<%= @recipe.rating_for(current_user, family_member) %>" /></td>
-      </tr>
-    <% end %>
-    </table>
-  <% end %>
-<% end %>
