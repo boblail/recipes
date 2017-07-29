@@ -71,4 +71,12 @@ module ApplicationHelper
     recipe.ingredients.to_s.split(/\n/).map(&:chomp).join(", ") # [0..100]
   end
 
+  def microformat(recipe)
+    <<~HTML.html_safe
+      <script type="application/ld+json">
+        #{RecipeMicroformatPresenter.to_json(recipe)}
+      </script>
+    HTML
+  end
+
 end
