@@ -12,6 +12,14 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    if params[:url]
+      parser = RecipeWebpageParser.new(url: params[:url])
+      if parser.recipe_detected?
+        @recipe.attributes = parser.attributes
+      else
+        flash.now[:notice] = "Couldn't find a recipe in that URL"
+      end
+    end
     @tags = Recipe.pluck(:tags).flatten.uniq
     authorize! :create, @recipe
   end

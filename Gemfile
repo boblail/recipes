@@ -9,6 +9,7 @@ gem "pg_search"
 
 gem "cancan"
 gem "devise"
+gem "hangry", github: "boblail/hangry", branch: "master"
 gem "redcarpet"
 
 gem "puma"
