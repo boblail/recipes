@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   devise_scope :user do
-    get "users/:id/edit", to: "users/registrations#edit", as: :edit_user_registration
-    put "users/:id", to: "users/registrations#update", as: :user_registration
+    get "users/sign_in", to: "users/sessions#new", as: :new_session
+    get "users/sign_out", to: "users/sessions#destroy", as: :destroy_session
   end
 
   resources :recipes do
