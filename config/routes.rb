@@ -7,10 +7,13 @@ Rails.application.routes.draw do
     get "users/sign_out", to: "users/sessions#destroy", as: :destroy_session
   end
 
-  resources :recipes do
+  resources :recipes, except: [:index] do
     put "ratings", to: "recipe_ratings#update"
   end
 
-  root to: "recipes#index"
+  get "all-recipes", to: "recipes#all_recipes"
+  get "my-recipes", to: "recipes#my_recipes", as: :my_recipes
+
+  root to: "recipes#all_recipes"
 
 end

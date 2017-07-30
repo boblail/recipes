@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170730200532) do
+ActiveRecord::Schema.define(version: 20170730201418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cookbooks", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "ratings", force: true do |t|
     t.integer  "recipe_id"
@@ -39,8 +45,10 @@ ActiveRecord::Schema.define(version: 20170730200532) do
     t.datetime "updated_at"
     t.integer  "created_by_id",              null: false
     t.tsvector "search_vector"
+    t.integer  "cookbook_id",                null: false
   end
 
+  add_index "recipes", ["cookbook_id"], name: "index_recipes_on_cookbook_id", using: :btree
   add_index "recipes", ["search_vector"], name: "index_recipes_on_search_vector", using: :gin
   add_index "recipes", ["tags"], name: "index_recipes_on_tags", using: :gin
 
@@ -54,11 +62,12 @@ ActiveRecord::Schema.define(version: 20170730200532) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "first_name",                      null: false
-    t.string   "family_members",     default: [],              array: true
     t.string   "image_url"
     t.string   "last_name"
+    t.integer  "cookbook_id",                     null: false
   end
 
+  add_index "users", ["cookbook_id"], name: "index_users_on_cookbook_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end

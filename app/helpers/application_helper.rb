@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def recipes_path(*)
+    "/recipes"
+  end
+
   def tags(tags)
     tags.each_with_object("") do |tag, html|
       html << "<span class=\"label label-info\">#{html_escape tag}</span> "
@@ -46,7 +50,7 @@ module ApplicationHelper
 
   def ratings_for(recipe)
     html = '<div class="ratings"><table>'
-    current_user.family_members.each do |user|
+    current_user.cookbook.users.each do |user|
       if user == current_user
         html << <<~HTML
           <tr>

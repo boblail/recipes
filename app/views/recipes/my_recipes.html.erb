@@ -1,0 +1,27 @@
+<h1>My Recipes</h1>
+
+<form method="get">
+  <%= text_field_tag :q, params[:q], autofocus: true, class: "form-control" %>
+</form>
+
+<ul class="recipes">
+  <% @recipes.each do |recipe| %>
+
+    <li class="recipe">
+      <div class="recipe-summary">
+        <span class="recipe-name"><%= link_to recipe.name, recipe %></span>
+        <span class="recipe-tags"><%= tags recipe.tags %></span>
+        <p class="recipe-snippet"><%= snippet recipe %></p>
+      </div>
+      <%= metrics_for recipe %>
+      <%= ratings_for recipe %>
+    </li>
+
+  <% end %>
+</ul>
+
+<script type="text/javascript">
+  $(function() {
+    $('#q').focus().select();
+  });
+</script>

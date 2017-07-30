@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
 
+  belongs_to :cookbook
+
   devise :trackable, :omniauthable, omniauth_providers: [:google_oauth2]
+
+  before_create :create_cookbook_for_user
 
   def self.from_omniauth(access_token)
     info = access_token.info
@@ -26,8 +30,10 @@ class User < ActiveRecord::Base
     url
   end
 
-  def family_members
-    @family_members ||= User.all
+private
+
+  def create_cookbook_for_user
+    self.cookbook = Cookbook.create!(name: "#{name}'s Recipes")
   end
 
 end

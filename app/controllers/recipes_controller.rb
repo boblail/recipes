@@ -1,9 +1,14 @@
 class RecipesController < ApplicationController
   before_action :find_recipe, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:edit, :new, :create, :update, :destroy]
+  before_action :authenticate_user!, only: [:my_recipes, :edit, :new, :create, :update, :destroy]
 
-  def index
+  def all_recipes
     @recipes = Recipe.order(:name)
+    @recipes = @recipes.search params[:q] unless params[:q].blank?
+  end
+
+  def my_recipes
+    @recipes = current_user.cookbook.recipes
     @recipes = @recipes.search params[:q] unless params[:q].blank?
   end
 
@@ -34,6 +39,7 @@ class RecipesController < ApplicationController
     authorize! :create, @recipe
 
     @recipe.created_by = current_user
+    @recipe.cookbook = current_user.cookbook
     if @recipe.save
       redirect_to @recipe, notice: 'Recipe was successfully created.'
     else
@@ -53,7 +59,7 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe.destroy
-    redirect_to recipes_url, notice: 'Recipe was successfully destroyed.'
+    redirect_to my_recipes_url, notice: 'Recipe was successfully destroyed.'
   end
 
 

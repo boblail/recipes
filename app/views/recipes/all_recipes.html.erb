@@ -1,4 +1,4 @@
-<h1>Recipes</h1>
+<h1>All Recipes</h1>
 
 <form method="get">
   <%= text_field_tag :q, params[:q], autofocus: true, class: "form-control" %>
@@ -10,11 +10,8 @@
     <li class="recipe">
       <div class="recipe-summary">
         <span class="recipe-name"><%= link_to recipe.name, recipe %></span>
-        <span class="recipe-tags"><%= tags recipe.tags %></span>
         <p class="recipe-snippet"><%= snippet recipe %></p>
       </div>
-      <%= metrics_for recipe %>
-      <%= ratings_for recipe if current_user %>
     </li>
 
   <% end %>
