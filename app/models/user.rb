@@ -5,10 +5,15 @@ class User < ActiveRecord::Base
   def self.from_omniauth(access_token)
     info = access_token.info
     user = User.find_or_initialize_by(email: info.fetch("email"))
-    user.name = info.fetch("name")
+    user.first_name = info.fetch("first_name")
+    user.last_name = info.fetch("last_name")
     user.image_url = info.fetch("image")
     user.save! if user.changed?
     user
+  end
+
+  def name
+    first_name
   end
 
   def image_url(options={})
