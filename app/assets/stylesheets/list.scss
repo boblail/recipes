@@ -26,6 +26,15 @@ ul.recipes {
     clear: both;
     position: relative;
   }
+
+  .recipe-source::before {
+    content: 'Source: ';
+  }
+}
+
+.recipe-created,
+.recipe-source {
+  font-size: 10.5px;
 }
 
 .recipe-name {
@@ -37,6 +46,7 @@ ul.recipes {
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 1.33em;
+  margin: 0 0 0.25em;
 }
 
 @media (min-width: 768px) {
@@ -54,7 +64,7 @@ ul.recipes {
 
 @media (min-width: 600px) {
   ul.recipes {
-    li {
+    .recipe-row {
       margin-bottom: 0;
       display: flex;
       flex-direction: row;
@@ -87,11 +97,22 @@ ul.recipes {
 
 .recipe-author {
   font-size: 0.88em;
-}
+  line-height: 16px; // height of avatar
+  margin-top: 0.25em;
 
-.recipe-created {
-  font-weight: 500;
-  color: #ccc;
+  img.avatar { vertical-align: text-bottom; }
+
+  .recipe-created {
+    font-weight: 500;
+    color: #ccc;
+  }
+
+  .recipe-created,
+  .recipe-source {
+    margin-left: 0.75em;
+    padding-left: 0.75em;
+    border-left: 1px solid #ddd;
+  }
 }
 
 .recipe-author + .metrics {

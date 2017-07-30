@@ -4,10 +4,7 @@
 </h1>
 
 <div class="recipe-author">
-  Created by
-  <%= avatar_for @recipe.created_by, size: 16 %>
-  <b><%= @recipe.created_by.name %></b>
-  <span class="recipe-created" title="<%= @recipe.created_at.strftime("%b %e %Y, %l:%M %p") %>"><%= time_ago_in_words @recipe.created_at %> ago</span>
+  Added by <%= avatar_for @recipe.created_by, size: 16 %> <b><%= @recipe.created_by.name %></b><span class="recipe-created" title="<%= @recipe.created_at.strftime("%b %e %Y, %l:%M %p") %>"><%= time_ago_in_words @recipe.created_at %> ago</span><% unless @recipe.source.blank? %><span class="recipe-source"><%= format_source @recipe.source %></span><% end %>
 </div>
 
 <%= metrics_for @recipe %>

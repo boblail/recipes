@@ -8,13 +8,16 @@
   <% @recipes.each do |recipe| %>
 
     <li class="recipe">
-      <div class="recipe-summary">
-        <span class="recipe-name"><%= link_to recipe.name, recipe %></span>
-        <span class="recipe-tags"><%= tags recipe.tags %></span>
-        <p class="recipe-snippet"><%= snippet recipe %></p>
+      <div class="recipe-row">
+        <div class="recipe-summary">
+          <span class="recipe-name"><%= link_to recipe.name, recipe %></span>
+          <span class="recipe-tags"><%= tags recipe.tags %></span>
+          <p class="recipe-snippet"><%= snippet recipe %></p>
+        </div>
+        <%= metrics_for recipe %>
+        <%= ratings_for recipe %>
       </div>
-      <%= metrics_for recipe %>
-      <%= ratings_for recipe %>
+      <%= source_of recipe %>
     </li>
 
   <% end %>
