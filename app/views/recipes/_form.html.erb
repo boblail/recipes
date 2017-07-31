@@ -56,11 +56,11 @@
   <div class="form-group">
     <br/><br/>
     <div class="col-sm-10 col-sm-offset-2">
-      <button type="submit" class="btn btn-primary"><%= @recipe.persisted? ? "Update" : "Create" %> Recipe</button>
-
       <% if @recipe.persisted? %>
         <%= link_to "Destroy", @recipe, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
       <% end %>
+
+      <button type="submit" class="btn btn-primary pull-right"><%= @recipe.persisted? ? "Update" : "Create" %> Recipe</button>
     </div>
   </div>
 <% end %>
