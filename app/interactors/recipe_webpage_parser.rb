@@ -12,6 +12,7 @@ class RecipeWebpageParser
       name: recipe.name,
       ingredients: recipe.ingredients.join("\n"),
       instructions: recipe.instructions,
+      servings: recipe.yield,
       source: url
     }
   end

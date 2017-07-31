@@ -23,4 +23,8 @@
   <%= mdown @recipe.instructions %>
 </div>
 
+<% unless @recipe.servings.blank? %>
+<p>Servings: <%= @recipe.servings %></p>
+<% end %>
+
 <%= microformat @recipe %>

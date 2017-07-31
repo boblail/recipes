@@ -20,7 +20,8 @@ class RecipeMicroformatPresenter
       "@type" => "Recipe",
       "name" => recipe.name,
       "recipeIngredient": recipe.ingredients.split(/\n/),
-      "recipeInstructions" => recipe.instructions
+      "recipeInstructions" => recipe.instructions,
+      "recipeYield" => recipe.servings
     }
   end
 
