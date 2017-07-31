@@ -40,6 +40,10 @@ class Recipe < ActiveRecord::Base
     SQL
   end
 
+  def self.most_popular_first
+    order("(select avg(value) from ratings where recipe_id=recipes.id) desc")
+  end
+
   def tags=(tags)
     super Array(tags)
       .map { |tag| normalize_tag(tag) }

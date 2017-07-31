@@ -8,7 +8,7 @@ class RecipesController < ApplicationController
   end
 
   def my_recipes
-    @recipes = current_user.cookbook.recipes
+    @recipes = current_user.cookbook.recipes.most_popular_first
     @recipes = @recipes.search params[:q] unless params[:q].blank?
   end
 
