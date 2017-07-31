@@ -31,33 +31,9 @@ textarea {
   }
 }
 
-.rating .fa-usd {
-  width: 11px;
-  font-size: 13px;
-  font-weight: bold;
-  padding-left: 2px;
-  margin-right: 2px;
-}
-
 .rating .fa-heart {
   width: 13.5px;
   font-size: 12px;
-}
-
-.rating-cost .rating-input {
-  .fa-star, .fa-star-empty {
-    width: 11px;
-    font-size: 13px;
-    font-weight: bold;
-
-    &::before { content: "\f155"; }
-  }
-}
-
-.rating-effort .rating-input {
-  .fa-star, .fa-star-empty {
-    &::before { content: "\f069"; }
-  }
 }
 
 .rating-yumminess .rating-input {

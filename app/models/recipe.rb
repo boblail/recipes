@@ -10,7 +10,6 @@ class Recipe < ActiveRecord::Base
   validates :ingredients, presence: true
   validates :created_by, presence: true
   validates :cookbook, presence: true
-  validates :effort, :cost, numericality: { range: 1..3, allow_nil: true }
 
   def yumminess(user)
     ratings.where(user_id: user.id).pluck(:value).avg

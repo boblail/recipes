@@ -41,23 +41,6 @@ module RecipeHelper
     html.html_safe
   end
 
-  def metrics_for(recipe)
-    <<~HTML.html_safe
-    <div class="metrics">
-      <table>
-        <tr>
-          <th>Difficulty</th>
-          <td>#{rating recipe.effort, max: 3, class: "effort", glyph: "asterisk"}</td>
-        </tr>
-        <tr>
-          <th>Cost</th>
-          <td>#{rating recipe.cost, max: 3, class: "cost", glyph: "usd"}</td>
-        </tr>
-      </table>
-    </div>
-    HTML
-  end
-
   def ratings_for(recipe)
     html = '<div class="ratings"><table>'
     current_user.cookbook.users.each do |user|
