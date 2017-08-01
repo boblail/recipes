@@ -1,0 +1,22 @@
+.photo {
+  display: block;
+
+  &.uploadable {
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 3px;
+    cursor: pointer;
+
+    input[type="file"] { display: none; }
+
+    img {
+      max-width: 360px;
+      max-height: 360px;
+    }
+
+    &:hover {
+      border-color: #3d95e4;
+      background: #bfe1ff;
+    }
+  }
+}

@@ -13,7 +13,8 @@ class RecipeWebpageParser
       ingredients: recipe.ingredients.join("\n"),
       instructions: recipe.instructions,
       servings: recipe.yield,
-      source: url
+      source: url,
+      photo_id: photo&.id
     }
   end
 
@@ -23,6 +24,10 @@ class RecipeWebpageParser
 
   def body
     @body ||= open(url).read
+  end
+
+  def photo
+    @photo ||= recipe.image_url && Photo.create!(filename: open(recipe.image_url))
   end
 
 private

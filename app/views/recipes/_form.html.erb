@@ -32,6 +32,8 @@
     </div>
   </div>
 
+  <hr>
+
   <div class="form-group">
     <%= f.label :tags, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
@@ -54,6 +56,17 @@
   </div>
 
   <div class="form-group">
+    <label for="photo_filename" class="col-sm-2 control-label">Photo</label>
+    <div class="col-sm-10">
+      <label for="photo_filename" class="photo uploadable">
+        <%= photo_of @recipe, id: "recipe_photo" %>
+        <input type="file" id="photo_filename" name="photo[filename]" />
+      </label>
+      <%= f.hidden_field :photo_id %>
+    </div>
+  </div>
+
+  <div class="form-group">
     <br/><br/>
     <div class="col-sm-10 col-sm-offset-2">
       <% if @recipe.persisted? %>
@@ -72,6 +85,26 @@
       datumTokenizer: Bloodhound.tokenizers.whitespace,
       queryTokenizer: Bloodhound.tokenizers.whitespace,
       local: <%=raw @tags.to_json %>
+    });
+
+    $('#photo_filename').on('change', function(event) {
+      var files = event.target.files;
+      var data = new FormData();
+      data.append('photo', files[0]);
+
+      $.ajax({
+        url: '/photos',
+        type: 'POST',
+        data: data,
+        cache: false,
+        dataType: 'json',
+        processData: false, // Don't process the files
+        contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+        success: function(data) {
+          $('#recipe_photo').attr('src', data.url);
+          $('#recipe_photo_id').val(data.id);
+        }
+      });
     });
 
     $('#recipe_tags').tagsinput({

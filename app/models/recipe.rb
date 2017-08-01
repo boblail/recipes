@@ -2,6 +2,7 @@ class Recipe < ActiveRecord::Base
 
   belongs_to :cookbook
   belongs_to :created_by, class_name: "User"
+  belongs_to :photo
   has_many :ratings
 
   after_save :update_search_vector

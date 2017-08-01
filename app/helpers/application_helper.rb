@@ -9,4 +9,9 @@ module ApplicationHelper
     "javascript:#{URI.encode(script)}"
   end
 
+  def photo_url(recipe)
+    return "//via.placeholder.com/480x400" unless recipe.photo
+    recipe.photo.url
+  end
+
 end

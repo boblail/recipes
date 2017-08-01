@@ -6,6 +6,10 @@ module RecipeHelper
     HTML
   end
 
+  def photo_of(recipe, options={})
+    image_tag photo_url(recipe), options.reverse_merge(class: "photo")
+  end
+
   def format_source(source)
     if source =~ /:\/\//
       link_to source, source

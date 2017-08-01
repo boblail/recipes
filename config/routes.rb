@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     put "ratings", to: "recipe_ratings#update"
   end
 
+  post "photos", to: "photos#create"
+
   get "all-recipes", to: "recipes#all_recipes"
   get "my-recipes", to: "recipes#my_recipes", as: :my_recipes
 

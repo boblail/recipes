@@ -22,6 +22,10 @@ gem "devise"
 gem "hangry", github: "boblail/hangry", branch: "master"
 gem "redcarpet"
 
+gem "carrierwave"
+gem "fog"
+gem "mini_magick"
+
 gem "puma"
 
 # Use SCSS for stylesheets

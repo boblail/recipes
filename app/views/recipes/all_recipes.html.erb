@@ -4,14 +4,13 @@
   <%= text_field_tag :q, params[:q], autofocus: true, class: "form-control" %>
 </form>
 
-<ul class="recipes">
+<ul class="recipes recipe-cards">
   <% @recipes.each do |recipe| %>
 
     <li class="recipe">
-      <div class="recipe-summary">
-        <span class="recipe-name"><%= link_to recipe.name, recipe %></span>
-        <p class="recipe-snippet"><%= snippet recipe %></p>
-      </div>
+      <div class="recipe-photo"><%= photo_of recipe %></div>
+      <h3 class="recipe-name"><%= link_to recipe.name, recipe %></h3>
+      <p class="recipe-snippet"><%= snippet recipe %></p>
       <%= source_of recipe %>
     </li>
 

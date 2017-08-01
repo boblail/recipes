@@ -1,28 +1,32 @@
-<h1 class="snug">
-  <%= @recipe.name %>
-  <%= link_to "Edit", edit_recipe_path(@recipe), class: "btn btn-primary" if can? :update, @recipe %>
-</h1>
+<section class="recipe">
+  <%= photo_of @recipe %>
 
-<div class="recipe-author">
-  Added by <%= avatar_for @recipe.created_by, size: 16 %> <b><%= @recipe.created_by.name %></b><span class="recipe-created" title="<%= @recipe.created_at.strftime("%b %e %Y, %l:%M %p") %>"><%= time_ago_in_words @recipe.created_at %> ago</span><% unless @recipe.source.blank? %><span class="recipe-source"><%= format_source @recipe.source %></span><% end %>
-</div>
+  <h1 class="snug">
+    <%= @recipe.name %>
+    <%= link_to "Edit", edit_recipe_path(@recipe), class: "btn btn-primary" if can? :update, @recipe %>
+  </h1>
 
-<%= tags @recipe.tags %>
+  <div class="recipe-author">
+    Added by <%= avatar_for @recipe.created_by, size: 16 %> <b><%= @recipe.created_by.name %></b><span class="recipe-created" title="<%= @recipe.created_at.strftime("%b %e %Y, %l:%M %p") %>"><%= time_ago_in_words @recipe.created_at %> ago</span><% unless @recipe.source.blank? %><span class="recipe-source"><%= format_source @recipe.source %></span><% end %>
+  </div>
 
-<h4>Ingredients</h4>
-<ul class="ingredients">
-  <% @recipe.ingredients.to_s.split(/\n/).each do |ingredient| %>
-    <li class="ingredient"><%= ingredient %></li>
+  <%= tags @recipe.tags %>
+
+  <h4>Ingredients</h4>
+  <ul class="ingredients">
+    <% @recipe.ingredients.to_s.split(/\n/).each do |ingredient| %>
+      <li class="ingredient"><%= ingredient %></li>
+    <% end %>
+  </ul>
+
+  <h4>Instructions</h4>
+  <div class="instructions">
+    <%= mdown @recipe.instructions %>
+  </div>
+
+  <% unless @recipe.servings.blank? %>
+  <p>Servings: <%= @recipe.servings %></p>
   <% end %>
-</ul>
 
-<h4>Instructions</h4>
-<div class="instructions">
-  <%= mdown @recipe.instructions %>
-</div>
-
-<% unless @recipe.servings.blank? %>
-<p>Servings: <%= @recipe.servings %></p>
-<% end %>
-
-<%= microformat @recipe %>
+  <%= microformat @recipe %>
+</section>

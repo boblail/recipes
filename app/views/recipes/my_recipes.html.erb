@@ -9,14 +9,15 @@
 
     <li class="recipe">
       <div class="recipe-row">
+        <div class="recipe-photo"><%= photo_of recipe %></div>
         <div class="recipe-summary">
           <span class="recipe-name"><%= link_to recipe.name, recipe %></span>
           <span class="recipe-tags"><%= tags recipe.tags %></span>
           <p class="recipe-snippet"><%= snippet recipe %></p>
+          <%= source_of recipe %>
         </div>
         <%= ratings_for recipe %>
       </div>
-      <%= source_of recipe %>
     </li>
 
   <% end %>

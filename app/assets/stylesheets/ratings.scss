@@ -1,0 +1,67 @@
+.form-horizontal .rating-input { padding: 8px 0 0 0; }
+
+.rating-input {
+  cursor: pointer;
+
+  .fa-star {
+    color: #5bc0de;
+  }
+
+  .fa-star-empty {
+    color: #ddd;
+    &::before { content: "\e006"; }
+  }
+
+  a.rating-clear {
+    font-size: 0.8em;
+    color: #ddd;
+
+    &:hover {
+      text-decoration: none;
+      color: #f35827;
+    }
+  }
+}
+
+.rating .fa-heart {
+  width: 13.5px;
+  font-size: 12px;
+}
+
+.rating-yumminess .rating-input {
+  .fa-star, .fa-star-empty {
+    width: 13.5px;
+    font-size: 12px;
+
+    &::before { content: "\f004"; }
+  }
+}
+
+.rating-yumminess.rating-1 .rating-value .fa, .rating-yumminess .rating-input[data-value="1"] .fa-star { color: #f35827; }
+.rating-yumminess.rating-2 .rating-value .fa, .rating-yumminess .rating-input[data-value="2"] .fa-star { color: #fa851e; }
+.rating-yumminess.rating-3 .rating-value .fa, .rating-yumminess .rating-input[data-value="3"] .fa-star { color: #BADB00; }
+.rating-yumminess.rating-4 .rating-value .fa, .rating-yumminess .rating-input[data-value="4"] .fa-star { color: #8DCE0A; }
+.rating-yumminess.rating-5 .rating-value .fa, .rating-yumminess .rating-input[data-value="5"] .fa-star { color: #28BF37; } // text-shadow: 0 0 2px #64e070; }
+
+span.rating {
+  display: inline-block;
+  position: relative;
+
+  .rating-range .fa { color: #ddd; }
+  .rating-value .fa { color: #5bc0de; }
+
+  .rating-range, .rating-value { padding-left: 1px; }
+
+  .rating-value {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+table.ratings-per-person {
+  th, td { padding: 0.25em 1em 0.25em 0; }
+}
