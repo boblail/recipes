@@ -1,9 +1,5 @@
-form {
-  max-width: 800px;
-}
-
 body {
-  padding-top: 50px;
+  padding: 74px 0 24px;
 }
 
 .label {
@@ -25,6 +21,7 @@ h4, label.control-label {
 
 h1 {
   font-weight: 200;
+  line-height: 1;
 
   &.snug { margin-bottom: 0; }
 }
@@ -33,21 +30,39 @@ h4 {
   margin-top: 2em;
 }
 
-.navbar-nav {
-  float: left;
-  margin: 0;
-}
+.navbar {
+  .pull-right {
+    height: 50px;
+    line-height: 50px;
+  }
 
-.navbar-nav > li > a {
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
+  a {
+    display: inline-block;
+    color: #777;
 
-.navbar-nav > li > a.nav-link-large {
-  padding-top: 7px;
-  padding-bottom: 7px;
+    &:hover {
+      text-decoration: none;
+      color: white;
+    }
+  }
+
+  .avatar {
+    margin: 0 0 0 1em;
+  }
 }
 
 img.avatar {
   border-radius: 999em;
+}
+
+.container {
+  max-width: 960px;
+  max-width: 800px;
+}
+
+@media (max-width: 440px) {
+  .container {
+    padding-right: 2em;
+    padding-left: 2em;
+  }
 }

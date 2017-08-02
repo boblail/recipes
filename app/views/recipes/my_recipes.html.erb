@@ -1,4 +1,10 @@
-<h1>My Recipes</h1>
+<h1>
+  My Recipes
+
+  <% if can? :create, Recipe %>
+    <%= link_to "New Recipe", new_recipe_path, class: "btn btn-primary pull-right" %>
+  <% end %>
+</h1>
 
 <form method="get">
   <%= text_field_tag :q, params[:q], autofocus: true, class: "form-control" %>
@@ -11,7 +17,7 @@
       <div class="recipe-row">
         <div class="recipe-photo"><%= photo_of recipe %></div>
         <div class="recipe-summary">
-          <span class="recipe-name"><%= link_to recipe.name, recipe %></span>
+          <h3 class="recipe-name"><%= link_to recipe.name, recipe %></h3>
           <span class="recipe-tags"><%= tags recipe.tags %></span>
           <p class="recipe-snippet"><%= snippet recipe %></p>
           <%= source_of recipe %>
