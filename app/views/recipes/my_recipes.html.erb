@@ -6,31 +6,49 @@
   <% end %>
 </h1>
 
-<form method="get">
-  <%= text_field_tag :q, params[:q], autofocus: true, class: "form-control" %>
-</form>
+<% if @recipes.exists? %>
 
-<ul class="recipes">
-  <% @recipes.each do |recipe| %>
+  <form method="get">
+    <%= text_field_tag :q, params[:q], autofocus: true, class: "form-control" %>
+  </form>
 
-    <li class="recipe">
-      <div class="recipe-row">
-        <div class="recipe-photo"><%= photo_of recipe %></div>
-        <div class="recipe-summary">
-          <h3 class="recipe-name"><%= link_to recipe.name, recipe %></h3>
-          <span class="recipe-tags"><%= tags recipe.tags %></span>
-          <p class="recipe-snippet"><%= snippet recipe %></p>
-          <%= source_of recipe %>
+  <ul class="recipes">
+    <% @recipes.each do |recipe| %>
+
+      <li class="recipe">
+        <div class="recipe-row">
+          <div class="recipe-photo"><%= photo_of recipe %></div>
+          <div class="recipe-summary">
+            <h3 class="recipe-name"><%= link_to recipe.name, recipe %></h3>
+            <span class="recipe-tags"><%= tags recipe.tags %></span>
+            <p class="recipe-snippet"><%= snippet recipe %></p>
+            <%= source_of recipe %>
+          </div>
+          <%= ratings_for recipe %>
         </div>
-        <%= ratings_for recipe %>
-      </div>
-    </li>
+      </li>
 
-  <% end %>
-</ul>
+    <% end %>
+  </ul>
 
-<script type="text/javascript">
-  $(function() {
-    $('#q').focus().select();
-  });
-</script>
+  <script type="text/javascript">
+    $(function() {
+      $('#q').focus().select();
+    });
+  </script>
+
+<% else %>
+
+  <div class="zero-recipes">
+    <h2>Get Started!</h2>
+
+    <p>
+      Click <b><%= link_to "New Recipe", new_recipe_path %></b> to start typing in your favorite recipes—
+    </p>
+
+    <p>
+      —or drag this bookmarklet <%= link_to "Add Recipe", bookmarklet_url, class: "bookmarklet" %> to your bookmarks bar so you can quickly save recipes from your favorite food blogs!
+    </p>
+  </div>
+
+<% end %>
