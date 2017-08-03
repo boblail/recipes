@@ -2,7 +2,7 @@ class Recipe < ApplicationRecord
 
   belongs_to :cookbook
   belongs_to :created_by, class_name: "User"
-  belongs_to :photo
+  belongs_to :photo, optional: true
   has_many :ratings
 
   after_save :update_search_vector
