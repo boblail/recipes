@@ -1,4 +1,4 @@
-class Cookbook < ActiveRecord::Base
+class Cookbook < ApplicationRecord
 
   has_many :users
   has_many :recipes

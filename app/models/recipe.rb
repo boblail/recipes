@@ -1,4 +1,4 @@
-class Recipe < ActiveRecord::Base
+class Recipe < ApplicationRecord
 
   belongs_to :cookbook
   belongs_to :created_by, class_name: "User"
