@@ -4,18 +4,22 @@
   <%= text_field_tag :q, params[:q], autofocus: true, class: "form-control" %>
 </form>
 
-<ul class="recipes recipe-cards">
-  <% @recipes.each do |recipe| %>
+<% if @recipes.any? %>
+  <ul class="recipes recipe-cards">
+    <% @recipes.each do |recipe| %>
 
-    <li class="recipe">
-      <div class="recipe-photo"><%= photo_of recipe %></div>
-      <h3 class="recipe-name"><%= link_to recipe.name, recipe %></h3>
-      <p class="recipe-snippet"><%= snippet recipe %></p>
-      <%= source_of recipe %>
-    </li>
+      <li class="recipe">
+        <div class="recipe-photo"><%= photo_of recipe %></div>
+        <h3 class="recipe-name"><%= link_to recipe.name, recipe %></h3>
+        <p class="recipe-snippet"><%= snippet recipe %></p>
+        <%= source_of recipe %>
+      </li>
 
-  <% end %>
-</ul>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No results</p>
+<% end %>
 
 <script type="text/javascript">
   $(function() {
