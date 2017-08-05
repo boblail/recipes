@@ -48,7 +48,7 @@ section.recipe {
     flex-direction: column;
     padding: 2em 0;
 
-    .photo {
+    & > img.photo {
       float: none;
       align-self: center;
       border-radius: 5px;
