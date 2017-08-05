@@ -38,7 +38,7 @@
     <div class="form-group">
       <%= f.label :tags, class: "control-label" %>
       <div>
-        <%= f.text_field :tags, value: @recipe.tags.join(","), class: "form-control" %>
+        <%= f.text_field :tags, value: @recipe.tags.pluck(:name).join(","), class: "form-control" %>
       </div>
     </div>
 

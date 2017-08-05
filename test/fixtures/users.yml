@@ -1,0 +1,5 @@
+test:
+  first_name: John
+  last_name: Doe
+  email: user@example.com
+  cookbook: test
