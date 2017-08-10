@@ -22,8 +22,7 @@ gem "devise"
 gem "hangry", github: "boblail/hangry", branch: "master"
 gem "redcarpet"
 
-gem "carrierwave"
-gem "fog"
+gem "carrierwave-aws"
 gem "mini_magick"
 
 gem "puma", "~> 3.7"
