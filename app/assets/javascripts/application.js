@@ -14,4 +14,6 @@
 //= require typeahead
 //= require bootstrap-tagsinput
 //= require bootstrap-rating-input.min.js
+//= require underscore/underscore
+//= require backbone/backbone
 //= require_tree .
