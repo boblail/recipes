@@ -26,6 +26,7 @@ gem "carrierwave-aws"
 gem "mini_magick"
 
 gem "puma", "~> 3.7"
+gem "bootsnap", "~> 1.1"
 
 # Use SCSS for stylesheets
 gem "sass-rails", "~> 5.0"
