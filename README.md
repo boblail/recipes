@@ -1,24 +1,36 @@
-# README
+# Recipes
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![Build Status](https://travis-ci.org/boblail/recipes.svg)](https://travis-ci.org/boblail/recipes)
 
-Things you may want to cover:
 
-* Ruby version
+### Prerequisites
 
-* System dependencies
+ - Ruby 2.3.1
+ - Postgres
 
-* Configuration
+If you're on a Mac, install Ruby with
 
-* Database creation
+    brew install rbenv
+    rbenv init
+    rbenv install 2.3.1
 
-* Database initialization
+and install Postgres with the excellent [Postgres.app](https://postgresapp.com)
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+### Getting Started
 
-* ...
+    git clone https://github.com/boblail/recipes.git
+    cd recipes
+    bundle
+    bundle exec rake db:setup
+
+To run Origami
+
+    bundle exec rails server
+
+
+
+### Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/boblail/recipes.
