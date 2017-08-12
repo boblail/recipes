@@ -4,7 +4,9 @@ class User < ApplicationRecord
 
   devise :trackable, :omniauthable, omniauth_providers: [:google_oauth2]
 
-  before_create :create_cookbook_for_user
+  before_validation :create_cookbook_for_user, on: :create
+
+  delegate :current_menu_plan, to: :cookbook
 
   def self.from_omniauth(access_token)
     info = access_token.info
