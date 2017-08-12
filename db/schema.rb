@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,73 +10,79 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731024902) do
+ActiveRecord::Schema.define(version: 20170812171824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
-  create_table "cookbooks", force: true do |t|
-    t.string   "name",       null: false
+  create_table "cookbooks", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 255, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer "current_menu_plan_id"
+  end
+
+  create_table "menu_plans", force: :cascade do |t|
+    t.bigint "cookbook_id", null: false
+    t.string "name", null: false
+    t.index ["cookbook_id"], name: "index_menu_plans_on_cookbook_id"
+  end
+
+  create_table "photos", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.string "filename", limit: 255, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "photos", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
-    t.string   "filename",   null: false
+  create_table "ratings", id: :serial, force: :cascade do |t|
+    t.integer "recipe_id"
+    t.integer "user_id"
+    t.string "name", limit: 255, null: false
+    t.integer "value", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["recipe_id", "user_id"], name: "index_ratings_on_recipe_id_and_user_id"
   end
 
-  create_table "ratings", force: true do |t|
-    t.integer  "recipe_id"
-    t.integer  "user_id"
-    t.string   "name",       null: false
-    t.integer  "value",      null: false
+  create_table "recipes", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 255, null: false
+    t.text "ingredients", null: false
+    t.text "instructions", null: false
+    t.string "tags", limit: 255, default: [], array: true
+    t.integer "effort"
+    t.integer "cost"
+    t.integer "healthiness"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  add_index "ratings", ["recipe_id", "user_id"], name: "index_ratings_on_recipe_id_and_user_id", using: :btree
-
-  create_table "recipes", force: true do |t|
-    t.string   "name",                       null: false
-    t.text     "ingredients",                null: false
-    t.text     "instructions",               null: false
-    t.string   "tags",          default: [],              array: true
-    t.integer  "effort"
-    t.integer  "cost"
-    t.integer  "healthiness"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "created_by_id",              null: false
+    t.integer "created_by_id", null: false
     t.tsvector "search_vector"
-    t.integer  "cookbook_id",                null: false
-    t.string   "source"
-    t.string   "servings",      default: "", null: false
-    t.uuid     "photo_id"
+    t.integer "cookbook_id", null: false
+    t.string "source", limit: 255
+    t.string "servings", limit: 255, default: "", null: false
+    t.uuid "photo_id"
+    t.index ["cookbook_id"], name: "index_recipes_on_cookbook_id"
+    t.index ["search_vector"], name: "index_recipes_on_search_vector", using: :gin
+    t.index ["tags"], name: "index_recipes_on_tags", using: :gin
   end
 
-  add_index "recipes", ["cookbook_id"], name: "index_recipes_on_cookbook_id", using: :btree
-  add_index "recipes", ["search_vector"], name: "index_recipes_on_search_vector", using: :gin
-  add_index "recipes", ["tags"], name: "index_recipes_on_tags", using: :gin
-
-  create_table "users", force: true do |t|
-    t.string   "email",              default: "", null: false
-    t.integer  "sign_in_count",      default: 0,  null: false
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.string "email", limit: 255, default: "", null: false
+    t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string "current_sign_in_ip", limit: 255
+    t.string "last_sign_in_ip", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "first_name",                      null: false
-    t.string   "image_url"
-    t.string   "last_name"
-    t.integer  "cookbook_id",                     null: false
+    t.string "first_name", limit: 255, null: false
+    t.string "image_url", limit: 255
+    t.string "last_name", limit: 255
+    t.integer "cookbook_id", null: false
+    t.index ["cookbook_id"], name: "index_users_on_cookbook_id"
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_index "users", ["cookbook_id"], name: "index_users_on_cookbook_id", using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-
+  add_foreign_key "cookbooks", "menu_plans", column: "current_menu_plan_id"
+  add_foreign_key "menu_plans", "cookbooks", on_delete: :cascade
 end
