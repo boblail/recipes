@@ -37,6 +37,14 @@ h4 {
 }
 
 .navbar {
+  .navbar-toggler {
+    border: none;
+  }
+
+  .fa-bars {
+    color: $navbar-grey
+  }
+
   a {
     display: inline-block;
     color: $navbar-grey;

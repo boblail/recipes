@@ -1,17 +1,39 @@
-<nav class="navbar fixed-top navbar-light bg-dark justify-content-between">
+<nav class="navbar navbar-expand-sm navbar-toggleable-md navbar-light bg-dark fixed-top">
   <div class="container">
     <%= link_to (current_user ? my_recipes_path : root_path), class: "navbar-brand" do %>
-    <span class="fa fa-cutlery"></span>
-    <span class="brand-name">Recipes</span>
+      <span class="fa fa-cutlery"></span>
+      <span class="brand-name">Recipes</span>
     <% end %>
 
-    <div>
-      <% if current_user -%>
-      <%= link_to "Sign out", destroy_session_path %>
-      <%= avatar_for(current_user, size: 36) %>
-      <% else -%>
-      <%= link_to "Sign in", new_session_path %>
-      <% end -%>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa  fa-bars" aria-hidden="true"></i>
+    </button>
+
+    <div id="navbarNavDropdown" class="navbar-collapse collapse">
+      <ul class="navbar-nav ml-auto">
+        <% if current_user -%>
+        <li class="nav-item">
+          <a class="btn" href="#">
+            <%= current_user.current_menu_plan.name %> <span class="badge badge-secondary">4</span>
+          </a>
+        </li>
+
+        <li class="nav-item dropdown d-none d-sm-flex">
+          <a class="dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= avatar_for(current_user, size: 36) %>
+          </a>
+          <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdownMenuLink">
+            <%= link_to "Sign out", destroy_session_path, class: "dropdown-item" %>
+          </div>
+        </li>
+
+        <li class="nav-item d-sm-none">
+          <%= link_to "Sign out", destroy_session_path, class: 'btn' %>
+        </li>
+        <% else -%>
+        <%= link_to "Sign in", new_session_path %>
+        <% end -%>
+      </ul>
     </div>
   </div>
 </nav>
