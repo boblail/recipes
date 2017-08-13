@@ -25,8 +25,6 @@ gem "redcarpet"
 gem "carrierwave-aws"
 gem "mini_magick"
 
-gem "puma", "~> 3.7"
-
 # Use SCSS for stylesheets
 gem "sass-rails", "~> 5.0"
 
@@ -42,8 +40,14 @@ gem "coffee-rails", "~> 4.2"
 # Use jquery as the JavaScript library
 gem "jquery-rails"
 
-# For deploying to Heroku
-gem "rails_12factor", group: :production
+group :development, :production do
+  gem "puma", "~> 3.7"
+end
+
+group :production do
+  # For deploying to Heroku
+  gem "rails_12factor"
+end
 
 group :development, :test do
   # Use PRY for debugging

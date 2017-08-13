@@ -7,6 +7,7 @@ before_install:
   - gem update bundler
   - psql -c 'create database recipes_test;' -U postgres
 script: bundle exec rake test
+bundler_args: --jobs=3 --retry=3 --deployment --without production development
 
 # To stop Travis from running tests for a new commit,
 # add the following to your commit message: [ci skip]
