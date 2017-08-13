@@ -1,0 +1,16 @@
+// Includes https://github.com/twbs/bootstrap/blob/v4-dev/scss/bootstrap.scss
+// Can be modified to import only the components we actually use.
+//
+// Bootstrap variables can be modified in this file before the @import
+// statement. A complete list of variables and their default values is here:
+// https://github.com/twbs/bootstrap/blob/v4-dev/scss/_variables.scss
+
+// Overrides
+
+$blue: #428bca; // primary color for links and buttons
+$gray-800: #2d2d2d; // navbar background
+
+
+// Twitter Bootstrap
+
+@import "bootstrap/scss/bootstrap.scss";
