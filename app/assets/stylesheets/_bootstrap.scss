@@ -14,3 +14,24 @@ $gray-800: #2d2d2d; // navbar background
 // Twitter Bootstrap
 
 @import "bootstrap/scss/bootstrap.scss";
+
+
+// Temporary: For compatibility for bootstrap-tags-input
+// Bootstrap 4 renamed these from .label to .badge
+
+.label {
+  display: inline;
+  padding: .1em .3em .2em;
+  font-size: 75%;
+  font-weight: 500;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+}
+
+.label-info {
+  background-color: #5bc0de;
+}
