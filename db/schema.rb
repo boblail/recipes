@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170812171824) do
+ActiveRecord::Schema.define(version: 20170812232053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,12 @@ ActiveRecord::Schema.define(version: 20170812171824) do
     t.bigint "cookbook_id", null: false
     t.string "name", null: false
     t.index ["cookbook_id"], name: "index_menu_plans_on_cookbook_id"
+  end
+
+  create_table "menu_plans_recipes", id: false, force: :cascade do |t|
+    t.bigint "menu_plan_id", null: false
+    t.bigint "recipe_id", null: false
+    t.index ["menu_plan_id", "recipe_id"], name: "index_menu_plans_recipes_on_menu_plan_id_and_recipe_id", unique: true
   end
 
   create_table "photos", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|

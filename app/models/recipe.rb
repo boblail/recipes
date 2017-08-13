@@ -4,6 +4,7 @@ class Recipe < ApplicationRecord
   belongs_to :created_by, class_name: "User"
   belongs_to :photo, optional: true
   has_many :ratings
+  has_and_belongs_to_many :menu_plans
 
   after_save :update_search_vector
 
