@@ -42,7 +42,7 @@ class Recipe < ApplicationRecord
   end
 
   def self.most_popular_first
-    order("(select avg(value) from ratings where recipe_id=recipes.id) desc")
+    order("coalesce((select avg(value) from ratings where recipe_id=recipes.id), 3) desc")
   end
 
   def tags=(tags)
