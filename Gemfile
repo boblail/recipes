@@ -20,7 +20,7 @@ gem "cancan"
 gem "omniauth-google-oauth2"
 gem "devise"
 gem "hangry", github: "boblail/hangry", branch: "master"
-gem "redcarpet"
+gem "kramdown"
 
 gem "carrierwave-aws"
 gem "mini_magick"
