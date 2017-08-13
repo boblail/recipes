@@ -1,5 +1,7 @@
+@import "variables";
+
 body {
-  padding: 74px 0 24px;
+  padding: 90px 0 24px;
 }
 
 .label {
@@ -40,20 +42,24 @@ h4 {
 }
 
 .navbar {
-  .pull-right {
-    height: 50px;
-    line-height: 50px;
-  }
-
   a {
     display: inline-block;
-    color: #777;
+    color: $navbar-grey;
 
     &:hover {
       text-decoration: none;
-      color: white;
+      color: $white;
     }
   }
+
+  .navbar-brand {
+    color: $navbar-grey;
+    &:hover {
+      text-decoration: none;
+      color: $white;
+    }
+  }
+
 
   .avatar {
     margin: 0 0 0 1em;
