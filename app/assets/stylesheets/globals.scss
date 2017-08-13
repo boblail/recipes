@@ -1,10 +1,7 @@
-body {
-  padding: 74px 0 24px;
-}
+@import "variables";
 
-.label {
-  padding: .1em .3em .2em;
-  font-weight: 500;
+body {
+  padding: 90px 0 24px;
 }
 
 h4, label.control-label {
@@ -40,20 +37,24 @@ h4 {
 }
 
 .navbar {
-  .pull-right {
-    height: 50px;
-    line-height: 50px;
-  }
-
   a {
     display: inline-block;
-    color: #777;
+    color: $navbar-grey;
 
     &:hover {
       text-decoration: none;
-      color: white;
+      color: $white;
     }
   }
+
+  .navbar-brand {
+    color: $navbar-grey;
+    &:hover {
+      text-decoration: none;
+      color: $white;
+    }
+  }
+
 
   .avatar {
     margin: 0 0 0 1em;

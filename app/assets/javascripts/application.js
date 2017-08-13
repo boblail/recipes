@@ -11,7 +11,8 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require typeahead
+//= require typeahead.js/dist/typeahead.bundle.min
+//= require bootstrap-tagsinput/dist/bootstrap-tagsinput.min
 //= require bootstrap-tagsinput
 //= require bootstrap-rating-input.min.js
 //= require underscore/underscore

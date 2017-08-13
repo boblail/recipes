@@ -63,6 +63,8 @@ GEM
     aws-sigv4 (1.0.1)
     bcrypt (3.1.11)
     bindex (0.5.0)
+    bootsnap (1.1.2)
+      msgpack (~> 1.0)
     builder (3.2.3)
     cancan (1.6.10)
     capybara (2.14.4)
@@ -139,6 +141,7 @@ GEM
       ruby-progressbar
     minitest-reporters-turn_reporter (0.1.2)
       minitest-reporters
+    msgpack (1.1.0)
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
@@ -269,6 +272,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootsnap (~> 1.1)
   cancan
   capybara (~> 2.13)
   carrierwave-aws
@@ -302,4 +306,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.14.6
+   1.15.3
