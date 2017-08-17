@@ -3,7 +3,7 @@
 
   <h1 class="snug">
     <%= @recipe.name %>
-    <%= link_to "Edit", edit_recipe_path(@recipe), class: "btn btn-primary" if can? :update, @recipe %>
+    <%= link_to "Edit", edit_recipe_path(@recipe), class: "btn btn-primary btn-sm" if can? :update, @recipe %>
   </h1>
 
   <div class="recipe-metadata">

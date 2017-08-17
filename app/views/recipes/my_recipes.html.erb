@@ -22,7 +22,7 @@
             <div class="recipe-summary">
               <%= average_rating_for recipe %>
               <h3 class="recipe-name"><%= link_to recipe.name, recipe %></h3>
-              <span class="recipe-tags"><%= tags recipe.tags %></span>
+              <%= tags_for recipe %>
               <p class="recipe-snippet"><%= snippet recipe %></p>
               <%= source_of recipe %>
             </div>

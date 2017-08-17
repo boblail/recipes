@@ -11,7 +11,7 @@ ul.recipes {
     display: inline-block;
     break-inside: avoid;
     border-radius: 5px;
-    margin: 1em 0 3.5em;
+    margin: 2.5em 0;
     width: 100%;
   }
 
@@ -24,21 +24,40 @@ ul.recipes {
       display: inline-block;
       border-radius: 5px;
       max-width: 100%;
-      max-height: 45vh;
+      max-height: 33vh;
     }
   }
 
   .recipe-source {
-    font-size: 10.5px;
+    font-size: 0.875em;
+    color: #aaa;
+
+    a { color: inherit; }
   }
 
   .rating-yumminess {
     float: right;
+
+    .fa-heart {
+      font-size: 14px;
+    }
   }
 
   .recipe-name {
-    font-size: 1.25em;
+    font-size: 1.125em;
     margin: 0 0 0.5em;
+    font-weight: 900;
+
+    a, a:hover { color: inherit; }
+  }
+
+  .recipe-row .recipe-name {
+    margin-right: 80px;
+  }
+
+  .recipe-tags {
+    display: block;
+    margin: -0.66em 0 0.5em;
   }
 
   .recipe-snippet {
@@ -62,6 +81,8 @@ ul.recipes {
       border: none;
       cursor: pointer;
 
+      &:focus { outline: 0; }
+
       &::before {
         font-family: FontAwesome;
         display: inline-block;
@@ -75,15 +96,19 @@ ul.recipes {
       &.menu-plan-remove-button {
         background: #8dce0a;
 
-        &:hover {
-          background: #f35827;
-          &::before { content: '\f068'; }
+        @media (hover: hover) {
+          &:hover {
+            background: #f35827;
+            &::before { content: '\f068'; }
+          }
         }
       }
       &.menu-plan-add-button {
         background: #ddd;
 
-        &:hover { background: #badb00; }
+        @media (hover: hover) {
+          &:hover { background: #badb00; }
+        }
         &::before { content: '\f067'; }
       }
     }
@@ -100,10 +125,7 @@ ul.recipes {
 
     .recipe {
       margin: 1em 0 4px;
-      padding: 1em;
-      box-shadow: -1px 1px 4px 0px rgba(0, 0, 0, 0.12);
-      border-top: 1px solid #f5f5f5;
-      border-right: 1px solid #f5f5f5;
+      padding: 0.5em;
     }
   }
 }
@@ -117,7 +139,27 @@ ul.recipes {
 
 // My Recipes (list-style)
 
-@media (min-width: 600px) {
+@media (max-width: 540px) {
+  ul.recipes {
+    .recipe-row {
+      .recipe-summary {
+        min-height: 80px; // room for menu-plan button
+        padding-right: 60px;
+
+        .rating-yumminess { margin-right: -60px; }
+      }
+
+      .recipe-menu-plan {
+        position: absolute;
+        right: 0;
+        top: 33vh; // size of photo
+        margin-top: 40px;
+      }
+    }
+  }
+}
+
+@media (min-width: 540px) {
   ul.recipes {
     .recipe-row {
       margin-bottom: -1.5em;
@@ -135,7 +177,7 @@ ul.recipes {
         img {
           display: inline-flex;
           max-width: 10em;
-          max-height: 9em;
+          max-height: 8.33em;
         }
       }
 
@@ -145,12 +187,7 @@ ul.recipes {
 
       .recipe-menu-plan {
         width: $button-size;
-        margin-left: 2.5em;
-        display: flex;
-
-        button {
-          align-self: center;
-        }
+        margin-left: 2em;
       }
     }
   }

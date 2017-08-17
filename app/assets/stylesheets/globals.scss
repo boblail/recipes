@@ -6,9 +6,9 @@ body {
 
 h4, label.control-label {
   text-transform: uppercase;
-  color: #999;
-  font-weight: 500;
-  font-size: 14px;
+  color: #aaa;
+  font-weight: 700;
+  font-size: 0.875em;
 }
 
 .brand-name {
@@ -17,7 +17,8 @@ h4, label.control-label {
 }
 
 h1 {
-  font-weight: 200;
+  font-size: 1.66em;
+  font-weight: 900;
   line-height: 1;
 
   &.snug { margin-bottom: 0; }
