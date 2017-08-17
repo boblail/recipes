@@ -1,4 +1,5 @@
 // List of Recipes on Phones
+ $button-size: 48px;
 
 ul.recipes {
   padding: 0;
@@ -64,6 +65,46 @@ ul.recipes {
       }
     }
     .rating-clear { display: none !important; }
+  }
+
+
+
+  .recipe-menu-plan {
+    button {
+      width: $button-size;
+      height: $button-size;
+      border-radius: $button-size;
+      overflow: hidden;
+      font-size: 0;
+      padding: 0;
+      border: none;
+      cursor: pointer;
+
+      &::before {
+        font-family: FontAwesome;
+        display: inline-block;
+        font-size: $button-size / 2;
+        line-height: ($button-size - 6px);
+        width: ($button-size - 6px);
+        text-align: center;
+        content: '\f00c';
+        color: white;
+      }
+      &.menu-plan-remove-button {
+        background: #8dce0a;
+
+        &:hover {
+          background: #f35827;
+          &::before { content: '\f068'; }
+        }
+      }
+      &.menu-plan-add-button {
+        background: #ddd;
+
+        &:hover { background: #badb00; }
+        &::before { content: '\f067'; }
+      }
+    }
   }
 }
 
@@ -139,6 +180,16 @@ ul.recipes {
             top: 0px;
             margin: 2px 4px;
           }
+        }
+      }
+
+      .recipe-menu-plan {
+        width: $button-size;
+        margin-left: 2.5em;
+        display: flex;
+
+        button {
+          align-self: center;
         }
       }
     }

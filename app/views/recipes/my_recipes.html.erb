@@ -16,7 +16,7 @@
     <ul class="recipes">
       <% @recipes.each do |recipe| %>
 
-        <li class="recipe">
+        <li class="recipe" id="recipe_<%= recipe.id %>" data-id="<%= recipe.id %>">
           <div class="recipe-row">
             <div class="recipe-photo"><%= photo_of recipe %></div>
             <div class="recipe-summary">
@@ -26,6 +26,7 @@
               <%= source_of recipe %>
             </div>
             <%= ratings_for recipe %>
+            <div class="recipe-menu-plan"></div>
           </div>
         </li>
 
