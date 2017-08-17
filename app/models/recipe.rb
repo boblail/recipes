@@ -13,8 +13,10 @@ class Recipe < ApplicationRecord
   validates :created_by, presence: true
   validates :cookbook, presence: true
 
-  def yumminess(user)
-    ratings.where(user_id: user.id).pluck(:value).avg
+  def yumminess(user=nil)
+    _ratings = ratings
+    _ratings = _ratings.where(user_id: user.id) if user
+    _ratings.pluck(:value).avg
   end
 
   def tags=(value)

@@ -1,4 +1,5 @@
 // List of Recipes on Phones
+ $button-size: 48px;
 
 ul.recipes {
   padding: 0;
@@ -10,30 +11,53 @@ ul.recipes {
     display: inline-block;
     break-inside: avoid;
     border-radius: 5px;
-    margin: 1em 0 3.5em;
+    margin: 2.5em 0;
     width: 100%;
   }
 
   .recipe-photo {
     max-width: 100%;
-    margin: 0;
+    margin: 0 0 0.66em;
     text-align: center;
 
     img {
       display: inline-block;
       border-radius: 5px;
       max-width: 100%;
-      max-height: 45vh;
+      max-height: 33vh;
     }
   }
 
   .recipe-source {
-    font-size: 10.5px;
+    font-size: 0.875em;
+    color: #aaa;
+
+    a { color: inherit; }
+  }
+
+  .rating-yumminess {
+    float: right;
+
+    .fa-heart {
+      font-size: 14px;
+    }
   }
 
   .recipe-name {
-    font-size: 1.25em;
-    margin: 0.66em 0 0.5em;
+    font-size: 1.125em;
+    margin: 0 0 0.5em;
+    font-weight: 900;
+
+    a, a:hover { color: inherit; }
+  }
+
+  .recipe-row .recipe-name {
+    margin-right: 80px;
+  }
+
+  .recipe-tags {
+    display: block;
+    margin: -0.66em 0 0.5em;
   }
 
   .recipe-snippet {
@@ -44,26 +68,50 @@ ul.recipes {
     margin: 0 0 0.25em;
   }
 
-  .ratings {
-    padding: 0.33em 0 0;
 
-    table { width: 100%; }
-    tbody {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
 
-      th, td {
-        white-space: nowrap;
+  .recipe-menu-plan {
+    button {
+      width: $button-size;
+      height: $button-size;
+      border-radius: $button-size;
+      overflow: hidden;
+      font-size: 0;
+      padding: 0;
+      border: none;
+      cursor: pointer;
+
+      &:focus { outline: 0; }
+
+      &::before {
+        font-family: FontAwesome;
+        display: inline-block;
+        font-size: $button-size / 2;
+        line-height: ($button-size - 6px);
+        width: ($button-size - 6px);
+        text-align: center;
+        content: '\f00c';
+        color: white;
       }
+      &.menu-plan-remove-button {
+        background: #8dce0a;
 
-      th {
-        font-size: 0.66em;
-        font-weight: 500;
-        padding-right: 0.66em;
+        @media (hover: hover) {
+          &:hover {
+            background: #f35827;
+            &::before { content: '\f068'; }
+          }
+        }
+      }
+      &.menu-plan-add-button {
+        background: #ddd;
+
+        @media (hover: hover) {
+          &:hover { background: #badb00; }
+        }
+        &::before { content: '\f067'; }
       }
     }
-    .rating-clear { display: none !important; }
   }
 }
 
@@ -77,10 +125,7 @@ ul.recipes {
 
     .recipe {
       margin: 1em 0 4px;
-      padding: 1em;
-      box-shadow: -1px 1px 4px 0px rgba(0, 0, 0, 0.12);
-      border-top: 1px solid #f5f5f5;
-      border-right: 1px solid #f5f5f5;
+      padding: 0.5em;
     }
   }
 }
@@ -94,7 +139,27 @@ ul.recipes {
 
 // My Recipes (list-style)
 
-@media (min-width: 600px) {
+@media (max-width: 540px) {
+  ul.recipes {
+    .recipe-row {
+      .recipe-summary {
+        min-height: 80px; // room for menu-plan button
+        padding-right: 60px;
+
+        .rating-yumminess { margin-right: -60px; }
+      }
+
+      .recipe-menu-plan {
+        position: absolute;
+        right: 0;
+        top: 33vh; // size of photo
+        margin-top: 40px;
+      }
+    }
+  }
+}
+
+@media (min-width: 540px) {
   ul.recipes {
     .recipe-row {
       margin-bottom: -1.5em;
@@ -106,40 +171,23 @@ ul.recipes {
         min-width: 10em;
         max-width: 10em;
         margin-right: 1em;
+        margin-bottom: 0;
         text-align: right;
 
         img {
           display: inline-flex;
           max-width: 10em;
-          max-height: 9em;
+          max-height: 8.33em;
         }
       }
 
       .recipe-summary {
         flex-grow: 1;
-
-        .recipe-name {
-          margin-top: 0;
-        }
       }
 
-      .ratings {
-        padding: 0.5em 0px 0px 2em;
-
-        table { width: auto; }
-        tbody { display: table-row-group; }
-
-        .rating-input {
-          position: relative;
-
-          .rating-clear {
-            display: inline !important;
-            position: absolute;
-            left: 100%;
-            top: 0px;
-            margin: 2px 4px;
-          }
-        }
+      .recipe-menu-plan {
+        width: $button-size;
+        margin-left: 2em;
       }
     }
   }

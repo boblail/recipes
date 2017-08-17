@@ -37,7 +37,12 @@ section.recipe {
 
     .recipe-created {
       font-weight: 500;
-      color: #ccc;
+      color: #aaa;
+    }
+
+    .recipe-source {
+      color: #aaa;
+      a { color: inherit; }
     }
   }
 }

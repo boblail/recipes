@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get "all-recipes", to: "recipes#all_recipes"
   get "my-recipes", to: "recipes#my_recipes", as: :my_recipes
 
+  put "menu-plans/:id", to: "menu_plans#update"
+
   root to: "recipes#all_recipes"
 
 end

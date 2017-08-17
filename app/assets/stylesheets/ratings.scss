@@ -24,13 +24,13 @@
 }
 
 .rating .fa-heart {
-  width: 13.5px;
+  width: 1.125em;
   font-size: 12px;
 }
 
 .rating-yumminess .rating-input {
   .fa-star, .fa-star-empty {
-    width: 13.5px;
+    width: 1.125em;
     font-size: 12px;
 
     &::before { content: "\f004"; }
@@ -46,6 +46,7 @@
 span.rating {
   display: inline-block;
   position: relative;
+  line-height: normal;
 
   .rating-range .fa { color: #ddd; }
   .rating-value .fa { color: #5bc0de; }

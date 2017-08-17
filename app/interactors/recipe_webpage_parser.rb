@@ -19,7 +19,7 @@ class RecipeWebpageParser
   end
 
   def recipe_detected?
-    !(recipe.name.blank? || recipe.ingredients.nil? || recipe.instructions.blank?)
+    !recipe.nil?
   end
 
   def body
@@ -28,6 +28,8 @@ class RecipeWebpageParser
 
   def photo
     @photo ||= recipe.image_url && Photo.create!(filename: open(recipe.image_url))
+  rescue
+    nil
   end
 
 private

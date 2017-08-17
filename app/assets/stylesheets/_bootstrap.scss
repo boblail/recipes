@@ -9,6 +9,10 @@
 
 $blue: #428bca; // primary color for links and buttons
 $gray-800: #2d2d2d; // navbar background
+$font-family-base: Lato; //, $font-family-sans-serif;
+$input-btn-padding-y: 0.33rem;
+$input-btn-padding-y-sm: 0.125rem;
+
 
 
 // Twitter Bootstrap
@@ -21,7 +25,7 @@ $gray-800: #2d2d2d; // navbar background
 
 .label {
   display: inline;
-  padding: .1em .3em .2em;
+  padding: 0 .3em 1px;
   font-size: 75%;
   font-weight: 500;
   line-height: 1;
@@ -30,8 +34,5 @@ $gray-800: #2d2d2d; // navbar background
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: .25em;
-}
-
-.label-info {
-  background-color: #5bc0de;
+  background-color: #aaa;
 }

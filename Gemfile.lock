@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/boblail/hangry.git
-  revision: eb0a45e97022a51c70a4072340ecdec7b6e1178d
+  revision: 2563b9218df893d7b37dbca0bc63ff2dd6c1a85a
   branch: master
   specs:
     hangry (0.0.13)

@@ -18,9 +18,15 @@ module RecipeHelper
     end
   end
 
+  def tags_for(recipe)
+    <<~HTML.html_safe if recipe.tags.any?
+      <span class="recipe-tags">#{tags(recipe.tags)}</span>
+    HTML
+  end
+
   def tags(tags)
     tags.each_with_object("") do |tag, html|
-      html << "<span class=\"label label-info\">#{html_escape tag}</span> "
+      html << "<span class=\"label\">#{html_escape tag}</span> "
     end.html_safe
   end
 
@@ -43,6 +49,10 @@ module RecipeHelper
     html << "</span></span>"
 
     html.html_safe
+  end
+
+  def average_rating_for(recipe)
+    rating recipe.yumminess, class: "yumminess", glyph: "heart"
   end
 
   def ratings_for(recipe)
