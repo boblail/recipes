@@ -12,7 +12,7 @@ module RecipeHelper
 
   def format_source(source)
     if source =~ /:\/\//
-      link_to source, source
+      link_to URI(source).host, source
     else
       h source
     end
