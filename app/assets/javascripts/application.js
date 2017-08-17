@@ -17,4 +17,5 @@
 //= require bootstrap-rating-input.min.js
 //= require underscore/underscore
 //= require backbone/backbone
+//= require bootstrap/dist/js/bootstrap
 //= require_tree .
