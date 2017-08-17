@@ -30,5 +30,10 @@
   <p>Servings: <%= @recipe.servings %></p>
   <% end %>
 
+  <% if current_user %>
+  <h4>Ratings</h4>
+  <%= ratings_for @recipe %>
+  <% end %>
+
   <%= microformat @recipe %>
 </section>

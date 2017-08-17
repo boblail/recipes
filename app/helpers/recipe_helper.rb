@@ -45,6 +45,10 @@ module RecipeHelper
     html.html_safe
   end
 
+  def average_rating_for(recipe)
+    rating recipe.yumminess, class: "yumminess", glyph: "heart"
+  end
+
   def ratings_for(recipe)
     html = '<div class="ratings"><table>'
     current_user.cookbook.users.each do |user|
