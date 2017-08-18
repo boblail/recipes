@@ -3,12 +3,12 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, only: [:my_recipes, :edit, :new, :create, :update, :destroy]
 
   def all_recipes
-    @recipes = Recipe.order(:name)
+    @recipes = Recipe.order(:name).preload(:photo)
     @recipes = @recipes.search params[:q] unless params[:q].blank?
   end
 
   def my_recipes
-    @recipes = current_user.cookbook.recipes.most_popular_first
+    @recipes = current_user.cookbook.recipes.most_popular_first.preload(:photo)
     @recipes = @recipes.search params[:q] unless params[:q].blank?
   end
 
