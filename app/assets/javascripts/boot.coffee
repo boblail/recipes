@@ -7,6 +7,10 @@ drawRecipeMenuPlanControls = ($recipe) ->
   else
     $menuPlan.html '<button class="menu-plan-add-button">Add to Menu Plan</button>'
 
+drawMenuPlanRecipeTotal = ->
+  totalRecipes = window.currentMenuPlan.get('recipeIds').length
+  $('.recipe-count').text(totalRecipes)
+
 document.addEventListener 'turbolinks:load', ->
   $('input.rating[type=number]').each ->
     $(@).rating()
@@ -26,12 +30,16 @@ document.addEventListener 'turbolinks:load', ->
       id = $recipe.attr('data-id')
       window.currentMenuPlan.removeRecipeId(id)
       drawRecipeMenuPlanControls($recipe)
+      drawMenuPlanRecipeTotal()
 
     $(document.body).on 'click', '.menu-plan-add-button', (e) ->
       $recipe = $(e.target).closest('.recipe')
       id = $recipe.attr('data-id')
       window.currentMenuPlan.addRecipeId(id)
       drawRecipeMenuPlanControls($recipe)
+      drawMenuPlanRecipeTotal()
 
     $('.recipe').each ->
       drawRecipeMenuPlanControls(@)
+
+    drawMenuPlanRecipeTotal()
