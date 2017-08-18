@@ -1,3 +1,5 @@
+@import "variables";
+
 // List of Recipes on Phones
  $button-size: 48px;
 
@@ -24,7 +26,7 @@ ul.recipes {
       display: inline-block;
       border-radius: 5px;
       max-width: 100%;
-      max-height: 33vh;
+      max-height: $mobile-max-photo-height;
     }
   }
 
@@ -152,7 +154,7 @@ ul.recipes {
       .recipe-menu-plan {
         position: absolute;
         right: 0;
-        top: 33vh; // size of photo
+        top: $mobile-max-photo-height; // size of photo
         margin-top: 40px;
       }
     }

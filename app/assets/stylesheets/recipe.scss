@@ -1,3 +1,5 @@
+@import "variables";
+
 section.recipe {
   max-width: 800px;
   margin: 0 auto;
@@ -42,6 +44,8 @@ section.recipe {
 
     .recipe-source {
       color: #aaa;
+      white-space: nowrap;
+
       a { color: inherit; }
     }
   }
@@ -54,7 +58,7 @@ section.recipe {
     & > img.photo {
       float: none;
       border-radius: 5px;
-      max-height: 30vh;
+      max-height: $mobile-max-photo-height;
       max-width: 100%;
       width: auto;
       height: auto;
