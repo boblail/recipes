@@ -7,7 +7,10 @@ drawRecipeMenuPlanControls = ($recipe) ->
   else
     $menuPlan.html '<button class="menu-plan-add-button">Add to Menu Plan</button>'
 
-$ ->
+document.addEventListener 'turbolinks:load', ->
+  $('input.rating[type=number]').each ->
+    $(@).rating()
+
   $('.rating').change ->
     $input = $(@)
     $form = $input.closest('form')

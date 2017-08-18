@@ -22,6 +22,8 @@ gem "devise"
 gem "hangry", github: "boblail/hangry", branch: "master"
 gem "redcarpet"
 
+gem "turbolinks", "~> 5.0.0"
+
 gem "carrierwave-aws"
 gem "mini_magick"
 

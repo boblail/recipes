@@ -11,11 +11,10 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require typeahead.js/dist/typeahead.bundle.min
-//= require bootstrap-tagsinput/dist/bootstrap-tagsinput.min
-//= require bootstrap-tagsinput
-//= require bootstrap-rating-input.min.js
+//= require turbolinks
 //= require underscore/underscore
 //= require backbone/backbone
 //= require bootstrap/dist/js/bootstrap
+//= require bootstrap-tagsinput/dist/bootstrap-tagsinput.min
+//= require typeahead.js/dist/typeahead.bundle.min
 //= require_tree .
