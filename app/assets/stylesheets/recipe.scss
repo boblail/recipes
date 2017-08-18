@@ -1,3 +1,5 @@
+@import "variables";
+
 section.recipe {
   max-width: 800px;
   margin: 0 auto;
@@ -5,7 +7,7 @@ section.recipe {
   & > img.photo {
     float: right;
     margin: 3em 0 3em 3em;
-    max-width: 360px;
+    max-width: 100%;
     max-height: 360px;
   }
 
@@ -42,6 +44,8 @@ section.recipe {
 
     .recipe-source {
       color: #aaa;
+      white-space: nowrap;
+
       a { color: inherit; }
     }
   }
@@ -49,15 +53,12 @@ section.recipe {
 
 @media (max-width: 440px) {
   section.recipe {
-    display: flex;
-    flex-direction: column;
     padding: 2em 0;
 
     & > img.photo {
       float: none;
-      align-self: center;
       border-radius: 5px;
-      max-height: 30vh;
+      max-height: $mobile-max-photo-height;
       max-width: 100%;
       width: auto;
       height: auto;

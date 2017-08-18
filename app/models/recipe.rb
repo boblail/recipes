@@ -15,7 +15,11 @@ class Recipe < ApplicationRecord
 
   def yumminess(user=nil)
     _ratings = ratings
-    _ratings = _ratings.where(user_id: user.id) if user
+    if user
+      _ratings = _ratings.where(user_id: user.id)
+    elsif has_attribute?(:average_rating)
+      return read_attribute(:average_rating)
+    end
     _ratings.pluck(:value).avg
   end
 

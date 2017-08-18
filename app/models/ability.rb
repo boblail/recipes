@@ -6,7 +6,7 @@ class Ability
 
     return unless user
 
-    can :manage, Recipe
+    can :manage, Recipe, cookbook_id: user.cookbook_id
   end
 
 end

@@ -23,7 +23,12 @@ h1 {
 
   &.snug { margin-bottom: 0; }
 
-  .tip {
+  .tip { display: none; }
+}
+
+@media only screen and (min-width : 768px) {
+  h1 .tip {
+    display: block;
     font-size: 14px;
     line-height: normal;
     max-width: 24em;

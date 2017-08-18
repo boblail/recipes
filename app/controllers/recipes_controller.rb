@@ -3,12 +3,12 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, only: [:my_recipes, :edit, :new, :create, :update, :destroy]
 
   def all_recipes
-    @recipes = Recipe.order(:name)
+    @recipes = Recipe.order(:name).preload(:photo)
     @recipes = @recipes.search params[:q] unless params[:q].blank?
   end
 
   def my_recipes
-    @recipes = current_user.cookbook.recipes.most_popular_first
+    @recipes = current_user.cookbook.recipes.most_popular_first.preload(:photo)
     @recipes = @recipes.search params[:q] unless params[:q].blank?
   end
 
@@ -16,7 +16,7 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @recipe = Recipe.new
+    @recipe = current_user.cookbook.recipes.build
     if params[:url]
       parser = RecipeWebpageParser.new(url: params[:url])
       if parser.recipe_detected?
@@ -35,11 +35,10 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = current_user.cookbook.recipes.build(recipe_params)
     authorize! :create, @recipe
 
     @recipe.created_by = current_user
-    @recipe.cookbook = current_user.cookbook
     if @recipe.save
       redirect_to @recipe, notice: 'Recipe was successfully created.'
     else
