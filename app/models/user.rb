@@ -32,6 +32,10 @@ class User < ApplicationRecord
     url
   end
 
+  def owns?(recipe)
+    cookbook_id == recipe.cookbook_id
+  end
+
 private
 
   def create_cookbook_for_user
