@@ -1,4 +1,8 @@
 <section class="recipe">
+  <% if can?(:create, Recipe) && !current_user.owns?(@recipe) %>
+    <%= link_to "Add to My Recipes", new_recipe_path(recipe_id: @recipe.id), class: "btn btn-primary pull-right" %>
+  <% end %>
+
   <%= photo_of @recipe %>
 
   <h1 class="snug">

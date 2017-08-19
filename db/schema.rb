@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170812232053) do
+ActiveRecord::Schema.define(version: 20170819181839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,7 +67,9 @@ ActiveRecord::Schema.define(version: 20170812232053) do
     t.string "source", limit: 255
     t.string "servings", limit: 255, default: "", null: false
     t.uuid "photo_id"
+    t.bigint "copy_of_id"
     t.index ["cookbook_id"], name: "index_recipes_on_cookbook_id"
+    t.index ["copy_of_id"], name: "index_recipes_on_copy_of_id"
     t.index ["search_vector"], name: "index_recipes_on_search_vector", using: :gin
     t.index ["tags"], name: "index_recipes_on_tags", using: :gin
   end
@@ -104,5 +106,6 @@ ActiveRecord::Schema.define(version: 20170812232053) do
 
   add_foreign_key "cookbooks", "menu_plans", column: "current_menu_plan_id"
   add_foreign_key "menu_plans", "cookbooks", on_delete: :cascade
+  add_foreign_key "recipes", "recipes", column: "copy_of_id", on_delete: :nullify
   add_foreign_key "tags", "cookbooks", on_delete: :cascade
 end

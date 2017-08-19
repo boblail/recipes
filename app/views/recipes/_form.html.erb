@@ -1,5 +1,7 @@
 <section class="recipe">
   <%= form_for @recipe, html: {class: "form-horizontal", role: "form"} do |f| %>
+    <%= f.hidden_field :copy_of_id %>
+
     <% if @recipe.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>

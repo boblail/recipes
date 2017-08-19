@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, only: [:my_recipes, :edit, :new, :create, :update, :destroy]
 
   def all_recipes
-    @recipes = Recipe.order(:name).preload(:photo, :tags)
+    @recipes = Recipe.order(:name).preload(:photo, :tags).without_copies
     @recipes = @recipes.search params[:q] unless params[:q].blank?
   end
 
@@ -17,6 +17,8 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = current_user.cookbook.recipes.build
+    authorize! :create, @recipe
+
     if params[:url]
       parser = RecipeWebpageParser.new(url: params[:url])
       if parser.recipe_detected?
@@ -25,8 +27,13 @@ class RecipesController < ApplicationController
         flash.now[:notice] = "Couldn't find a recipe in that URL"
       end
     end
+
+    if params[:recipe_id]
+      recipe = Recipe.find(params[:recipe_id])
+      @recipe.copy_of! recipe
+    end
+
     @tags = Recipe.pluck(:tags).flatten.uniq
-    authorize! :create, @recipe
   end
 
   def edit
@@ -35,10 +42,10 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = current_user.cookbook.recipes.build(recipe_params)
+    @recipe = current_user.cookbook.recipes.build(created_by: current_user)
     authorize! :create, @recipe
 
-    @recipe.created_by = current_user
+    @recipe.attributes = recipe_params
     if @recipe.save
       redirect_to @recipe, notice: 'Recipe was successfully created.'
     else
@@ -72,7 +79,7 @@ private
   def recipe_params
     attributes = params
       .require(:recipe)
-      .permit(:name, :ingredients, :instructions, :source, :tags, :servings, :photo_id)
+      .permit(:name, :ingredients, :instructions, :source, :tags, :servings, :photo_id, :copy_of_id)
     attributes.merge(tags: attributes[:tags].to_s.split(","))
   end
 
