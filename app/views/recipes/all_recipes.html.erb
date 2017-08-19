@@ -1,7 +1,7 @@
 <h1>All Recipes</h1>
 
 <form method="get">
-  <%= text_field_tag :q, params[:q], autofocus: true, class: "form-control" %>
+  <%= text_field_tag :q, params[:q], autofocus: true, placeholder: "Search", class: "form-control" %>
 </form>
 
 <% if @recipes.any? %>
