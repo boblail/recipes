@@ -3,6 +3,11 @@
 // List of Recipes on Phones
  $button-size: 48px;
 
+a.link-no-ui {
+  color: inherit;
+  text-decoration: inherit;
+}
+
 ul.recipes {
   padding: 0;
 

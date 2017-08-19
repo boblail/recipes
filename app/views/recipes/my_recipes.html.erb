@@ -18,12 +18,14 @@
 
         <li class="recipe" id="recipe_<%= recipe.id %>" data-id="<%= recipe.id %>">
           <div class="recipe-row">
-            <div class="recipe-photo"><%= photo_of recipe %></div>
+            <div class="recipe-photo"><%= photo_of recipe, link: true %></div>
             <div class="recipe-summary">
               <%= average_rating_for recipe %>
-              <h3 class="recipe-name"><%= link_to recipe.name, recipe %></h3>
-              <%= tags_for recipe %>
-              <p class="recipe-snippet"><%= snippet recipe %></p>
+              <%= link_to recipe, class: "link-no-ui" do %>
+                <h3 class="recipe-name"><%= recipe.name %></h3>
+                <%= tags_for recipe %>
+                <p class="recipe-snippet"><%= snippet recipe %></p>
+              <% end %>
               <%= source_of recipe %>
             </div>
             <div class="recipe-menu-plan"></div>
