@@ -7,7 +7,10 @@ module RecipeHelper
   end
 
   def photo_of(recipe, options={})
-    image_tag photo_url(recipe), options.reverse_merge(class: "photo")
+    wrap_in_link = options.delete :link
+    html = image_tag photo_url(recipe), options.reverse_merge(class: "photo")
+    html = link_to(recipe) { html } if wrap_in_link
+    html
   end
 
   def format_source(source)

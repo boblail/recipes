@@ -49,6 +49,10 @@ section.recipe {
       a { color: inherit; }
     }
   }
+
+  .ratings {
+    td { padding-left: 0.5em; }
+  }
 }
 
 @media (max-width: 440px) {
@@ -63,6 +67,51 @@ section.recipe {
       width: auto;
       height: auto;
       margin: 0 0 1em;
+    }
+
+    .rating .fa-heart,
+    .rating-yumminess .rating-input .fa-star,
+    .rating-yumminess .rating-input .fa-star-empty {
+      font-size: 1.0625em;
+      width: 1.88em;
+      height: 1.88em;
+      line-height: 1.88em;
+      border-radius: 1em;
+      text-align: center;
+      margin: 4px .125em;
+      color: white !important;
+      border: 1px solid white;
+    }
+
+    a.rating-clear {
+      width: 24px;
+      display: inline-block;
+      vertical-align: top;
+      margin: 0 2px;
+
+      > i { font-size: 24px; }
+    }
+
+    .rating-yumminess .rating-input .fa-star-empty { background: #ddd; }
+    .rating-yumminess.rating-1 .rating-value .fa, .rating-yumminess .rating-input[data-value="1"] .fa-star {
+      background: #f35827;
+      box-shadow: 0 0 1px 1px rgba(#f35827, 0.75);
+    }
+    .rating-yumminess.rating-2 .rating-value .fa, .rating-yumminess .rating-input[data-value="2"] .fa-star {
+      background: #fa851e;
+      box-shadow: 0 0 1px 1px rgba(#fa851e, 0.75);
+    }
+    .rating-yumminess.rating-3 .rating-value .fa, .rating-yumminess .rating-input[data-value="3"] .fa-star {
+      background: #badb00;
+      box-shadow: 0 0 1px 1px rgba(#badb00, 0.75);
+    }
+    .rating-yumminess.rating-4 .rating-value .fa, .rating-yumminess .rating-input[data-value="4"] .fa-star {
+      background: #8dce0a;
+      box-shadow: 0 0 1px 1px rgba(#8dce0a, 0.75);
+    }
+    .rating-yumminess.rating-5 .rating-value .fa, .rating-yumminess .rating-input[data-value="5"] .fa-star {
+      background: #28bf37;
+      box-shadow: 0 0 1px 1px rgba(#28bf37, 0.75);
     }
   }
 }

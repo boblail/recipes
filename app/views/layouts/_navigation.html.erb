@@ -14,7 +14,7 @@
         <% if current_user -%>
         <li class="nav-item">
           <a class="btn" href="#">
-            <%= current_user.current_menu_plan.name %> <span class="badge badge-secondary"><%= current_user.current_menu_plan.recipes.count %></span>
+            <%= current_user.current_menu_plan.name %> <span class="badge badge-secondary recipe-count"><%= current_user.current_menu_plan.recipes.count %></span>
           </a>
         </li>
 

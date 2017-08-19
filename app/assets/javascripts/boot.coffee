@@ -11,6 +11,11 @@ drawMenuPlanRecipeTotal = ->
   totalRecipes = window.currentMenuPlan.get('recipeIds').length
   $('.recipe-count').text(totalRecipes)
 
+$ ->
+  $(document).on 'submit', 'form[method=get]', (e)->
+    Turbolinks.visit "#{@action}#{if @action.indexOf('?') is -1 then '?' else '&'}#{$(@).serialize()}"
+    false
+
 document.addEventListener 'turbolinks:load', ->
   $('input.rating[type=number]').each ->
     $(@).rating()

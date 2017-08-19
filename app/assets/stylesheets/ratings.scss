@@ -13,8 +13,14 @@
   }
 
   a.rating-clear {
-    font-size: 0.8em;
+    font-size: 0;
+    width: 16px;
     color: #ddd;
+    overflow: hidden;
+
+    > i {
+      font-size: 16px;
+    }
 
     &:hover {
       text-decoration: none;
@@ -25,13 +31,13 @@
 
 .rating .fa-heart {
   width: 1.125em;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .rating-yumminess .rating-input {
   .fa-star, .fa-star-empty {
     width: 1.125em;
-    font-size: 12px;
+    font-size: 14px;
 
     &::before { content: "\f004"; }
   }
@@ -39,9 +45,9 @@
 
 .rating-yumminess.rating-1 .rating-value .fa, .rating-yumminess .rating-input[data-value="1"] .fa-star { color: #f35827; }
 .rating-yumminess.rating-2 .rating-value .fa, .rating-yumminess .rating-input[data-value="2"] .fa-star { color: #fa851e; }
-.rating-yumminess.rating-3 .rating-value .fa, .rating-yumminess .rating-input[data-value="3"] .fa-star { color: #BADB00; }
-.rating-yumminess.rating-4 .rating-value .fa, .rating-yumminess .rating-input[data-value="4"] .fa-star { color: #8DCE0A; }
-.rating-yumminess.rating-5 .rating-value .fa, .rating-yumminess .rating-input[data-value="5"] .fa-star { color: #28BF37; } // text-shadow: 0 0 2px #64e070; }
+.rating-yumminess.rating-3 .rating-value .fa, .rating-yumminess .rating-input[data-value="3"] .fa-star { color: #badb00; }
+.rating-yumminess.rating-4 .rating-value .fa, .rating-yumminess .rating-input[data-value="4"] .fa-star { color: #8dce0a; }
+.rating-yumminess.rating-5 .rating-value .fa, .rating-yumminess .rating-input[data-value="5"] .fa-star { color: #28bf37; }
 
 span.rating {
   display: inline-block;
@@ -61,8 +67,4 @@ span.rating {
     white-space: nowrap;
     overflow: hidden;
   }
-}
-
-table.ratings-per-person {
-  th, td { padding: 0.25em 1em 0.25em 0; }
 }
