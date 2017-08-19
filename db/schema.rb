@@ -72,6 +72,19 @@ ActiveRecord::Schema.define(version: 20170812232053) do
     t.index ["tags"], name: "index_recipes_on_tags", using: :gin
   end
 
+  create_table "recipes_tags", id: false, force: :cascade do |t|
+    t.bigint "recipe_id", null: false
+    t.bigint "tag_id", null: false
+    t.index ["recipe_id", "tag_id"], name: "index_recipes_tags_on_recipe_id_and_tag_id", unique: true
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.bigint "cookbook_id", null: false
+    t.string "name", null: false
+    t.index ["cookbook_id", "name"], name: "index_tags_on_cookbook_id_and_name", unique: true
+    t.index ["cookbook_id"], name: "index_tags_on_cookbook_id"
+  end
+
   create_table "users", id: :serial, force: :cascade do |t|
     t.string "email", limit: 255, default: "", null: false
     t.integer "sign_in_count", default: 0, null: false
@@ -91,4 +104,5 @@ ActiveRecord::Schema.define(version: 20170812232053) do
 
   add_foreign_key "cookbooks", "menu_plans", column: "current_menu_plan_id"
   add_foreign_key "menu_plans", "cookbooks", on_delete: :cascade
+  add_foreign_key "tags", "cookbooks", on_delete: :cascade
 end

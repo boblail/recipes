@@ -3,9 +3,9 @@ drawRecipeMenuPlanControls = ($recipe) ->
   id = $recipe.attr('data-id')
   $menuPlan = $recipe.find('.recipe-menu-plan')
   if window.currentMenuPlan.includesRecipeId(id)
-    $menuPlan.html '<button class="menu-plan-remove-button">Remove from Menu Plan</button>'
+    $menuPlan.html '<button class="menu-plan-remove-button" title="Remove from Menu Plan"></button>'
   else
-    $menuPlan.html '<button class="menu-plan-add-button">Add to Menu Plan</button>'
+    $menuPlan.html '<button class="menu-plan-add-button" title="Add to Menu Plan"></button>'
 
 drawMenuPlanRecipeTotal = ->
   totalRecipes = window.currentMenuPlan.get('recipeIds').length

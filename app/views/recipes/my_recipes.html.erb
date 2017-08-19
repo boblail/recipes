@@ -1,6 +1,8 @@
 <h1>
   My Recipes
 
+  <%= link_to "Index", tags_url %>
+
   <% if can? :create, Recipe %>
     <%= link_to "New Recipe", new_recipe_path, class: "btn btn-primary pull-right" %>
   <% end %>
@@ -9,7 +11,7 @@
 <% if current_user.cookbook.recipes.exists? %>
 
   <form method="get">
-    <%= text_field_tag :q, params[:q], autofocus: true, class: "form-control" %>
+    <%= text_field_tag :q, params[:q], autofocus: true, placeholder: "Search", class: "form-control" %>
   </form>
 
   <% if @recipes.any? %>
@@ -39,7 +41,7 @@
   <% end %>
 
   <script type="text/javascript">
-    $(function() {
+    document.addEventListener('turbolinks:load', function() {
       $('#q').focus().select();
     });
   </script>

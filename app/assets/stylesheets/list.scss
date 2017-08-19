@@ -78,45 +78,72 @@ ul.recipes {
 
 
   .recipe-menu-plan {
+    font-size: 0.7em;
+
     button {
-      width: $button-size;
-      height: $button-size;
-      border-radius: $button-size;
-      overflow: hidden;
-      font-size: 0;
+      width: 6em; // enough space for the phrase "remove from"
+      background: transparent;
       padding: 0;
       border: none;
       cursor: pointer;
+      line-height: 1;
+      font-weight: 900;
 
       &:focus { outline: 0; }
 
+      &::after { white-space: pre; }
       &::before {
+        display: block;
         font-family: FontAwesome;
-        display: inline-block;
         font-size: $button-size / 2;
         line-height: ($button-size - 6px);
+        border-radius: $button-size;
         width: ($button-size - 6px);
         text-align: center;
-        content: '\f00c';
         color: white;
+        margin: 0 auto 6px;
       }
       &.menu-plan-remove-button {
-        background: #8dce0a;
+        color: #8dce0a;
+
+        &::after { content: 'Menu Plan'; }
+        &::before {
+          background: #8dce0a;
+          content: '\f00c';
+        }
 
         @media (hover: hover) {
           &:hover {
-            background: #f35827;
-            &::before { content: '\f068'; }
+            color: #f35827;
+
+            &::before {
+              background: #f35827;
+              content: '\f068';
+            }
+
+            &::after {
+              content: 'remove from\AMenu Plan';
+            }
           }
         }
       }
       &.menu-plan-add-button {
-        background: #ddd;
+        color: #ddd;
+
+        &::after { content: 'add to\AMenu Plan'; }
+
+        &::before {
+          background: #ddd;
+          content: '\f067';
+        }
 
         @media (hover: hover) {
-          &:hover { background: #badb00; }
+          &:hover {
+            color: #badb00;
+
+            &::before { background: #badb00; }
+          }
         }
-        &::before { content: '\f067'; }
       }
     }
   }
@@ -150,10 +177,11 @@ ul.recipes {
   ul.recipes {
     .recipe-row {
       .recipe-summary {
-        min-height: 80px; // room for menu-plan button
-        padding-right: 60px;
+        // room for menu-plan button
+        min-height: 80px;
+        padding-right: 5rem;
 
-        .rating-yumminess { margin-right: -60px; }
+        .rating-yumminess { margin-right: -5rem; }
       }
 
       .recipe-menu-plan {
@@ -197,11 +225,13 @@ ul.recipes {
 
       .recipe-summary {
         flex-grow: 1;
+        width: 100%;
       }
 
       .recipe-menu-plan {
-        width: $button-size;
-        margin-left: 2em;
+        width: 6em; // enough room for the phrase "remove from"
+        max-width: 6em;
+        margin-left: 1em;
       }
     }
   }

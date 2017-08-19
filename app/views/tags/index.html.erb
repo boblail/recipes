@@ -1,0 +1,7 @@
+<h1>Index</h1>
+
+<ol class="tags">
+  <% @tags.each do |tag| %>
+    <li class="tag"><%= link_to tag.name, my_recipes_url(q: tag.name) %></li>
+  <% end %>
+</ol>

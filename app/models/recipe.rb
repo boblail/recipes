@@ -5,10 +5,11 @@ class Recipe < ApplicationRecord
   belongs_to :photo, optional: true
   has_many :ratings
   has_and_belongs_to_many :menu_plans
+  has_and_belongs_to_many :tags
 
   after_save :update_search_vector
 
-  validates :name, presence: true, length: {minimum: 5}
+  validates :name, presence: true, length: { minimum: 5 }
   validates :ingredients, presence: true
   validates :created_by, presence: true
   validates :cookbook, presence: true
@@ -21,10 +22,6 @@ class Recipe < ApplicationRecord
       return read_attribute(:average_rating)
     end
     _ratings.pluck(:value).avg
-  end
-
-  def tags=(value)
-    super Array(value).reject(&:blank?).map(&:downcase).uniq
   end
 
   def rating_for(user, name=user.name)
@@ -43,7 +40,7 @@ class Recipe < ApplicationRecord
     update_all <<-SQL
       search_vector = setweight(to_tsvector('english', name), 'A') ||
                       setweight(to_tsvector('english', ingredients), 'A') ||
-                      setweight(to_tsvector('english', array_to_string(tags, ', ')), 'A') ||
+                      setweight(to_tsvector('english', coalesce(array_to_string((select array_agg(tags.name) from tags inner join recipes_tags ON recipes_tags.tag_id=tags.id AND recipes_tags.recipe_id=recipes.id), ','),'')), 'A') ||
                       setweight(to_tsvector('english', instructions), 'B')
     SQL
   end
@@ -52,21 +49,15 @@ class Recipe < ApplicationRecord
     order("coalesce((select avg(value) from ratings where recipe_id=recipes.id), 3) desc")
   end
 
-  def tags=(tags)
-    super Array(tags)
-      .map { |tag| normalize_tag(tag) }
-      .uniq
-      .sort
+  def tags=(values)
+    tags = cookbook.tags.find_or_create_for(values)
+    self.tag_ids = tags.map(&:id)
   end
 
 protected
 
-  def normalize_tag(tag)
-    tag.strip.downcase.gsub(/[^a-z0-9]/, "-").gsub(/\-{2,}/, "-")
-  end
-
   def search_vector_should_change?
-    (changed & %w{tags name ingredients instructions}).any?
+    (changed & %w{name ingredients instructions}).any?
   end
 
   def update_search_vector

@@ -21,6 +21,11 @@ h1 {
   font-weight: 900;
   line-height: 1;
 
+  a {
+    font-size: 1rem;
+    font-weight: normal;
+  }
+
   &.snug { margin-bottom: 0; }
 
   .tip { display: none; }
