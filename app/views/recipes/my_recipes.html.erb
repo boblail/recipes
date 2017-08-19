@@ -1,6 +1,8 @@
 <h1>
   My Recipes
 
+  <%= link_to "Index", tags_url %>
+
   <% if can? :create, Recipe %>
     <%= link_to "New Recipe", new_recipe_path, class: "btn btn-primary pull-right" %>
   <% end %>
@@ -39,7 +41,7 @@
   <% end %>
 
   <script type="text/javascript">
-    $(function() {
+    document.addEventListener('turbolinks:load', function() {
       $('#q').focus().select();
     });
   </script>

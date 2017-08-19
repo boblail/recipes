@@ -5,6 +5,8 @@ class Tag < ApplicationRecord
 
   validates :name, presence: true, format: { with: /\A[a-zA-Z0-9\-]+\z/ }
 
+  default_scope -> { order(:name) }
+
   after_update :reindex_recipes!
   before_destroy :__cache_recipes
   after_destroy :reindex_cached_recipes!
