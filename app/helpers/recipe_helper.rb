@@ -8,7 +8,15 @@ module RecipeHelper
 
   def photo_of(recipe, options={})
     wrap_in_link = options.delete :link
-    html = image_tag photo_url(recipe), options.reverse_merge(class: "photo")
+    options = options.reverse_merge(class: "photo")
+    placeholder = options.delete(:placeholder)
+    html = if recipe.photo
+      image_tag(recipe.photo.url, options)
+    elsif placeholder
+      image_tag("//via.placeholder.com/#{placeholder.join("x")}", options)
+    else
+      '<span class="photo photo-placeholder"></span>'.html_safe
+    end
     html = link_to(recipe) { html } if wrap_in_link
     html
   end

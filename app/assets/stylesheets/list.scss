@@ -27,11 +27,16 @@ ul.recipes {
     margin: 0 0 0.66em;
     text-align: center;
 
-    img {
+    .photo {
       display: inline-block;
       border-radius: 5px;
       max-width: 100%;
       max-height: $mobile-max-photo-height;
+
+      &.photo-placeholder {
+        width: 100%;
+        height: $mobile-max-photo-height;
+      }
     }
   }
 
@@ -212,10 +217,15 @@ ul.recipes {
         margin-bottom: 0;
         text-align: right;
 
-        img {
+        .photo {
           display: inline-flex;
           max-width: 10em;
           max-height: 6.33em;
+
+          &.photo-placeholder {
+            width: 8em;
+            height: 6.33em;
+          }
         }
       }
 

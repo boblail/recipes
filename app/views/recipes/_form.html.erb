@@ -62,7 +62,7 @@
       <label for="photo_filename" class="control-label">Photo</label>
       <div>
         <label for="photo_filename" class="photo uploadable">
-          <%= photo_of @recipe, id: "recipe_photo" %>
+          <%= photo_of @recipe, id: "recipe_photo", placeholder: [480, 400] %>
           <input type="file" id="photo_filename" name="photo[filename]" />
         </label>
         <%= f.hidden_field :photo_id %>

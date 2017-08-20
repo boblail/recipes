@@ -1,5 +1,11 @@
+@import "variables";
+
 .photo {
   display: block;
+
+  &.photo-placeholder {
+    background: $light-gray;
+  }
 
   &.uploadable {
     display: inline-block;
