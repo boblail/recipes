@@ -17,17 +17,16 @@ $ ->
     false
 
 document.addEventListener 'turbolinks:load', ->
-  $('input.rating[type=number]').each ->
-    $(@).rating()
+  $('input.rating[type=number]')
+    .rating()
+    .change ->
+      $input = $(@)
+      $form = $input.closest('form')
+      url = $form.attr('action') + '/ratings'
 
-  $('.rating').change ->
-    $input = $(@)
-    $form = $input.closest('form')
-    url = $form.attr('action') + '/ratings'
-
-    $.put url,
-      name: $input.attr('name')
-      value: $input.val()
+      $.put url,
+        name: $input.attr('name')
+        value: $input.val()
 
   if window.currentMenuPlan
     $(document.body).on 'click', '.menu-plan-remove-button', (e) ->
