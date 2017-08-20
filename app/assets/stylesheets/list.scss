@@ -106,7 +106,7 @@ ul.recipes {
       &.menu-plan-remove-button {
         color: #8dce0a;
 
-        &::after { content: 'Menu Plan'; }
+        &::after { content: 'in current\AMenu Plan'; }
         &::before {
           background: #8dce0a;
           content: '\f00c';
