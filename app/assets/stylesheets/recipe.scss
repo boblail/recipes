@@ -39,21 +39,21 @@ section.recipe {
 
     .recipe-author, .recipe-created {
       white-space: nowrap;
-      margin-right: 8px;
-      padding-right: 12px;
-      border-right: 1px solid #ddd;
-    }
-
-    .recipe-created {
-      font-weight: 500;
-      color: #aaa;
     }
 
     .recipe-source {
       color: #aaa;
       white-space: nowrap;
+      margin: 0.25rem 0;
 
       a { color: inherit; }
+    }
+
+    .recipe-made {
+      margin: 0.25rem 0;
+
+      .dropdown { display: inline-block; }
+      .dropdown-menu { min-width: 16rem; }
     }
   }
 
@@ -120,5 +120,17 @@ section.recipe {
       background: #28bf37;
       box-shadow: 0 0 1px 1px rgba(#28bf37, 0.75);
     }
+  }
+}
+
+#add_preparation::after { display: none; }
+
+.preparation-form {
+  padding: 0.5em 1em;
+
+  textarea {
+    display: block;
+    width: 100%;
+    min-height: 6em;
   }
 }

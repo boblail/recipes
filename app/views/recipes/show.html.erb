@@ -11,9 +11,33 @@
   </h1>
 
   <div class="recipe-metadata">
-    <span class="recipe-author">Added by <%= avatar_for @recipe.created_by, size: 16 %> <b><%= @recipe.created_by.name %></b></span>
-    <span class="recipe-created" title="<%= @recipe.created_at.strftime("%b %e %Y, %l:%M %p") %>"><%= time_ago_in_words @recipe.created_at %> ago</span>
-    <% unless @recipe.source.blank? %><span class="recipe-source"><%= format_source @recipe.source %></span><% end %>
+    <span class="recipe-author">Added by <%= avatar_for @recipe.created_by, size: 16 %> <b><%= @recipe.created_by.name %></b></span> <span class="recipe-created" title="<%= @recipe.created_at.strftime("%b %e %Y, %l:%M %p") %>"><%= time_ago_in_words @recipe.created_at %> ago</span>
+
+    <div class="recipe-made">
+      <%= last_preparation_of @recipe %>
+
+      <% if can?(:update, @recipe) %>
+        <div class="dropdown">
+          <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="add_preparation" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            I made this
+          </button>
+          <div class="dropdown-menu" aria-labelledby="add_preparation">
+            <%= form_tag recipe_preparations_url(@recipe), class: "preparation-form" do %>
+              <div class="datepicker-container" for="preparation_date"></div>
+              <input type="hidden" name="prepared_on" id="preparation_date" value="<%= Date.today %>" />
+
+              <textarea name="comments" id="preparation_comments" placeholder="Comments" class="form-control"></textarea>
+
+              <button class="btn btn-primary btn-sm pull-right">Save</button>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <% unless @recipe.source.blank? %>
+      <p class="recipe-source"><%= format_source @recipe.source %></p>
+    <% end %>
   </div>
 
   <%= tags @recipe.tags %>
@@ -31,12 +55,12 @@
   </div>
 
   <% unless @recipe.servings.blank? %>
-  <p>Servings: <%= @recipe.servings %></p>
+    <p>Servings: <%= @recipe.servings %></p>
   <% end %>
 
   <% if current_user %>
-  <h4>Ratings</h4>
-  <%= ratings_for @recipe %>
+    <h4>Ratings</h4>
+    <%= ratings_for @recipe %>
   <% end %>
 
   <%= microformat @recipe %>

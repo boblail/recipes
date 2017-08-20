@@ -5,6 +5,7 @@ class Recipe < ApplicationRecord
   belongs_to :photo, optional: true
   belongs_to :copy_of, class_name: "Recipe", optional: true
   has_many :ratings
+  has_many :preparations, -> { order(prepared_on: :desc) }
   has_and_belongs_to_many :menu_plans
   has_and_belongs_to_many :tags
 

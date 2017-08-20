@@ -17,6 +17,8 @@ $ ->
     false
 
 document.addEventListener 'turbolinks:load', ->
+
+  # only applies to recipes#show
   $('input.rating[type=number]')
     .rating()
     .change ->
@@ -27,6 +29,15 @@ document.addEventListener 'turbolinks:load', ->
       $.put url,
         name: $input.attr('name')
         value: $input.val()
+
+  $('.datepicker-container')
+    .datepicker
+      format: 'yyyy-mm-dd'
+      endDate: moment().format('YYYY-MM-DD')
+    .datepicker('update', moment().format('YYYY-MM-DD'))
+    .on 'changeDate', (e) ->
+      id = $(e.target).attr('for')
+      $("##{id}").val moment(e.date).format('YYYY-MM-DD')
 
   if window.currentMenuPlan
     $(document.body).on 'click', '.menu-plan-remove-button', (e) ->

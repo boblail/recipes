@@ -14,7 +14,9 @@
 //= require turbolinks
 //= require underscore/underscore
 //= require backbone/backbone
+//= require moment/moment
 //= require bootstrap/dist/js/bootstrap
 //= require bootstrap-tagsinput/dist/bootstrap-tagsinput
+//= require bootstrap-datepicker/dist/js/bootstrap-datepicker
 //= require typeahead.js/dist/typeahead.bundle.min
 //= require_tree .

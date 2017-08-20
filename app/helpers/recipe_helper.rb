@@ -21,6 +21,18 @@ module RecipeHelper
     html
   end
 
+  def last_preparation_of(recipe)
+    html = "Made "
+    html << if recipe.new_recipe?
+      "<em>Never</em>"
+    elsif recipe.last_prepared_on
+      "<b>#{days_ago_in_words recipe.last_prepared_on}</b>"
+    else
+      "some time ago"
+    end
+    html.html_safe
+  end
+
   def format_source(source)
     if source =~ /:\/\//
       link_to URI(source).host, source

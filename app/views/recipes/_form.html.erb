@@ -69,6 +69,14 @@
       </div>
     </div>
 
+  <% unless @recipe.preparations.exists? %>
+    <div>
+      <%= f.check_box :new_recipe, {}, false, true %>
+      <label for="recipe_new_recipe" class="check-box"></label>
+      <label for="recipe_new_recipe">I've made this</label>
+    </div>
+  <% end %>
+
     <div class="form-group">
       <br/><br/>
       <div>

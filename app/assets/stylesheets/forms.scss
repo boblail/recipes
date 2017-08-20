@@ -21,4 +21,40 @@ label {
   border-radius: $input-border-radius;
   box-shadow: none;
 }
+
+input[type=checkbox] {
+  width: 0;
+  height: 0;
+  opacity: 0;
+
+  + label.check-box {
+    border-radius: 0.25rem;
+    width: 32px;
+    height: 32px;
+    border: 4px solid $light-gray;
+    margin: 0;
+
+    &::after {
+      font-family: 'FontAwesome';
+      content: '\f00c';
+      color: transparent;
+      display: inline-block;
+      margin: 2px;
+      font-size: 20px;
+      line-height: 20px;
+      vertical-align: top;
+    }
+
+    + label {
+      margin-left: 0.5rem;
+    }
+  }
+
+  &:checked + label.check-box {
+    &::after { color: #333; }
+  }
+
+  &:focus + label {
+    border-color: $primary-color;
+  }
 }

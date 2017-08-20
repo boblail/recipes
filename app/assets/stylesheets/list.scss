@@ -1,7 +1,7 @@
 @import "variables";
 
 // List of Recipes on Phones
- $button-size: 48px;
+$button-size: 48px;
 
 a.link-no-ui {
   color: inherit;
@@ -20,6 +20,18 @@ ul.recipes {
     border-radius: 5px;
     margin: 2.5em 0;
     width: 100%;
+  }
+
+  .label-new {
+    display: inline-block;
+    margin-left: 0.125em;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 2px;
+    vertical-align: middle;
+    background: hsl(58, 95%, 49%);
+    color: hsl(58, 55%, 30%);
   }
 
   .recipe-photo {
@@ -47,9 +59,19 @@ ul.recipes {
     a { color: inherit; }
   }
 
-  .rating-yumminess {
+  .recipe-preparation {
     float: right;
+    line-height: normal;
+    text-align: right;
+  }
 
+  .recipe-made {
+    font-size: 0.7em;
+    color: #aaa;
+    padding-right: 0.185em;
+  }
+
+  .rating-yumminess {
     .fa-heart {
       font-size: 14px;
     }
@@ -63,7 +85,7 @@ ul.recipes {
     a, a:hover { color: inherit; }
   }
 
-  .recipe-row .recipe-name {
+  .recipe:not(.recipe-new) .recipe-row .recipe-name {
     margin-right: 80px;
   }
 
@@ -186,14 +208,14 @@ ul.recipes {
         min-height: 80px;
         padding-right: 5rem;
 
-        .rating-yumminess { margin-right: -5rem; }
+        .recipe-preparation { margin-right: -5rem; }
       }
 
       .recipe-menu-plan {
         position: absolute;
         right: 0;
         top: $mobile-max-photo-height; // size of photo
-        margin-top: 40px;
+        margin-top: 56px;
       }
     }
   }

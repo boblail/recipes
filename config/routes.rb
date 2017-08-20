@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :recipes, except: [:index] do
     put "ratings", to: "recipe_ratings#update"
+    post "preparations", to: "recipe_preparations#create", as: :preparations
   end
 
   post "photos", to: "photos#create"

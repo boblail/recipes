@@ -1,0 +1,197 @@
+@import "variables";
+
+$gray-light: #aaa;
+$gray-lighter: #ddd;
+$btn-link-disabled-color: #aaa;
+$state-info-bg: #c00;
+$line-height-base: 1;
+
+.datepicker {
+  font-size: 0.8em;
+
+  table {
+    margin: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    tr {
+      td, th {
+        text-align: center;
+        width: 2.5em;
+        height: 2em;
+        border-radius: 3px;
+        border: none;
+      }
+    }
+  }
+
+  // Inline display inside a table presents some problems with
+  // border and background colors.
+  .table-striped & table tr {
+    td, th { background-color: transparent; }
+  }
+
+  table tr td {
+    &.old, &.new { color: $btn-link-disabled-color; }
+
+    &.day:hover,
+    &.focused {
+      background: $gray-lighter;
+      cursor: pointer;
+    }
+
+    &.disabled,
+    &.disabled:hover {
+      background: none;
+      color: $btn-link-disabled-color;
+      cursor: default;
+    }
+
+    &.highlighted {
+      $highlighted-bg: $state-info-bg;
+      border-radius: 0;
+
+      &.focused {
+        background: darken($highlighted-bg, 10%);
+      }
+
+      &.disabled,
+      &.disabled:active {
+        background: $highlighted-bg;
+        color: $btn-link-disabled-color;
+      }
+    }
+
+    &.today {
+      $today-bg: lighten(orange, 30%);
+      background: $today-bg;
+
+      &.focused {
+        background: darken($today-bg, 10%);
+      }
+
+      &.disabled,
+      &.disabled:active {
+        background: $today-bg;
+        color: $btn-link-disabled-color;
+      }
+    }
+
+    &.range {
+      $range-bg: $gray-lighter;
+      background: $range-bg;
+      border-radius: 0;
+
+      &.focused {
+        background: darken($range-bg, 10%);
+      }
+
+      &.disabled,
+      &.disabled:active {
+        background: $range-bg;
+        color: $btn-link-disabled-color;
+      }
+    }
+
+    &.range.highlighted {
+      $range-highlighted-bg: mix($state-info-bg, $gray-lighter, 50%);
+      background: $range-highlighted-bg;
+
+      &.focused {
+        background: darken($range-highlighted-bg, 10%);
+      }
+
+      &.disabled,
+      &.disabled:active {
+        background: $range-highlighted-bg;
+        color: $btn-link-disabled-color;
+      }
+    }
+
+    &.range.today {
+      $range-today-bg: mix(orange, $gray-lighter, 50%);
+      background: $range-today-bg;
+
+      &.disabled,
+      &.disabled:active {
+        background: $range-today-bg;
+        color: $btn-link-disabled-color;
+      }
+    }
+
+    &.selected,
+    &.selected.highlighted {
+      background: $gray-light;
+    }
+
+    &.active,
+    &.active.highlighted {
+      background: $primary-color;
+      color: white;
+    }
+
+    span {
+      display: block;
+      width: 23%;
+      height: 54px;
+      line-height: 54px;
+      float: left;
+      margin: 1%;
+      cursor: pointer;
+      border-radius: 4px;
+
+      &:hover, &.focused {
+        background: $gray-lighter;
+      }
+
+      &.disabled,
+      &.disabled:hover {
+        background: none;
+        color: $btn-link-disabled-color;
+        cursor: default;
+      }
+
+      &.active,
+      &.active:hover,
+      &.active.disabled,
+      &.active.disabled:hover {
+        background: $primary-color;
+        color: white;
+      }
+
+      &.old, &.new { color: $btn-link-disabled-color; }
+    }
+  }
+
+  .datepicker-switch {
+    width: 145px;
+  }
+
+  .datepicker-switch,
+  .prev,
+  .next,
+  tfoot tr th {
+    cursor: pointer;
+    &:hover {
+      background: $gray-lighter;
+    }
+  }
+
+  .prev, .next {
+    &.disabled {
+      visibility: hidden;
+    }
+  }
+
+  // Basic styling for calendar-week cells
+  .cw {
+    font-size: 10px;
+    width: 12px;
+    padding: 0 2px 0 5px;
+    vertical-align: middle;
+  }
+}

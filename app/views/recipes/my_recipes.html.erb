@@ -18,13 +18,26 @@
     <ul class="recipes">
       <% @recipes.each do |recipe| %>
 
-        <li class="recipe" id="recipe_<%= recipe.id %>" data-id="<%= recipe.id %>">
+        <li class="recipe <%=raw "recipe-new" if recipe.new_recipe? %>" id="recipe_<%= recipe.id %>" data-id="<%= recipe.id %>">
           <div class="recipe-row">
             <div class="recipe-photo"><%= photo_of recipe, link: true %></div>
             <div class="recipe-summary">
-              <%= average_rating_for recipe %>
+              <div class="recipe-preparation">
+                <% unless recipe.new_recipe? %>
+                  <%= average_rating_for recipe %>
+                  <% if recipe.last_prepared_on %>
+                    <div class="recipe-made"><%= last_preparation_of(recipe) %></div>
+                  <% end %>
+                <% end %>
+              </div>
+
               <%= link_to recipe, class: "link-no-ui" do %>
-                <h3 class="recipe-name"><%= recipe.name %></h3>
+                <h3 class="recipe-name">
+                  <%= recipe.name %>
+                  <% if recipe.new_recipe? %>
+                    <span class="label label-new">New</span>
+                  <% end %>
+                </h3>
                 <%= tags_for recipe %>
                 <p class="recipe-snippet"><%= snippet recipe %></p>
               <% end %>
