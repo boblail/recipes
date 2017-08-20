@@ -15,6 +15,6 @@
 //= require underscore/underscore
 //= require backbone/backbone
 //= require bootstrap/dist/js/bootstrap
-//= require bootstrap-tagsinput/dist/bootstrap-tagsinput.min
+//= require bootstrap-tagsinput/dist/bootstrap-tagsinput
 //= require typeahead.js/dist/typeahead.bundle.min
 //= require_tree .
