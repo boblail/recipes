@@ -8,7 +8,10 @@ class RecipesController < ApplicationController
   end
 
   def my_recipes
+    @filter = params.fetch(:s, "a")
     @recipes = current_user.cookbook.recipes.most_popular_first.preload(:photo, :tags)
+    @recipes = @recipes.where(new_recipe: false) if @filter == "m"
+    @recipes = @recipes.where(new_recipe: true) if @filter == "n"
     @recipes = @recipes.search params[:q] unless params[:q].blank?
   end
 

@@ -39,6 +39,9 @@ document.addEventListener 'turbolinks:load', ->
       id = $(e.target).attr('for')
       $("##{id}").val moment(e.date).format('YYYY-MM-DD')
 
+  $('input[name="s"]').click (e) ->
+    $(e.target).closest('form').submit()
+
   if window.currentMenuPlan
     $(document.body).on 'click', '.menu-plan-remove-button', (e) ->
       $recipe = $(e.target).closest('.recipe')

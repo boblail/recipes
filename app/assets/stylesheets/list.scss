@@ -8,6 +8,19 @@ a.link-no-ui {
   text-decoration: inherit;
 }
 
+form.search-form {
+  fieldset {
+    margin: 0.25rem 0 0;
+
+    label {
+      vertical-align: middle;
+      margin: 0 0.5rem 0 0.125rem;
+      font-size: 0.88em;
+      font-weight: 700;
+    }
+  }
+}
+
 ul.recipes {
   padding: 0;
 
