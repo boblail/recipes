@@ -88,13 +88,14 @@ section.recipe {
       margin: 4px .125em;
       color: white !important;
       border: 1px solid white;
+      background: $light-gray;
     }
 
     a.rating-clear {
       width: 24px;
       display: inline-block;
       vertical-align: top;
-      margin: 0 2px;
+      margin: 7px 5px;
 
       > i { font-size: 24px; }
     }
