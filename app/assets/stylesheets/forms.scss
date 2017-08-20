@@ -1,6 +1,6 @@
-.form-horizontal .control-label { padding-right: 0; }
+@import "variables";
 
-.form-group { margin-bottom: 8px; }
+.form-horizontal .control-label { padding-right: 0; }
 
 form { clear: both; }
 
@@ -8,7 +8,17 @@ textarea {
   min-height: 12em;
 }
 
+label {
+  font-weight: 700;
+  cursor: pointer;
+}
+
 .bootstrap-tagsinput {
   width: 100%;
   margin-bottom: 0;
+
+  border: $input-border;
+  border-radius: $input-border-radius;
+  box-shadow: none;
+}
 }
