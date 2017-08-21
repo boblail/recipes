@@ -18,6 +18,12 @@ class RecipesController < ApplicationController
 
   def show
     @title = @recipe.name
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @recipe }
+    end
+
   end
 
   def new

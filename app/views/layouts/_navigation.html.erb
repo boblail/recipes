@@ -12,11 +12,6 @@
     <div id="navbarNavDropdown" class="navbar-collapse collapse">
       <ul class="navbar-nav ml-auto">
         <% if current_user -%>
-        <li class="nav-item">
-          <a class="btn" href="#">
-            <%= current_user.current_menu_plan.name %> <span class="badge badge-secondary recipe-count"><%= current_user.current_menu_plan.recipes.count %></span>
-          </a>
-        </li>
 
         <li class="nav-item dropdown d-none d-sm-flex">
           <a class="dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

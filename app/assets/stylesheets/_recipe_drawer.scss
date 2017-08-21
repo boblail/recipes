@@ -1,0 +1,14 @@
+@import "variables";
+
+#recipe_drawer_wrapper {
+  position: fixed;
+  right: 40px;
+  bottom: 0px;
+  height: 48px;
+  width: 300px;
+
+  .card-header {
+    background-color: $navbar-background;
+    color: $navbar-grey
+  }
+}
