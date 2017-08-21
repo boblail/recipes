@@ -1,5 +1,6 @@
 @import "variables";
 
+
 body {
   padding: 2rem 0;
 }
@@ -53,39 +54,6 @@ h1 {
 
 h4 {
   margin-top: 2em;
-}
-
-.navbar {
-  .navbar-toggler {
-    border: none;
-  }
-
-  .fa-bars {
-    color: $navbar-grey
-  }
-
-  a {
-    display: inline-block;
-    color: $navbar-grey;
-
-    &:hover {
-      text-decoration: none;
-      color: $white;
-    }
-  }
-
-  .navbar-brand {
-    color: $navbar-grey;
-    &:hover {
-      text-decoration: none;
-      color: $white;
-    }
-  }
-
-
-  .avatar {
-    margin: 0 0 0 1em;
-  }
 }
 
 img.avatar {

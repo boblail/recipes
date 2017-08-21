@@ -2,14 +2,26 @@ drawRecipeMenuPlanControls = ($recipe) ->
   $recipe = $ $recipe
   id = $recipe.attr('data-id')
   $menuPlan = $recipe.find('.recipe-menu-plan')
-  if window.currentMenuPlan.includesRecipeId(id)
+  if window.currentMenuPlan.recipes().get(id)
     $menuPlan.html '<button class="menu-plan-remove-button" title="Remove from Menu Plan"></button>'
   else
     $menuPlan.html '<button class="menu-plan-add-button" title="Add to Menu Plan"></button>'
 
 drawMenuPlanRecipeTotal = ->
-  totalRecipes = window.currentMenuPlan.get('recipeIds').length
+  totalRecipes = window.currentMenuPlan.recipes().length
   $('.recipe-count').text(totalRecipes)
+
+drawRecipeDrawer = ->
+  recipeDrawer = document.getElementById("recipe_drawer_wrapper")
+  ReactDOM.render(React.createElement(RecipeDrawer, recipes: window.currentMenuPlan.recipes()), recipeDrawer) if recipeDrawer
+
+removeRecipe = (recipe) ->
+  id = recipe.get('id')
+  window.currentMenuPlan.removeRecipeId(id)
+  $recipe = $("ul.recipes [data-id=#{id}]")
+
+  drawRecipeMenuPlanControls($recipe)
+  drawMenuPlanRecipeTotal()
 
 $ ->
   $(document).on 'submit', 'form[method=get]', (e)->
@@ -46,14 +58,20 @@ document.addEventListener 'turbolinks:load', ->
     $(document.body).on 'click', '.menu-plan-remove-button', (e) ->
       $recipe = $(e.target).closest('.recipe')
       id = $recipe.attr('data-id')
+
       window.currentMenuPlan.removeRecipeId(id)
+
       drawRecipeMenuPlanControls($recipe)
       drawMenuPlanRecipeTotal()
+      drawRecipeDrawer()
 
     $(document.body).on 'click', '.menu-plan-add-button', (e) ->
       $recipe = $(e.target).closest('.recipe')
       id = $recipe.attr('data-id')
-      window.currentMenuPlan.addRecipeId(id)
+
+      window.currentMenuPlan.addRecipe(id).then ->
+        drawRecipeDrawer()
+
       drawRecipeMenuPlanControls($recipe)
       drawMenuPlanRecipeTotal()
 
@@ -61,3 +79,4 @@ document.addEventListener 'turbolinks:load', ->
       drawRecipeMenuPlanControls(@)
 
     drawMenuPlanRecipeTotal()
+    drawRecipeDrawer()

@@ -1,0 +1,30 @@
+@import "variables";
+
+.navbar {
+  .navbar-toggler {
+    border: none;
+  }
+
+  .fa-bars {
+    color: $navbar-grey;
+  }
+
+  .navbar-brand {
+    color: $navbar-grey;
+
+    &:hover {
+      text-decoration: none;
+      color: $white;
+    }
+  }
+
+  .dropdown-item {
+    &:hover {
+      background-color: inherit;
+    }
+  }
+
+  .avatar {
+    margin: 0 0 0 1em;
+  }
+}

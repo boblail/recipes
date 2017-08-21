@@ -102,8 +102,8 @@ section.recipe {
 
     .rating-yumminess .rating-input .fa-star-empty { background: #ddd; }
     .rating-yumminess.rating-1 .rating-value .fa, .rating-yumminess .rating-input[data-value="1"] .fa-star {
-      background: #f35827;
-      box-shadow: 0 0 1px 1px rgba(#f35827, 0.75);
+      background: $delete-red;
+      box-shadow: 0 0 1px 1px rgba($delete-red, 0.75);
     }
     .rating-yumminess.rating-2 .rating-value .fa, .rating-yumminess .rating-input[data-value="2"] .fa-star {
       background: #fa851e;
