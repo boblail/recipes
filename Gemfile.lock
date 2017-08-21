@@ -53,6 +53,7 @@ GEM
       public_suffix (~> 2.0, >= 2.0.2)
     ansi (1.5.0)
     arel (8.0.0)
+    awesome_print (1.8.0)
     aws-sdk (2.10.24)
       aws-sdk-resources (= 2.10.24)
     aws-sdk-core (2.10.24)
@@ -275,6 +276,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   bootsnap (~> 1.1)
   cancan
   capybara (~> 2.13)
