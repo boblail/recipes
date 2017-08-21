@@ -11,6 +11,10 @@ drawMenuPlanRecipeTotal = ->
   totalRecipes = window.currentMenuPlan.get('recipeIds').length
   $('.recipe-count').text(totalRecipes)
 
+drawMenuPlanDropdown = ->
+  navDropdown = document.getElementById("menu_plan_dropdown")
+  ReactDOM.render React.createElement(MenuPlanDropdown, recipes: window.currentMenuPlanRecipes), navDropdown
+
 $ ->
   $(document).on 'submit', 'form[method=get]', (e)->
     Turbolinks.visit "#{@action}#{if @action.indexOf('?') is -1 then '?' else '&'}#{$(@).serialize()}"
@@ -49,11 +53,18 @@ document.addEventListener 'turbolinks:load', ->
       window.currentMenuPlan.removeRecipeId(id)
       drawRecipeMenuPlanControls($recipe)
       drawMenuPlanRecipeTotal()
+      window.currentMenuPlanRecipes.remove({id: id})
+      drawMenuPlanDropdown()
 
     $(document.body).on 'click', '.menu-plan-add-button', (e) ->
       $recipe = $(e.target).closest('.recipe')
       id = $recipe.attr('data-id')
       window.currentMenuPlan.addRecipeId(id)
+
+      window.currentMenuPlanRecipes.add({id: id})
+      window.currentMenuPlanRecipes.get(id).fetch().then ->
+        drawMenuPlanDropdown()
+
       drawRecipeMenuPlanControls($recipe)
       drawMenuPlanRecipeTotal()
 
@@ -61,3 +72,6 @@ document.addEventListener 'turbolinks:load', ->
       drawRecipeMenuPlanControls(@)
 
     drawMenuPlanRecipeTotal()
+
+  if window.currentMenuPlanRecipes
+    drawMenuPlanDropdown()

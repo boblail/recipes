@@ -70,6 +70,21 @@ h4 {
     }
   }
 
+  #menuPlanDropdown {
+    color: $navbar-grey
+  }
+
+  .menu-plan-dropdown {
+    .nav-photo {
+      width: 2em;
+    }
+
+    .dropdown-item {
+      margin-bottom: 0;
+      padding: .5rem;
+    }
+  }
+
   .navbar-brand {
     color: $navbar-grey;
     &:hover {

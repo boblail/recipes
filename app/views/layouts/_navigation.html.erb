@@ -12,10 +12,13 @@
     <div id="navbarNavDropdown" class="navbar-collapse collapse">
       <ul class="navbar-nav ml-auto">
         <% if current_user -%>
-        <li class="nav-item">
-          <a class="btn" href="#">
+
+        <li class="nav-item dropdown menu-plan-dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="menuPlanDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= current_user.current_menu_plan.name %> <span class="badge badge-secondary recipe-count"><%= current_user.current_menu_plan.recipes.count %></span>
           </a>
+
+          <div class="dropdown-menu" id="menu_plan_dropdown" aria-labelledby="menuPlanDropdown"></div>
         </li>
 
         <li class="nav-item dropdown d-none d-sm-flex">
