@@ -1,3 +1,10 @@
+$primary-color: #37b0cc;
 $white: white;
 $navbar-grey: rgb(140, 139, 139);
 $mobile-max-photo-height: 33vh;
+$light-gray: #ddd;
+
+$input-border-width: 4px;
+$input-border-color: $light-gray;
+$input-border: $input-border-width solid $input-border-color;
+$input-border-radius: 0.25rem;

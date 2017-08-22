@@ -7,17 +7,27 @@
 
 // Overrides
 
-$blue: #428bca; // primary color for links and buttons
+@import "variables";
+
+$blue: $primary-color; // primary color for links and buttons
 $gray-800: #2d2d2d; // navbar background
-$font-family-base: Lato; //, $font-family-sans-serif;
-$input-btn-padding-y: 0.33rem;
+$font-family-base: Lato;
 $input-btn-padding-y-sm: 0.125rem;
+$input-btn-border-width: $input-border-width;
+$input-focus-border-color: $blue;
+$form-group-margin-bottom: 1.75rem;
 
 
 
 // Twitter Bootstrap
 
 @import "bootstrap/scss/bootstrap.scss";
+
+
+
+.btn { padding: 0.25rem 0.75rem; }
+.btn-sm { padding: 0.125rem 0.5rem; }
+
 
 
 // Temporary: For compatibility for bootstrap-tags-input

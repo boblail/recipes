@@ -9,9 +9,14 @@ module ApplicationHelper
     "javascript:#{URI.encode(script)}"
   end
 
-  def photo_url(recipe)
-    return "//via.placeholder.com/480x400" unless recipe.photo
-    recipe.photo.url
+  def radio_button(name, value, label, model=nil, options={})
+    <<~HTML.html_safe
+      <label for="#{name}_#{value}">
+        #{radio_button_tag name, value, value == model, options}
+        <label for="#{name}_#{value}" class="radio-button"></label>
+        #{label}
+      </label>
+    HTML
   end
 
 end

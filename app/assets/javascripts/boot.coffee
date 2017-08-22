@@ -17,17 +17,30 @@ $ ->
     false
 
 document.addEventListener 'turbolinks:load', ->
-  $('input.rating[type=number]').each ->
-    $(@).rating()
 
-  $('.rating').change ->
-    $input = $(@)
-    $form = $input.closest('form')
-    url = $form.attr('action') + '/ratings'
+  # only applies to recipes#show
+  $('input.rating[type=number]')
+    .rating()
+    .change ->
+      $input = $(@)
+      $form = $input.closest('form')
+      url = $form.attr('action') + '/ratings'
 
-    $.put url,
-      name: $input.attr('name')
-      value: $input.val()
+      $.put url,
+        name: $input.attr('name')
+        value: $input.val()
+
+  $('.datepicker-container')
+    .datepicker
+      format: 'yyyy-mm-dd'
+      endDate: moment().format('YYYY-MM-DD')
+    .datepicker('update', moment().format('YYYY-MM-DD'))
+    .on 'changeDate', (e) ->
+      id = $(e.target).attr('for')
+      $("##{id}").val moment(e.date).format('YYYY-MM-DD')
+
+  $('input[name="s"]').click (e) ->
+    $(e.target).closest('form').submit()
 
   if window.currentMenuPlan
     $(document.body).on 'click', '.menu-plan-remove-button', (e) ->

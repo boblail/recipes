@@ -8,7 +8,10 @@ class RecipesController < ApplicationController
   end
 
   def my_recipes
+    @filter = params.fetch(:s, "a")
     @recipes = current_user.cookbook.recipes.most_popular_first.preload(:photo, :tags)
+    @recipes = @recipes.where(new_recipe: false) if @filter == "m"
+    @recipes = @recipes.where(new_recipe: true) if @filter == "n"
     @recipes = @recipes.search params[:q] unless params[:q].blank?
   end
 
@@ -79,7 +82,7 @@ private
   def recipe_params
     attributes = params
       .require(:recipe)
-      .permit(:name, :ingredients, :instructions, :source, :tags, :servings, :photo_id, :copy_of_id)
+      .permit(:name, :ingredients, :instructions, :source, :tags, :servings, :photo_id, :copy_of_id, :new_recipe)
     attributes.merge(tags: attributes[:tags].to_s.split(","))
   end
 

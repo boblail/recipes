@@ -1,9 +1,16 @@
+@import "variables";
+
 .photo {
   display: block;
 
+  &.photo-placeholder {
+    background: $light-gray;
+  }
+
   &.uploadable {
     display: inline-block;
-    border: 1px solid #ccc;
+    border: $input-border;
+    border-radius: $input-border-radius;
     padding: 3px;
     cursor: pointer;
 
@@ -15,8 +22,7 @@
     }
 
     &:hover {
-      border-color: #3d95e4;
-      background: #bfe1ff;
+      border-color: $primary-color;
     }
   }
 }

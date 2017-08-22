@@ -1,11 +1,25 @@
 @import "variables";
 
 // List of Recipes on Phones
- $button-size: 48px;
+$button-size: 48px;
 
 a.link-no-ui {
   color: inherit;
   text-decoration: inherit;
+}
+
+form.search-form {
+  fieldset {
+    margin: 0.25rem 0 0;
+
+    label {
+      vertical-align: middle;
+      margin: 0 0.5rem 0 0.125rem;
+      font-size: 0.88em;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+  }
 }
 
 ul.recipes {
@@ -22,16 +36,33 @@ ul.recipes {
     width: 100%;
   }
 
+  .label-new {
+    display: inline-block;
+    margin-left: 0.125em;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 2px;
+    vertical-align: middle;
+    background: hsl(58, 95%, 49%);
+    color: hsl(58, 55%, 30%);
+  }
+
   .recipe-photo {
     max-width: 100%;
     margin: 0 0 0.66em;
     text-align: center;
 
-    img {
+    .photo {
       display: inline-block;
       border-radius: 5px;
       max-width: 100%;
       max-height: $mobile-max-photo-height;
+
+      &.photo-placeholder {
+        width: 100%;
+        height: $mobile-max-photo-height;
+      }
     }
   }
 
@@ -42,9 +73,19 @@ ul.recipes {
     a { color: inherit; }
   }
 
-  .rating-yumminess {
+  .recipe-preparation {
     float: right;
+    line-height: normal;
+    text-align: right;
+  }
 
+  .recipe-made {
+    font-size: 0.7em;
+    color: #aaa;
+    padding-right: 0.185em;
+  }
+
+  .rating-yumminess {
     .fa-heart {
       font-size: 14px;
     }
@@ -58,7 +99,7 @@ ul.recipes {
     a, a:hover { color: inherit; }
   }
 
-  .recipe-row .recipe-name {
+  .recipe:not(.recipe-new) .recipe-row .recipe-name {
     margin-right: 80px;
   }
 
@@ -106,7 +147,7 @@ ul.recipes {
       &.menu-plan-remove-button {
         color: #8dce0a;
 
-        &::after { content: 'Menu Plan'; }
+        &::after { content: 'in current\AMenu Plan'; }
         &::before {
           background: #8dce0a;
           content: '\f00c';
@@ -181,14 +222,14 @@ ul.recipes {
         min-height: 80px;
         padding-right: 5rem;
 
-        .rating-yumminess { margin-right: -5rem; }
+        .recipe-preparation { margin-right: -5rem; }
       }
 
       .recipe-menu-plan {
         position: absolute;
         right: 0;
         top: $mobile-max-photo-height; // size of photo
-        margin-top: 40px;
+        margin-top: 56px;
       }
     }
   }
@@ -212,10 +253,15 @@ ul.recipes {
         margin-bottom: 0;
         text-align: right;
 
-        img {
+        .photo {
           display: inline-flex;
           max-width: 10em;
           max-height: 6.33em;
+
+          &.photo-placeholder {
+            width: 8em;
+            height: 6.33em;
+          }
         }
       }
 

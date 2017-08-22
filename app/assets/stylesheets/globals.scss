@@ -4,9 +4,12 @@ body {
   padding: 90px 0 24px;
 }
 
+b, strong {
+  font-weight: 900;
+}
+
 h4, label.control-label {
   text-transform: uppercase;
-  color: #aaa;
   font-weight: 700;
   font-size: 0.875em;
 }
@@ -20,6 +23,7 @@ h1 {
   font-size: 1.66em;
   font-weight: 900;
   line-height: 1;
+  margin: 0 0 1rem;
 
   a {
     font-size: 1rem;
