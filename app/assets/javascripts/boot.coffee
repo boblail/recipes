@@ -13,7 +13,16 @@ drawMenuPlanRecipeTotal = ->
 
 drawMenuPlanDropdown = ->
   navDropdown = document.getElementById("menu_plan_dropdown")
-  ReactDOM.render React.createElement(MenuPlanDropdown, recipes: window.currentMenuPlanRecipes), navDropdown
+  ReactDOM.render React.createElement(MenuPlanDropdown, recipes: window.currentMenuPlanRecipes, deleteRecipe: removeRecipe), navDropdown
+
+removeRecipe = (recipe) ->
+  id = recipe.get('id')
+  window.currentMenuPlan.removeRecipeId(id)
+  window.currentMenuPlanRecipes.remove({id: id})
+  $recipe = $("ul.recipes [data-id=#{id}]")
+
+  drawRecipeMenuPlanControls($recipe)
+  drawMenuPlanRecipeTotal()
 
 $ ->
   $(document).on 'submit', 'form[method=get]', (e)->
@@ -50,10 +59,12 @@ document.addEventListener 'turbolinks:load', ->
     $(document.body).on 'click', '.menu-plan-remove-button', (e) ->
       $recipe = $(e.target).closest('.recipe')
       id = $recipe.attr('data-id')
+
       window.currentMenuPlan.removeRecipeId(id)
+      window.currentMenuPlanRecipes.remove({id: id})
+
       drawRecipeMenuPlanControls($recipe)
       drawMenuPlanRecipeTotal()
-      window.currentMenuPlanRecipes.remove({id: id})
       drawMenuPlanDropdown()
 
     $(document.body).on 'click', '.menu-plan-add-button', (e) ->

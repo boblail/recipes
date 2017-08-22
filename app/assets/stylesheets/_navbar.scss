@@ -1,0 +1,52 @@
+@import "variables";
+@import "mixins";
+
+.navbar {
+  .navbar-toggler {
+    border: none;
+  }
+
+  .fa-bars {
+    color: $navbar-grey;
+  }
+
+  #menuPlanDropdown {
+    display: inline-block;
+    color: $navbar-grey;
+
+    @include hoverColor($white);
+  }
+
+  .navbar-brand {
+    @extend #menuPlanDropdown;
+  }
+
+  .dropdown-item {
+    @include hoverColor(none);
+    &:hover {
+      background-color: inherit;
+    }
+  }
+
+  .menu-plan-dropdown {
+    .nav-photo {
+      width: 2em;
+      padding-right: .5em;
+    }
+
+    .dropdown-item {
+      margin-bottom: 0;
+      padding: .5rem;
+      margin: .5rem;
+    }
+
+    .fa {
+      padding-left: .5rem;
+      color: $delete-red;
+    }
+  }
+
+  .avatar {
+    margin: 0 0 0 1em;
+  }
+}

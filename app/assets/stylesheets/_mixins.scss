@@ -1,0 +1,6 @@
+@mixin hoverColor($color) {
+  &:hover {
+    text-decoration: none;
+    color: $color;
+  }
+}

@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins";
 
 body {
   padding: 90px 0 24px;
@@ -51,54 +52,6 @@ h4 {
   margin-top: 2em;
 }
 
-.navbar {
-  .navbar-toggler {
-    border: none;
-  }
-
-  .fa-bars {
-    color: $navbar-grey
-  }
-
-  a {
-    display: inline-block;
-    color: $navbar-grey;
-
-    &:hover {
-      text-decoration: none;
-      color: $white;
-    }
-  }
-
-  #menuPlanDropdown {
-    color: $navbar-grey
-  }
-
-  .menu-plan-dropdown {
-    .nav-photo {
-      width: 2em;
-    }
-
-    .dropdown-item {
-      margin-bottom: 0;
-      padding: .5rem;
-    }
-  }
-
-  .navbar-brand {
-    color: $navbar-grey;
-    &:hover {
-      text-decoration: none;
-      color: $white;
-    }
-  }
-
-
-  .avatar {
-    margin: 0 0 0 1em;
-  }
-}
-
 img.avatar {
   border-radius: 999em;
 }
@@ -114,3 +67,5 @@ img.avatar {
     padding-left: 2em;
   }
 }
+
+@import "navbar";
