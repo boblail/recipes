@@ -5,7 +5,7 @@ class @MenuPlanDropdown extends React.Component
 
   removeRecipe: (recipe) =>
     @props.deleteRecipe(recipe)
-    @setState({recipes: @props.recipes })
+    @setState(recipes: @props.recipes)
 
   render: =>
     recipes = @props.recipes
