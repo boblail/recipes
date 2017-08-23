@@ -2,23 +2,22 @@ drawRecipeMenuPlanControls = ($recipe) ->
   $recipe = $ $recipe
   id = $recipe.attr('data-id')
   $menuPlan = $recipe.find('.recipe-menu-plan')
-  if window.currentMenuPlan.includesRecipeId(id)
+  if window.currentMenuPlan.recipes().find(id: id)
     $menuPlan.html '<button class="menu-plan-remove-button" title="Remove from Menu Plan"></button>'
   else
     $menuPlan.html '<button class="menu-plan-add-button" title="Add to Menu Plan"></button>'
 
 drawMenuPlanRecipeTotal = ->
-  totalRecipes = window.currentMenuPlan.get('recipeIds').length
+  totalRecipes = window.currentMenuPlan.recipes().length
   $('.recipe-count').text(totalRecipes)
 
 drawMenuPlanDropdown = ->
   navDropdown = document.getElementById("menu_plan_dropdown")
-  ReactDOM.render React.createElement(MenuPlanDropdown, recipes: window.currentMenuPlanRecipes, deleteRecipe: removeRecipe), navDropdown
+  ReactDOM.render React.createElement(MenuPlanDropdown, recipes: window.currentMenuPlan.recipes(), deleteRecipe: removeRecipe), navDropdown
 
 removeRecipe = (recipe) ->
   id = recipe.get('id')
-  window.currentMenuPlan.removeRecipeId(id)
-  window.currentMenuPlanRecipes.remove({id: id})
+  window.currentMenuPlan.recipes().remove({id: id})
   $recipe = $("ul.recipes [data-id=#{id}]")
 
   drawRecipeMenuPlanControls($recipe)
@@ -60,8 +59,7 @@ document.addEventListener 'turbolinks:load', ->
       $recipe = $(e.target).closest('.recipe')
       id = $recipe.attr('data-id')
 
-      window.currentMenuPlan.removeRecipeId(id)
-      window.currentMenuPlanRecipes.remove({id: id})
+      window.currentMenuPlan.recipes().remove({id: id})
 
       drawRecipeMenuPlanControls($recipe)
       drawMenuPlanRecipeTotal()
@@ -70,10 +68,9 @@ document.addEventListener 'turbolinks:load', ->
     $(document.body).on 'click', '.menu-plan-add-button', (e) ->
       $recipe = $(e.target).closest('.recipe')
       id = $recipe.attr('data-id')
-      window.currentMenuPlan.addRecipeId(id)
 
-      window.currentMenuPlanRecipes.add({id: id})
-      window.currentMenuPlanRecipes.get(id).fetch().then ->
+      window.currentMenuPlan.recipes().add({id: id})
+      window.currentMenuPlan.recipes().get(id).fetch().then ->
         drawMenuPlanDropdown()
 
       drawRecipeMenuPlanControls($recipe)
@@ -84,5 +81,5 @@ document.addEventListener 'turbolinks:load', ->
 
     drawMenuPlanRecipeTotal()
 
-  if window.currentMenuPlanRecipes
+  if window.currentMenuPlan.recipes
     drawMenuPlanDropdown()
