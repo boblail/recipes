@@ -13,7 +13,7 @@ drawMenuPlanRecipeTotal = ->
 
 drawMenuPlanDropdown = ->
   navDropdown = document.getElementById("menu_plan_dropdown")
-  ReactDOM.render React.createElement(MenuPlanDropdown, recipes: window.currentMenuPlan.recipes(), deleteRecipe: removeRecipe), navDropdown
+  ReactDOM.render React.createElement(MenuPlanDropdown, recipes: window.currentMenuPlan.recipes(), removeRecipe: removeRecipe), navDropdown
 
 removeRecipe = (recipe) ->
   id = recipe.get('id')
