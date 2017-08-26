@@ -17,7 +17,7 @@
   <% if current_user %>
   <script>
     window.currentMenuPlan = new MenuPlan(<%= raw MenuPlanPresenter.new(current_user.current_menu_plan).to_json %>);
-    window.currentMenuPlanRecipes = new Recipes(
+    window.currentMenuPlan._recipes = new Recipes(
       <%= raw ActiveModelSerializers::SerializableResource.new(current_user.current_menu_plan.recipes, adapter: :attributes).to_json %>
     );
   </script>
