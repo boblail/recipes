@@ -79,6 +79,4 @@ document.addEventListener 'turbolinks:load', ->
       drawRecipeMenuPlanControls(@)
 
     drawMenuPlanRecipeTotal()
-
-  if window.currentMenuPlan.recipes()
     drawMenuPlanDropdown()
