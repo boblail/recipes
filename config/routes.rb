@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   get "tags", to: "tags#index", as: :tags
 
+  post "menu-plans", to: "menu_plans#create"
   put "menu-plans/:id", to: "menu_plans#update"
 
   root to: "recipes#all_recipes"
