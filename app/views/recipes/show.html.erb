@@ -7,7 +7,16 @@
 
   <h1 class="snug">
     <%= @recipe.name %>
-    <%= link_to "Edit", edit_recipe_path(@recipe), class: "btn btn-primary btn-sm" if can? :update, @recipe %>
+
+    <% if can? :update, @recipe %>
+      <% if mobile_app? %>
+        <% content_for :meta do %>
+          <link rel="mobile-navigation" href="<%= edit_recipe_url(@recipe) %>" title="Edit" />
+        <% end %>
+      <% else %>
+        <%= link_to "Edit", edit_recipe_path(@recipe), class: "btn btn-primary btn-sm"  %>
+      <% end %>
+    <% end %>
   </h1>
 
   <div class="recipe-metadata">

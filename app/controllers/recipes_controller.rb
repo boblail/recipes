@@ -8,6 +8,7 @@ class RecipesController < ApplicationController
   end
 
   def my_recipes
+    @title = "My Recipes"
     @filter = params.fetch(:s, "a")
     @recipes = current_user.cookbook.recipes.most_popular_first.preload(:photo, :tags)
     @recipes = @recipes.where(new_recipe: false) if @filter == "m"
@@ -16,9 +17,11 @@ class RecipesController < ApplicationController
   end
 
   def show
+    @title = @recipe.name
   end
 
   def new
+    @title = "New Recipe"
     @recipe = current_user.cookbook.recipes.build
     authorize! :create, @recipe
 
@@ -40,6 +43,7 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    @title = "Edit Recipe"
     @tags = Recipe.pluck(:tags).flatten.uniq
     authorize! :update, @recipe
   end
