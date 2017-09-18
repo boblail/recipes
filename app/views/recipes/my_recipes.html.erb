@@ -4,7 +4,13 @@
   <%= link_to "Index", tags_url %>
 
   <% if can? :create, Recipe %>
-    <%= link_to "New Recipe", new_recipe_path, class: "btn btn-primary pull-right" %>
+    <% if mobile_app? %>
+      <% content_for :meta do %>
+        <link rel="mobile-navigation" href="<%= new_recipe_url %>" title="New Recipe" />
+      <% end %>
+    <% else %>
+      <%= link_to "New Recipe", new_recipe_path, class: "btn btn-primary pull-right" %>
+    <% end %>
   <% end %>
 </h1>
 

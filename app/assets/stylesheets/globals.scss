@@ -1,7 +1,11 @@
 @import "variables";
 
 body {
-  padding: 90px 0 24px;
+  padding: 2rem 0;
+}
+
+nav + .container {
+  margin-top: 4rem; // nav height
 }
 
 b, strong {
