@@ -18,12 +18,26 @@
             <%= avatar_for(current_user, size: 36) %>
           </a>
           <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdownMenuLink">
+            <%= link_to "My Recipes", my_recipes_path, class: "dropdown-item" %>
+            <%= link_to "Index", tags_path, class: "dropdown-item" %>
+            <%= link_to "History", history_path, class: "dropdown-item" %>
+            <div class="dropdown-divider"></div>
             <%= link_to "Sign out", destroy_session_path, class: "dropdown-item" %>
           </div>
         </li>
 
+
         <li class="nav-item d-sm-none">
-          <%= link_to "Sign out", destroy_session_path, class: 'btn' %>
+          <%= link_to "My Recipes", my_recipes_path %>
+        </li>
+        <li class="nav-item d-sm-none">
+          <%= link_to "Index", tags_url %>
+        </li>
+        <li class="nav-item d-sm-none">
+          <%= link_to "History", history_path %>
+        </li>
+        <li class="nav-item d-sm-none">
+          <%= link_to "Sign out", destroy_session_path %>
         </li>
         <% else -%>
         <%= link_to "Sign in", new_session_path %>

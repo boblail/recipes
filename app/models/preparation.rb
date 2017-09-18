@@ -1,7 +1,9 @@
 class Preparation < ApplicationRecord
 
-  belongs_to :recipe
+  belongs_to :recipe, -> { select("*", '(select avg(value) from ratings where ratings.recipe_id=recipes.id) "average_rating"') }
   belongs_to :prepared_by, class_name: "User"
+
+  default_scope -> { order(prepared_on: :desc) }
 
   validates :prepared_on, presence: true
 

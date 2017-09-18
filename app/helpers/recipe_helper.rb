@@ -21,16 +21,17 @@ module RecipeHelper
     html
   end
 
-  def last_preparation_of(recipe)
-    html = "Made "
-    html << if recipe.new_recipe?
-      "<em>Never</em>"
-    elsif recipe.last_prepared_on
-      "<b>#{days_ago_in_words recipe.last_prepared_on}</b>"
-    else
-      "some time ago"
-    end
-    html.html_safe
+  def last_preparation_of(recipe, link_to: nil)
+    return "Made <em>Never</em>".html_safe if recipe.new_recipe?
+    return "Made some time ago" unless recipe.last_prepared_on
+
+    time_frame = "<b>#{days_ago_in_words recipe.last_prepared_on}</b>"
+    time_frame = link_to(time_frame.html_safe, link_to) if link_to
+    "Made #{time_frame}".html_safe
+  end
+
+  def describe_user(user)
+    "#{avatar_for user, size: 16} <b>#{user.name}</b>".html_safe
   end
 
   def format_source(source)

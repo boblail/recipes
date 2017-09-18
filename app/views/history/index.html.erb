@@ -1,0 +1,32 @@
+<h1>
+  History
+</h1>
+
+<ol class="recipes history">
+  <% last_date = nil %>
+  <% @preparations.each do |preparation|
+      recipe = preparation.recipe
+      date = preparation.prepared_on %>
+
+      <li class="recipe recipe-history" id="recipe_<%= recipe.id %>" data-id="<%= recipe.id %>">
+        <div class="recipe-history-date date">
+          <span class="weekday"><%= date.strftime("%a") %></span>
+          <span class="month"><%= date.strftime("%b") %></span>
+          <span class="day"><%= date.strftime("%-d") %></span>
+          <span class="year"><%= date.strftime("%Y") %></span>
+        </div>
+
+        <div class="recipe-row">
+          <div class="recipe-photo"><%= photo_of recipe, link: true %></div>
+          <div class="recipe-summary">
+            <%= average_rating_for recipe %>
+            <%= link_to recipe, class: "link-no-ui" do %>
+              <h3 class="recipe-name"><%= recipe.name %></h3>
+              <p class="recipe-snippet"><%= preparation.comments %></p>
+            <% end %>
+          </div>
+        </div>
+      </li>
+
+  <% end %>
+</ol>
