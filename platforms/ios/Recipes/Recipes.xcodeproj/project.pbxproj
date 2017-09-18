@@ -8,12 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		BB76DF541F6F600300A1DAA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB76DF531F6F600300A1DAA3 /* AppDelegate.swift */; };
-		BB76DF561F6F600300A1DAA3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB76DF551F6F600300A1DAA3 /* ViewController.swift */; };
+		BB76DF561F6F600300A1DAA3 /* ApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB76DF551F6F600300A1DAA3 /* ApplicationController.swift */; };
 		BB76DF591F6F600300A1DAA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB76DF571F6F600300A1DAA3 /* Main.storyboard */; };
 		BB76DF5B1F6F600300A1DAA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB76DF5A1F6F600300A1DAA3 /* Assets.xcassets */; };
 		BB76DF5E1F6F600300A1DAA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB76DF5C1F6F600300A1DAA3 /* LaunchScreen.storyboard */; };
 		BB76DF691F6F600300A1DAA3 /* RecipesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB76DF681F6F600300A1DAA3 /* RecipesTests.swift */; };
 		BB76DF741F6F600300A1DAA3 /* RecipesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB76DF731F6F600300A1DAA3 /* RecipesUITests.swift */; };
+		BB76DF831F6F62E200A1DAA3 /* Turbolinks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB76DF821F6F62E200A1DAA3 /* Turbolinks.framework */; };
+		BB76DF851F6F630A00A1DAA3 /* Turbolinks.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BB76DF821F6F62E200A1DAA3 /* Turbolinks.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BB76DF871F6F644D00A1DAA3 /* VisitableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB76DF861F6F644D00A1DAA3 /* VisitableViewController.swift */; };
+		BB76DF8B1F6F649300A1DAA3 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB76DF881F6F649300A1DAA3 /* Error.swift */; };
+		BB76DF8C1F6F649300A1DAA3 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB76DF891F6F649300A1DAA3 /* ErrorView.swift */; };
+		BB76DF8D1F6F649300A1DAA3 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB76DF8A1F6F649300A1DAA3 /* ErrorView.xib */; };
+		BB76DF8F1F6F64CD00A1DAA3 /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB76DF8E1F6F64CD00A1DAA3 /* AuthenticationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,10 +40,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		BB76DF841F6F62F700A1DAA3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BB76DF851F6F630A00A1DAA3 /* Turbolinks.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		BB76DF501F6F600300A1DAA3 /* Recipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB76DF531F6F600300A1DAA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BB76DF551F6F600300A1DAA3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BB76DF551F6F600300A1DAA3 /* ApplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationController.swift; sourceTree = "<group>"; };
 		BB76DF581F6F600300A1DAA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BB76DF5A1F6F600300A1DAA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB76DF5D1F6F600300A1DAA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +67,12 @@
 		BB76DF6F1F6F600300A1DAA3 /* RecipesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB76DF731F6F600300A1DAA3 /* RecipesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesUITests.swift; sourceTree = "<group>"; };
 		BB76DF751F6F600300A1DAA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB76DF821F6F62E200A1DAA3 /* Turbolinks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Turbolinks.framework; path = Carthage/Build/iOS/Turbolinks.framework; sourceTree = "<group>"; };
+		BB76DF861F6F644D00A1DAA3 /* VisitableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitableViewController.swift; sourceTree = "<group>"; };
+		BB76DF881F6F649300A1DAA3 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		BB76DF891F6F649300A1DAA3 /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		BB76DF8A1F6F649300A1DAA3 /* ErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
+		BB76DF8E1F6F64CD00A1DAA3 /* AuthenticationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB76DF831F6F62E200A1DAA3 /* Turbolinks.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +108,7 @@
 				BB76DF671F6F600300A1DAA3 /* RecipesTests */,
 				BB76DF721F6F600300A1DAA3 /* RecipesUITests */,
 				BB76DF511F6F600300A1DAA3 /* Products */,
+				BB76DF811F6F62E100A1DAA3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,12 +125,17 @@
 		BB76DF521F6F600300A1DAA3 /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
+				BB76DF881F6F649300A1DAA3 /* Error.swift */,
+				BB76DF891F6F649300A1DAA3 /* ErrorView.swift */,
+				BB76DF8A1F6F649300A1DAA3 /* ErrorView.xib */,
 				BB76DF531F6F600300A1DAA3 /* AppDelegate.swift */,
-				BB76DF551F6F600300A1DAA3 /* ViewController.swift */,
+				BB76DF551F6F600300A1DAA3 /* ApplicationController.swift */,
 				BB76DF571F6F600300A1DAA3 /* Main.storyboard */,
 				BB76DF5A1F6F600300A1DAA3 /* Assets.xcassets */,
 				BB76DF5C1F6F600300A1DAA3 /* LaunchScreen.storyboard */,
 				BB76DF5F1F6F600300A1DAA3 /* Info.plist */,
+				BB76DF861F6F644D00A1DAA3 /* VisitableViewController.swift */,
+				BB76DF8E1F6F64CD00A1DAA3 /* AuthenticationController.swift */,
 			);
 			path = Recipes;
 			sourceTree = "<group>";
@@ -125,6 +158,14 @@
 			path = RecipesUITests;
 			sourceTree = "<group>";
 		};
+		BB76DF811F6F62E100A1DAA3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BB76DF821F6F62E200A1DAA3 /* Turbolinks.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,6 +176,7 @@
 				BB76DF4C1F6F600300A1DAA3 /* Sources */,
 				BB76DF4D1F6F600300A1DAA3 /* Frameworks */,
 				BB76DF4E1F6F600300A1DAA3 /* Resources */,
+				BB76DF841F6F62F700A1DAA3 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -235,6 +277,7 @@
 				BB76DF5E1F6F600300A1DAA3 /* LaunchScreen.storyboard in Resources */,
 				BB76DF5B1F6F600300A1DAA3 /* Assets.xcassets in Resources */,
 				BB76DF591F6F600300A1DAA3 /* Main.storyboard in Resources */,
+				BB76DF8D1F6F649300A1DAA3 /* ErrorView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +302,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB76DF561F6F600300A1DAA3 /* ViewController.swift in Sources */,
+				BB76DF8C1F6F649300A1DAA3 /* ErrorView.swift in Sources */,
+				BB76DF8B1F6F649300A1DAA3 /* Error.swift in Sources */,
+				BB76DF871F6F644D00A1DAA3 /* VisitableViewController.swift in Sources */,
+				BB76DF8F1F6F64CD00A1DAA3 /* AuthenticationController.swift in Sources */,
+				BB76DF561F6F600300A1DAA3 /* ApplicationController.swift in Sources */,
 				BB76DF541F6F600300A1DAA3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,7 +461,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Recipes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.boblail.Recipes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -426,7 +478,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Recipes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.boblail.Recipes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -507,6 +564,7 @@
 				BB76DF7A1F6F600300A1DAA3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BB76DF7B1F6F600300A1DAA3 /* Build configuration list for PBXNativeTarget "RecipesTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +573,7 @@
 				BB76DF7D1F6F600300A1DAA3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BB76DF7E1F6F600300A1DAA3 /* Build configuration list for PBXNativeTarget "RecipesUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +582,7 @@
 				BB76DF801F6F600300A1DAA3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
