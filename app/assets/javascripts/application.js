@@ -20,5 +20,4 @@
 //= require bootstrap-datepicker/dist/js/bootstrap-datepicker
 //= require typeahead.js/dist/typeahead.bundle.min
 //= require react
-//= require react_ujs
 //= require_tree .
