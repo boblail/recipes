@@ -14,9 +14,7 @@ class MenuPlanPresenter
       name: menu_plan.name,
       recipes: menu_plan.recipes.map { |recipe|
         { id: recipe.id,
-        name: recipe.name }
-      }
-    }
+          name: recipe.name } } }
   end
 
 end
