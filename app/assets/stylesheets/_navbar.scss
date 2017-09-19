@@ -11,6 +11,11 @@
 
   .navbar-brand {
     color: $navbar-grey;
+
+    &:hover {
+      text-decoration: none;
+      color: $white;
+    }
   }
 
   .dropdown-item {
