@@ -21,5 +21,4 @@
 //= require typeahead.js/dist/typeahead.bundle.min
 //= require react
 //= require react_ujs
-//= require components
 //= require_tree .
