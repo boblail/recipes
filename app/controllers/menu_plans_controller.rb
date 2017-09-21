@@ -3,7 +3,7 @@ class MenuPlansController < ApplicationController
 
   def update
     @menu_plan = MenuPlan.find params[:id]
-    @menu_plan.recipe_ids = params.require(:recipeIds)
+    @menu_plan.recipe_ids = params.fetch(:recipeIds)
     render json: {}
   end
 

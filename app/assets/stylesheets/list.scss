@@ -155,11 +155,11 @@ ul.recipes {
 
         @media (hover: hover) {
           &:hover {
-            color: #f35827;
+            color: $delete-red;
 
             &::before {
-              background: #f35827;
-              content: '\f068';
+              background: $delete-red;
+              content: $minus-icon;
             }
 
             &::after {

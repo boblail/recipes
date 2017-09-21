@@ -12,7 +12,9 @@ class MenuPlanPresenter
   def as_json(*)
     { id: menu_plan.id,
       name: menu_plan.name,
-      recipeIds: menu_plan.recipe_ids }
+      recipes: menu_plan.recipes.map { |recipe|
+        { id: recipe.id,
+          name: recipe.name } } }
   end
 
 end
