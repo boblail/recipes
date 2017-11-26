@@ -4,51 +4,47 @@ class @RecipeDrawer extends React.Component
 
   constructor: (props) ->
     super props
-    @state =
-      open: false
+    @state = open: false
+
+    @toggleDrawer = @toggleDrawer.bind @
+
+  componentDidUpdate: ->
+    @updateDrawerSize()
 
   toggleDrawer: =>
-    drawerWrapper = document.getElementById 'recipe_drawer_wrapper'
-    drawerBackground = document.getElementById 'drawer_background'
-
-    if @state.open
-      drawerWrapper.style.bottom = "0px"
-      drawerWrapper.style.height = "48px"
-    else
-      offsetHeight = window.innerHeight
-      drawerWrapper.style.height = "0px"
-      drawerWrapper.style.bottom = "#{offsetHeight}px"
-      drawerBackground.style.height = "#{offsetHeight}px"
-
-    @setState
-      open: !@state.open
+    @setState (prevState) ->
+      open: !prevState.open
 
   render: ->
     recipes = @props.recipes
 
-    recipeList = unless recipes.isEmpty()
-      recipes.map (recipe) -> `<DrawerRecipe key={recipe.get('id')} recipe={recipe}/>`
-    else
-      noRecipeStyles =
-        paddingLeft: '10px'
-        paddingTop: '10px'
-      
-      `<p className='lead' style={noRecipeStyles}> No Recipes</p>`
-
-    drawerIcon = if @state.open then "fa fa-chevron-down" else "fa fa-chevron-up"
-
-    `<div  id="recipe_drawer">
-      <div id="drawer_background">
-        <div className="card-header d-flex justify-content-between" onClick={this.toggleDrawer}>
-          <span>
-            My Recipes <span className="badge badge-secondary">{recipes.length}</span>
-          </span>
-          <a>
-            <i className={drawerIcon} aria-hidden="true"></i>
-          </a>
-        </div>
-        <ul className="list-group">
-          {recipeList}
-        </ul>
+    `<div id="recipe_drawer_wrapper" className="col-lg-4 offset-lg-1 col-md-6 offset-md-2 col-sm-12">
+      <div id="drawer_background" style={{height: window.offsetHeight}}>
+        <RecipeDrawerHeader recipeCount={recipes.length}
+                            open={this.state.open}
+                            toggleDrawer={this.toggleDrawer} />
+        <RecipeDrawerList recipes={recipes} />
       </div>
     </div>`
+
+  updateDrawerSize: ->
+    wrapper = document.getElementById("recipe_drawer_wrapper")
+    values = if @state.open then { bottom: "#{@drawerHeight()}px", height: "0px" } else { bottom: "0px", height: "48px" }
+    
+    wrapper.style.bottom = values.bottom
+    wrapper.style.height = values.height
+  
+
+  drawerHeight: ->
+    Math.min.apply Math, [
+      @drawerContentHeight()
+      window.innerHeight
+    ]
+
+  drawerContentHeight: ->
+    drawerWrapper = document.getElementById('recipe_drawer_wrapper')
+    cardHeader = drawerWrapper.getElementsByClassName("card-header")[0]
+    recipeList = drawerWrapper.getElementsByClassName("list-group")[0]
+    cardHeader.offsetHeight + recipeList.offsetHeight
+
+    

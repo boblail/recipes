@@ -11,9 +11,7 @@
   -o-transition: .25s ease-in-out;
   transition: .25s ease-in-out;
 
-  #recipe_drawer {
-    border: none;
-  }
+  min-height: 0px; // Overwrites bootstrap default
 
   #drawer_background {
     background-color: white;
@@ -21,6 +19,7 @@
 
   .card-header {
     background-color: $navbar-background;
-    color: $navbar-grey
+    color: $navbar-grey;
+    border-radius: unset;
   }
 }
