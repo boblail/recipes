@@ -18,12 +18,13 @@ class @RecipeDrawer extends React.Component
   render: ->
     recipes = @props.recipes
 
-    `<div id="recipe_drawer_wrapper" className="col-lg-4 offset-lg-1 col-md-6 offset-md-2 col-sm-12">
+    `<div id="recipe_drawer_wrapper" className="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-12">
       <div id="drawer_background" style={{height: window.offsetHeight}}>
         <RecipeDrawerHeader recipeCount={recipes.length}
                             open={this.state.open}
                             toggleDrawer={this.toggleDrawer} />
         <RecipeDrawerList recipes={recipes} />
+        <RecipeDrawerFooter />
       </div>
     </div>`
 
@@ -43,8 +44,14 @@ class @RecipeDrawer extends React.Component
 
   drawerContentHeight: ->
     drawerWrapper = document.getElementById('recipe_drawer_wrapper')
-    cardHeader = drawerWrapper.getElementsByClassName("card-header")[0]
-    recipeList = drawerWrapper.getElementsByClassName("list-group")[0]
-    cardHeader.offsetHeight + recipeList.offsetHeight
+    drawerParts = [
+      "card-header"
+      "card-footer"
+      "list-group"
+    ]
+    
+    drawerParts.reduce ((total, className) ->
+      total + drawerWrapper.getElementsByClassName(className)[0].offsetHeight
+    ), 0
 
     

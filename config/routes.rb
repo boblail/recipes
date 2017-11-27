@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   put "menu-plans/:id", to: "menu_plans#update"
 
+  get "shopping-list", to: "menu_plans#shopping_list"
+
   root to: "recipes#all_recipes"
 
 end

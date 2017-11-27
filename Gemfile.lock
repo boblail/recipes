@@ -9,6 +9,14 @@ GIT
       nokogiri (>= 1.5)
       oj
 
+GIT
+  remote: https://github.com/cookpad/ingreedy.git
+  revision: 818e4bf923047c44d395407cf3bd669857946ac5
+  branch: master
+  specs:
+    ingreedy (0.0.9)
+      parslet (~> 1.7.0, >= 1.7.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -75,6 +83,7 @@ GEM
       execjs (~> 2.0)
     bcrypt (3.1.12)
     bindex (0.5.0)
+    blankslate (3.1.3)
     bootsnap (1.3.2)
       msgpack (~> 1.0)
     builder (3.2.3)
@@ -183,6 +192,8 @@ GEM
       oauth2 (~> 1.1)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
+    parslet (1.7.1)
+      blankslate (>= 2.0, <= 4.0)
     pg (1.1.3)
     pg_search (2.1.2)
       activerecord (>= 4.2)
@@ -305,6 +316,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   hangry!
+  ingreedy!
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   mini_magick

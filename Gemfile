@@ -20,6 +20,7 @@ gem "cancan"
 gem "omniauth-google-oauth2"
 gem "devise"
 gem "hangry", github: "boblail/hangry", branch: "master"
+gem "ingreedy", github: "cookpad/ingreedy", branch: "master"
 gem "redcarpet"
 
 gem "turbolinks", "~> 5.0.0"

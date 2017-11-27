@@ -78,6 +78,16 @@ class Recipe < ApplicationRecord
       "source",
       "photo_id")
   end
+  
+  def parsed_ingredients
+    ingredients.split(/\n/).map do |ingredient|
+      begin
+        Ingreedy.parse(ingredient)
+      rescue Ingreedy::ParseFailed
+        Ingreedy::Parser::Result.new(nil, nil, nil, nil, ingredient, ingredient)
+      end
+    end
+  end
 
 protected
 
