@@ -25,7 +25,7 @@ removeRecipe = (recipe) ->
 
 $ ->
   $(document).on 'submit', 'form[method=get]', (e)->
-    Turbolinks.visit "#{@action.replace(/\?.*/, "")}?#{$(@).serialize()}"
+    Turbolinks.visit "#{@action.replace(/\?.*/, "")}?#{$(@).serialize()}", action: "replace"
     false
 
 document.addEventListener 'turbolinks:load', ->
