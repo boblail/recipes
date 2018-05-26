@@ -2,6 +2,7 @@ class Cookbook < ApplicationRecord
 
   has_many :users
   has_many :recipes, -> { select("*", '(select avg(value) from ratings where ratings.recipe_id=recipes.id) "average_rating"') }
+  has_many :preparations, through: :recipes
   has_many :menu_plans
   belongs_to :current_menu_plan, class_name: "MenuPlan", required: false
   has_many :tags

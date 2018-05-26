@@ -1,8 +1,6 @@
 <h1>
   My Recipes
 
-  <%= link_to "Index", tags_url %>
-
   <% if can? :create, Recipe %>
     <% if mobile_app? %>
       <% content_for :meta do %>

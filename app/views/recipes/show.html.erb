@@ -20,28 +20,10 @@
   </h1>
 
   <div class="recipe-metadata">
-    <span class="recipe-author">Added by <%= avatar_for @recipe.created_by, size: 16 %> <b><%= @recipe.created_by.name %></b></span> <span class="recipe-created" title="<%= @recipe.created_at.strftime("%b %e %Y, %l:%M %p") %>"><%= time_ago_in_words @recipe.created_at %> ago</span>
+    <span class="recipe-author">Added by <%= describe_user @recipe.created_by %></span> <span class="recipe-created" title="<%= @recipe.created_at.strftime("%b %e %Y, %l:%M %p") %>"><%= time_ago_in_words @recipe.created_at %> ago</span>
 
     <div class="recipe-made">
-      <%= last_preparation_of @recipe %>
-
-      <% if can?(:update, @recipe) %>
-        <div class="dropdown">
-          <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="add_preparation" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            I made this
-          </button>
-          <div class="dropdown-menu" aria-labelledby="add_preparation">
-            <%= form_tag recipe_preparations_url(@recipe), class: "preparation-form" do %>
-              <div class="datepicker-container" for="preparation_date"></div>
-              <input type="hidden" name="prepared_on" id="preparation_date" value="<%= Date.today %>" />
-
-              <textarea name="comments" id="preparation_comments" placeholder="Comments" class="form-control"></textarea>
-
-              <button class="btn btn-primary btn-sm pull-right">Save</button>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
+      <%= last_preparation_of @recipe, link_to: "#history" %>
     </div>
 
     <% unless @recipe.source.blank? %>
@@ -70,7 +52,54 @@
   <% if current_user %>
     <h4>Ratings</h4>
     <%= ratings_for @recipe %>
+
+    <h4 id="history">History</h4>
+
+    <% if can?(:update, @recipe) %>
+      <div class="dropdown">
+        <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="add_preparation" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          I made this
+        </button>
+        <div class="dropdown-menu" aria-labelledby="add_preparation">
+          <%= form_tag recipe_preparations_url(@recipe), class: "preparation-form" do %>
+            <div class="datepicker-container" for="preparation_date"></div>
+            <input type="hidden" name="prepared_on" id="preparation_date" value="<%= Date.today %>" />
+
+            <textarea name="comments" id="preparation_comments" placeholder="Comments" class="form-control"></textarea>
+
+            <button class="btn btn-primary btn-sm pull-right">Save</button>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @recipe.preparations.empty? %>
+      <p>Haven't made this recipe</p>
+    <% else%>
+      <ol class="recipe-history">
+        <% @recipe.preparations.each do |preparation|
+          date = preparation.prepared_on %>
+
+          <li class="recipe recipe-history">
+            <div class="recipe-history-date date">
+              <span class="weekday"><%= date.strftime("%a") %></span>
+              <span class="month"><%= date.strftime("%b") %></span>
+              <span class="day"><%= date.strftime("%-d") %></span>
+              <span class="year"><%= date.strftime("%Y") %></span
+
+              ><span class="preparer"><%= describe_user preparation.prepared_by %></span>
+            </div>
+
+            <div class="recipe-history-comments">
+              <%= preparation.comments %>
+            </div>
+          </li>
+        <% end %>
+      </ol>
+    <% end %>
+
   <% end %>
+
 
   <%= microformat @recipe %>
 </section>

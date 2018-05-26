@@ -22,18 +22,15 @@ form.search-form {
   }
 }
 
-ul.recipes {
+.recipes {
   padding: 0;
 
   .recipe {
     list-style: none;
     position: relative;
 
-    display: inline-block;
     break-inside: avoid;
-    border-radius: 5px;
-    margin: 2.5em 0;
-    width: 100%;
+    padding: 2.5em 0;
   }
 
   .label-new {
@@ -169,12 +166,12 @@ ul.recipes {
         }
       }
       &.menu-plan-add-button {
-        color: #ddd;
+        color: $light-gray;
 
         &::after { content: 'add to\AMenu Plan'; }
 
         &::before {
-          background: #ddd;
+          background: $light-gray;
           content: '\f067';
         }
 
@@ -236,9 +233,9 @@ ul.recipes {
 }
 
 @media (min-width: 540px) {
-  ul.recipes {
+  .recipes {
     .recipe {
-      margin: 2em 0 0;
+      padding: 2em 0 0;
     }
 
     .recipe-row {

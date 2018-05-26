@@ -1,0 +1,66 @@
+@import "variables";
+
+@media (min-width: 540px) {
+
+  $indent: 4.5rem;
+  $dot-size: 1rem;
+
+  .recipes.history {
+    .recipe {
+      margin-left: $indent;
+      border-left: 4px solid $light-gray;
+      position: relative;
+
+      .rating {
+        float: right;
+      }
+
+      .recipe-history-date {
+        position: absolute;
+        top: 50%;
+        left: -$indent;
+        width: $indent;
+        padding-right: 1.33rem;
+        margin-top: -0.15em;
+      }
+
+      &::after {
+        content: '.';
+        width: $dot-size;
+        height: $dot-size;
+        border-radius: $dot-size;
+        border: 4px solid $light-gray;
+        display: block;
+        background: white;
+        color: transparent;
+        position: absolute;
+        top: 50%;
+        left: -($dot-size / 2);
+        margin: ($dot-size / 4) 0 0 (-$dot-size / 8);
+      }
+    }
+
+    .date {
+      line-height: 1.125;
+      text-align: right;
+
+      .weekday {
+        display: block;
+        font-size: 0.5em;
+        font-weight: bold;
+        color: #aaa;
+        text-transform: uppercase;
+        letter-spacing: 0.0625em;
+      }
+      .month {
+        font-size: 0.75em;
+        font-weight: 900;
+      }
+      .day {
+      }
+      .year {
+        display: none;
+      }
+    }
+  }
+}

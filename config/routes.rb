@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   get "tags", to: "tags#index", as: :tags
 
+  get "history", to: "history#index", as: :history
+
   put "menu-plans/:id", to: "menu_plans#update"
 
   root to: "recipes#all_recipes"
