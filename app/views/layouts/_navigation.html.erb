@@ -17,7 +17,7 @@
           <a class="dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= avatar_for(current_user, size: 36) %>
           </a>
-          <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdownMenuLink">
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
             <%= link_to "My Recipes", my_recipes_path, class: "dropdown-item" %>
             <%= link_to "Index", tags_path, class: "dropdown-item" %>
             <%= link_to "History", history_path, class: "dropdown-item" %>
