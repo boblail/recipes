@@ -14,6 +14,7 @@
 
 <% if current_user.cookbook.recipes.exists? %>
 
+  <%= form_tag my_recipes_path, method: :get, class: "search-form" do %>
   <form method="get" class="search-form">
     <div class="input-group" role="group">
       <%= text_field_tag :q, params[:q], autofocus: true, placeholder: search_placeholder, class: "form-control" %>
@@ -26,7 +27,7 @@
       <%= radio_button :s, "m", "Only recipes I've made before", @filter %>
       <%= radio_button :s, "n", "Only new recipes", @filter %>
     </fieldset>
-  </form>
+  <% end %>
 
   <% if @recipes.any? %>
     <ul class="recipes">
