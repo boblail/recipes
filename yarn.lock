@@ -18,9 +18,9 @@ bootstrap-tagsinput@^0.7.1:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/bootstrap-tagsinput/-/bootstrap-tagsinput-0.7.1.tgz#ffe3b06bbe2a106945ef2814568005a94f211937"
 
-bootstrap@4.0.0-beta:
-  version "4.0.0-beta"
-  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.0.0-beta.tgz#dc5928175d2e71310bc668cf9e05a907211b72a6"
+bootstrap@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.0.0.tgz#ceb03842c145fcc1b9b4e15da2a05656ba68469a"
 
 jquery@>=1.7, "jquery@>=1.7.1 <4.0.0":
   version "3.2.1"
