@@ -5,14 +5,14 @@
 
 ### Prerequisites
 
- - Ruby 2.3.1
+ - Ruby 2.5.1
  - Postgres
 
 If you're on a Mac, install Ruby with
 
     brew install rbenv
     rbenv init
-    rbenv install 2.3.1
+    rbenv install 2.5.1
 
 and install Postgres with the excellent [Postgres.app](https://postgresapp.com)
 

@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby "2.3.1"
+ruby "2.5.1"
 
 # Use https:// rather than git:// as the protocol for gems installed
 # from GitHub. This will be the default in Bundler 2.0 and resolves
