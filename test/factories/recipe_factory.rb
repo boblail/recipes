@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :recipe do
     name "Factory Recipe"
-    ingredients "Factory Ingredients"
+    ingredients "1 cup of sugar"
     instructions "Factory Instructions"
 
     association :created_by, factory: :user

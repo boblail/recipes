@@ -4,38 +4,54 @@ class @RecipeDrawer extends React.Component
 
   constructor: (props) ->
     super props
-    @state =
-      open: false
+    @state = open: false
 
-  handleClick: =>
-    drawerWrapper = document.getElementById('recipe_drawer_wrapper')
+    @toggleDrawer = @toggleDrawer.bind @
 
-    if @state.open
-      drawerWrapper.style.bottom = "0px"
-      drawerWrapper.style.height = "48px"
-    else
-      offsetHeight = document.getElementById('recipe_drawer').offsetHeight
-      drawerWrapper.style.bottom = "#{offsetHeight}px"
-      drawerWrapper.style.height = "0px"
+  componentDidUpdate: ->
+    @updateDrawerSize()
 
-    @setState
-      open: !@state.open
+  toggleDrawer: =>
+    @setState (prevState) ->
+      open: !prevState.open
 
   render: ->
     recipes = @props.recipes
 
-    unless recipes.isEmpty()
-      recipeList = recipes.map (recipe) ->
-        `<DrawerRecipe key={recipe.get('id')}
-                    recipe={recipe}/>`
-    else
-      recipeList = "No Recipes"
-
-    `<div className="card" id="recipe_drawer" onClick={this.handleClick}>
-      <div className="card-header">
-        My Recipes <span className="badge badge-secondary">{recipes.length}</span>
+    `<div id="recipe_drawer_wrapper" className="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-12">
+      <div id="drawer_background" style={{height: window.offsetHeight}}>
+        <RecipeDrawerHeader recipeCount={recipes.length}
+                            open={this.state.open}
+                            toggleDrawer={this.toggleDrawer} />
+        <RecipeDrawerList recipes={recipes} />
+        <RecipeDrawerFooter />
       </div>
-      <ul className="list-group">
-        {recipeList}
-      </ul>
     </div>`
+
+  updateDrawerSize: ->
+    wrapper = document.getElementById("recipe_drawer_wrapper")
+    values = if @state.open then { bottom: "#{@drawerHeight()}px", height: "0px" } else { bottom: "0px", height: "48px" }
+    
+    wrapper.style.bottom = values.bottom
+    wrapper.style.height = values.height
+  
+
+  drawerHeight: ->
+    Math.min.apply Math, [
+      @drawerContentHeight()
+      window.innerHeight
+    ]
+
+  drawerContentHeight: ->
+    drawerWrapper = document.getElementById('recipe_drawer_wrapper')
+    drawerParts = [
+      "card-header"
+      "card-footer"
+      "list-group"
+    ]
+    
+    drawerParts.reduce ((total, className) ->
+      total + drawerWrapper.getElementsByClassName(className)[0].offsetHeight
+    ), 0
+
+    

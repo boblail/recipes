@@ -7,4 +7,8 @@ class MenuPlansController < ApplicationController
     render json: {}
   end
 
+  def shopping_list
+    @menu_plan = current_user.current_menu_plan
+  end
+
 end

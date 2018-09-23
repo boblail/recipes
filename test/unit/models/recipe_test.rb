@@ -26,4 +26,13 @@ class RecipeTest < ActiveSupport::TestCase
     end
   end
 
+  context "#parsed_ingredients" do
+    setup do
+      @recipe = create(:recipe)
+    end
+
+    should "return Ingreedy parsed ingredients" do
+      assert_kind_of Ingreedy::Parser::Result, @recipe.parsed_ingredients.first
+    end
+  end
 end

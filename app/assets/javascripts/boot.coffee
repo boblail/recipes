@@ -7,21 +7,9 @@ drawRecipeMenuPlanControls = ($recipe) ->
   else
     $menuPlan.html '<button class="menu-plan-add-button" title="Add to Menu Plan"></button>'
 
-drawMenuPlanRecipeTotal = ->
-  totalRecipes = window.currentMenuPlan.recipes().length
-  $('.recipe-count').text(totalRecipes)
-
 drawRecipeDrawer = ->
-  recipeDrawer = document.getElementById("recipe_drawer_wrapper")
-  ReactDOM.render(React.createElement(RecipeDrawer, recipes: window.currentMenuPlan.recipes()), recipeDrawer) if recipeDrawer
-
-removeRecipe = (recipe) ->
-  id = recipe.get('id')
-  window.currentMenuPlan.removeRecipeId(id)
-  $recipe = $("ul.recipes [data-id=#{id}]")
-
-  drawRecipeMenuPlanControls($recipe)
-  drawMenuPlanRecipeTotal()
+  recipeDrawer = document.getElementById("recipe_drawer_root")
+  ReactDOM.render(React.createElement(RecipeDrawer, recipes: window.currentMenuPlan.recipes()), recipeDrawer)
 
 $ ->
   $(document).on 'submit', 'form[method=get]', (e)->
@@ -62,7 +50,6 @@ document.addEventListener 'turbolinks:load', ->
       window.currentMenuPlan.removeRecipeId(id)
 
       drawRecipeMenuPlanControls($recipe)
-      drawMenuPlanRecipeTotal()
       drawRecipeDrawer()
 
     $(document.body).on 'click', '.menu-plan-add-button', (e) ->
@@ -73,10 +60,8 @@ document.addEventListener 'turbolinks:load', ->
         drawRecipeDrawer()
 
       drawRecipeMenuPlanControls($recipe)
-      drawMenuPlanRecipeTotal()
 
     $('.recipe').each ->
       drawRecipeMenuPlanControls(@)
 
-    drawMenuPlanRecipeTotal()
     drawRecipeDrawer()

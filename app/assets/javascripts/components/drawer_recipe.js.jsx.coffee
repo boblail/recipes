@@ -4,5 +4,7 @@ class @DrawerRecipe extends React.Component
 
   render: ->
     `<li className='list-group-item'>
-      { this.props.recipe.get('name') }
+      <a href={'/recipes/' +  this.props.recipe.get('id')}>
+        { this.props.recipe.get('name') }
+      </a>
     </li>`
