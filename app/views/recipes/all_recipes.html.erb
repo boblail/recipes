@@ -1,7 +1,12 @@
 <h1>All Recipes</h1>
 
 <form method="get" class="search-form">
-  <%= text_field_tag :q, params[:q], autofocus: true, placeholder: "Search", class: "form-control" %>
+  <div class="input-group" role="group">
+    <%= text_field_tag :q, params[:q], autofocus: true, placeholder: search_placeholder, class: "form-control" %>
+    <div class="input-group-append">
+      <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+  </div>
 </form>
 
 <% if @recipes.any? %>
