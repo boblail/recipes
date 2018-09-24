@@ -1,5 +1,5 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :cookbook do
-    name "Factory Cookbook"
+    name { "Factory Cookbook" }
   end
 end
