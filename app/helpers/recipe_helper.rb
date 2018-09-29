@@ -35,9 +35,9 @@ module RecipeHelper
   end
 
   def format_source(source)
-    if source =~ /:\/\//
+    begin
       link_to URI(source).host, source
-    else
+    rescue URI::InvalidURIError
       h source
     end
   end
