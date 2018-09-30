@@ -1,5 +1,7 @@
 @import "variables";
 
+$button-size: 1.33em;
+
 #recipe_drawer_wrapper {
   position: fixed;
   bottom: 0px;
@@ -21,5 +23,44 @@
     background-color: $navbar-background;
     color: $navbar-grey;
     border-radius: unset;
+  }
+
+  .list-group-item {
+    padding: 0;
+    display: flex;
+
+    > a {
+      display: block;
+      padding: 0.75rem 1.25rem;
+    }
+
+    a.recipe-link {
+      flex-grow: 1;
+    }
+
+    a.remove-recipe {
+      cursor: pointer;
+      width: $button-size;
+      height: $button-size;
+      padding: 0;
+      margin: (3em - $button-size) / 2;
+
+      overflow: hidden;
+      color: transparent;
+      background: $delete-red;
+      border-radius: $button-size;
+
+      &::before {
+        color: white;
+        font-family: FontAwesome;
+        font-size: 0.9em;
+        line-height: 1.677em;
+        text-align: center;
+        display: block;
+        width: 100%;
+        height: 100%;
+        content: $minus-icon;
+      }
+    }
   }
 }

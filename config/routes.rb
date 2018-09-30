@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   post "photos", to: "photos#create"
 
-  get "all-recipes", to: "recipes#all_recipes"
+  get "all-recipes", to: "recipes#all_recipes", as: :all_recipes
   get "my-recipes", to: "recipes#my_recipes", as: :my_recipes
 
   get "tags", to: "tags#index", as: :tags

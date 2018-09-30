@@ -46,20 +46,20 @@ document.addEventListener 'turbolinks:load', ->
     $(document.body).on 'click', '.menu-plan-remove-button', (e) ->
       $recipe = $(e.target).closest('.recipe')
       id = $recipe.attr('data-id')
-
       window.currentMenuPlan.removeRecipeId(id)
-
-      drawRecipeMenuPlanControls($recipe)
-      drawRecipeDrawer()
 
     $(document.body).on 'click', '.menu-plan-add-button', (e) ->
       $recipe = $(e.target).closest('.recipe')
       id = $recipe.attr('data-id')
+      window.currentMenuPlan.addRecipe(id)
 
-      window.currentMenuPlan.addRecipe(id).then ->
-        drawRecipeDrawer()
+    window.currentMenuPlan.on 'recipe:remove', (id) ->
+      drawRecipeMenuPlanControls($ "[data-id=#{id}]")
+      drawRecipeDrawer()
 
-      drawRecipeMenuPlanControls($recipe)
+    window.currentMenuPlan.on 'recipe:add', (id) ->
+      drawRecipeMenuPlanControls($ "[data-id=#{id}]")
+      drawRecipeDrawer()
 
     $('.recipe').each ->
       drawRecipeMenuPlanControls(@)

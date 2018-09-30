@@ -7,21 +7,27 @@
         <link rel="mobile-navigation" href="<%= new_recipe_url %>" title="New Recipe" />
       <% end %>
     <% else %>
-      <%= link_to "New Recipe", new_recipe_path, class: "btn btn-primary pull-right" %>
+      <%= link_to "New Recipe", new_recipe_path, class: "btn btn-primary btn-sm" %>
     <% end %>
   <% end %>
 </h1>
 
 <% if current_user.cookbook.recipes.exists? %>
 
+  <%= form_tag my_recipes_path, method: :get, class: "search-form" do %>
   <form method="get" class="search-form">
-    <%= text_field_tag :q, params[:q], autofocus: true, placeholder: "Search", class: "form-control" %>
+    <div class="input-group" role="group">
+      <%= text_field_tag :q, params[:q], autofocus: true, placeholder: search_placeholder, class: "form-control" %>
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </div>
     <fieldset class="search-filters">
       <%= radio_button :s, "a", "All my recipes", @filter %>
       <%= radio_button :s, "m", "Only recipes I've made before", @filter %>
       <%= radio_button :s, "n", "Only new recipes", @filter %>
     </fieldset>
-  </form>
+  <% end %>
 
   <% if @recipes.any? %>
     <ul class="recipes">

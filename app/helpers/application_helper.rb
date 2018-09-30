@@ -4,6 +4,10 @@ module ApplicationHelper
     "/recipes"
   end
 
+  def search_placeholder
+    PLACEHOLDERS.sample
+  end
+
   def bookmarklet_url
     script = "(function(){window.open('#{new_recipe_url}?url='+encodeURIComponent(window.location))})()"
     "javascript:#{URI.encode(script)}"
@@ -18,5 +22,16 @@ module ApplicationHelper
       </label>
     HTML
   end
+
+  PLACEHOLDERS = %w{
+    chicken
+    salad
+    hamburgers
+    grill
+    tomato
+    keto
+    chocolate
+    cocktail
+  }.freeze
 
 end

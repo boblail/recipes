@@ -3,8 +3,12 @@ class @DrawerRecipe extends React.Component
     recipe: React.PropTypes.object
 
   render: ->
-    `<li className='list-group-item'>
-      <a href={'/recipes/' +  this.props.recipe.get('id')}>
+    id = this.props.recipe.get('id')
+    removeRecipe = -> window.currentMenuPlan.removeRecipeId(id)
+
+    `<li className="list-group-item">
+      <a className="recipe-link" href={'/recipes/' +  id}>
         { this.props.recipe.get('name') }
       </a>
+      <a className="remove-recipe" onClick={removeRecipe}>Remove</a>
     </li>`
