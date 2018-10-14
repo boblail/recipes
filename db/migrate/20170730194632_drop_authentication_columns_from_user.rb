@@ -1,4 +1,4 @@
-class DropAuthenticationColumnsFromUser < ActiveRecord::Migration
+class DropAuthenticationColumnsFromUser < ActiveRecord::Migration[4.2]
   def up
     remove_column :users, :encrypted_password
     remove_column :users, :reset_password_token

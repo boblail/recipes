@@ -1,4 +1,4 @@
-class ReplaceBobAndRachelWithRatings < ActiveRecord::Migration
+class ReplaceBobAndRachelWithRatings < ActiveRecord::Migration[4.2]
   def up
     remove_column :recipes, :bob
     remove_column :recipes, :rachel

@@ -1,4 +1,4 @@
-class CreateCookbooks < ActiveRecord::Migration
+class CreateCookbooks < ActiveRecord::Migration[4.2]
   def up
     remove_column :users, :family_members
 

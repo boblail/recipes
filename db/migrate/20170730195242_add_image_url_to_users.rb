@@ -1,4 +1,4 @@
-class AddImageUrlToUsers < ActiveRecord::Migration
+class AddImageUrlToUsers < ActiveRecord::Migration[4.2]
   def change
     add_column :users, :image_url, :string
   end

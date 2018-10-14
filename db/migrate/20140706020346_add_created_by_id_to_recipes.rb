@@ -1,4 +1,4 @@
-class AddCreatedByIdToRecipes < ActiveRecord::Migration
+class AddCreatedByIdToRecipes < ActiveRecord::Migration[4.2]
   def up
     add_column :recipes, :created_by_id, :integer
 
