@@ -10,14 +10,22 @@ a.link-no-ui {
 
 form.search-form {
   fieldset {
-    margin: 0.25rem 0 0;
+    margin: 0.5rem 0 0;
+
+    .radio-button {
+      margin: 0 0.25em 0 0;
+    }
+
+    input[checked] ~ span {
+      color: #212529 // body-color
+    }
 
     label {
-      vertical-align: middle;
       margin: 0 0.5rem 0 0.125rem;
       font-size: 0.88em;
-      font-weight: 700;
+      font-weight: normal;
       white-space: nowrap;
+      color: #777;
     }
   }
 }
