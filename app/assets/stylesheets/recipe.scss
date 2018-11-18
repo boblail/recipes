@@ -87,18 +87,6 @@ section.recipe {
         font-weight: 900;
       }
       .day::after { content: ','; }
-
-      .preparer {
-        &::before {
-          content: '•';
-          font-weight: 100;
-          margin: 0 0.5em;
-        }
-
-        img.avatar {
-          vertical-align: text-bottom;
-        }
-      }
     }
   }
 }
