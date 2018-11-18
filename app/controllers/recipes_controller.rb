@@ -11,8 +11,10 @@ class RecipesController < ApplicationController
     @title = "My Recipes"
     @filter = params.fetch(:s, "a")
     @recipes = current_user.cookbook.recipes.most_popular_first.preload(:photo, :tags).unarchived
-    @recipes = @recipes.where(new_recipe: false) if @filter == "m"
-    @recipes = @recipes.where(new_recipe: true) if @filter == "n"
+    @recipes = @recipes.favorites if @filter == "f"
+    @recipes = @recipes.untried.newest_first if @filter == "n"
+    @recipes = @recipes.unrated_by(current_user).made_most_recently_first if @filter == "u"
+    @recipes = @recipes.archived.sorted_alphabetically if @filter == "x"
     @recipes = @recipes.search params[:q] unless params[:q].blank?
   end
 

@@ -23,9 +23,11 @@
       </div>
     </div>
     <fieldset class="search-filters">
-      <%= radio_button :s, "a", "<span>All my recipes</span>".html_safe, @filter %>
-      <%= radio_button :s, "m", "<span>Only recipes I've made before</span>".html_safe, @filter %>
-      <%= radio_button :s, "n", "<span>Only new recipes</span>".html_safe, @filter %>
+      <%= radio_button :s, "a", "<span>All recipes</span>".html_safe, @filter %>
+      <%= radio_button :s, "f", "<span>Favorites</span>".html_safe, @filter %>
+      <%= radio_button :s, "n", "<span>New</span>".html_safe, @filter %>
+      <%= radio_button :s, "u", "<span>Unrated</span>".html_safe, @filter %>
+      <%= radio_button :s, "x", "<span>Archived</span>".html_safe, @filter %>
     </fieldset>
   <% end %>
 

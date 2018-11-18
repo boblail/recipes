@@ -35,7 +35,35 @@ class Recipe < ApplicationRecord
     end
 
     def most_popular_first
-      order("coalesce((select avg(value) from ratings where recipe_id=recipes.id), 3) desc")
+      reorder("coalesce((select avg(value) from ratings where recipe_id=recipes.id), 3) desc")
+    end
+
+    def made_most_recently_first
+      reorder("(select max(prepared_on) from preparations where recipe_id=recipes.id) desc nulls last")
+    end
+
+    def tried
+      where(new_recipe: false)
+    end
+
+    def untried
+      where(new_recipe: true)
+    end
+
+    def newest_first
+      reorder(created_at: :desc)
+    end
+
+    def sorted_alphabetically
+      reorder(name: :asc)
+    end
+
+    def favorites
+      where("(select avg(value) from ratings where recipe_id=recipes.id) >= 3")
+    end
+
+    def unrated_by(user)
+      tried.where("not exists (select 1 from ratings where recipe_id=recipes.id and user_id=#{user.id})")
     end
 
     def without_copies
@@ -49,11 +77,11 @@ class Recipe < ApplicationRecord
     end
 
     def unarchived
-      where(archived_at: nil)
+      unscope(where: :archived_at).where(archived_at: nil)
     end
 
     def archived
-      where.not(archived_at: nil)
+      unscope(where: :archived_at).where.not(archived_at: nil)
     end
   end
 
