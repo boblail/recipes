@@ -16,6 +16,10 @@ $ ->
     Turbolinks.visit "#{@action.replace(/\?.*/, "")}?#{$(@).serialize()}", action: "replace"
     false
 
+  $(document).ajaxSend (e, jqxhr, settings)=>
+    return if settings.type is 'GET'
+    jqxhr.setRequestHeader 'X-CSRF-Token', $('meta[name="csrf-token"]').attr('content')
+
 document.addEventListener 'turbolinks:load', ->
 
   # only applies to recipes#show
