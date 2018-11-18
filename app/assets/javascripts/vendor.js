@@ -10,10 +10,15 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require_tree ./channels
-//= require_tree ./components
-//= require_tree ./models
-//= require boot
-//= require bootstrap-rating-input
-//= require cable
-//= require jquery_extensions
+//= require rails-ujs
+//= require turbolinks
+//= require jquery/dist/jquery.js
+//= require popper.js/dist/umd/popper.js
+//= require underscore/underscore
+//= require backbone/backbone
+//= require moment/moment
+//= require bootstrap/dist/js/bootstrap
+//= require bootstrap-tagsinput/dist/bootstrap-tagsinput
+//= require bootstrap-datepicker/dist/js/bootstrap-datepicker
+//= require typeahead.js/dist/typeahead.bundle.min
+//= require react
