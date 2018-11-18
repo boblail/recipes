@@ -83,7 +83,7 @@
       <br/><br/>
       <div>
         <% if @recipe.persisted? %>
-          <%= link_to "Destroy", @recipe, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+          <%= link_to "Delete", @recipe, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
         <% end %>
 
         <button type="submit" class="btn btn-primary pull-right"><%= @recipe.persisted? ? "Update" : "Create" %> Recipe</button>
