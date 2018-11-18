@@ -17,21 +17,21 @@
     <div class="form-group">
       <%= f.label :name, class: "control-label" %>
       <div>
-        <%= f.text_field :name, autofocus: true, class: "form-control" %>
+        <%= f.text_field :name, autofocus: true, readonly: @recipe.archived?, class: "form-control" %>
       </div>
     </div>
 
     <div class="form-group">
       <%= f.label :ingredients, class: "control-label" %>
       <div>
-        <%= f.text_area :ingredients, class: "form-control" %>
+        <%= f.text_area :ingredients, readonly: @recipe.archived?, class: "form-control" %>
       </div>
     </div>
 
     <div class="form-group">
       <%= f.label :instructions, class: "control-label" %>
       <div>
-        <%= f.text_area :instructions, class: "form-control" %>
+        <%= f.text_area :instructions, readonly: @recipe.archived?, class: "form-control" %>
       </div>
     </div>
 
@@ -40,21 +40,21 @@
     <div class="form-group">
       <%= f.label :tags, class: "control-label" %>
       <div>
-        <%= f.text_field :tags, value: @recipe.tags.pluck(:name).join(","), class: "form-control" %>
+        <%= f.text_field :tags, readonly: @recipe.archived?, value: @recipe.tags.pluck(:name).join(","), class: "form-control" %>
       </div>
     </div>
 
     <div class="form-group">
       <%= f.label :source, class: "control-label" %>
       <div>
-        <%= f.text_field :source, value: @recipe.source, class: "form-control" %>
+        <%= f.text_field :source, readonly: @recipe.archived?, value: @recipe.source, class: "form-control" %>
       </div>
     </div>
 
     <div class="form-group">
       <%= f.label :servings, class: "control-label" %>
       <div>
-        <%= f.text_field :servings, value: @recipe.servings, class: "form-control" %>
+        <%= f.text_field :servings, readonly: @recipe.archived?, value: @recipe.servings, class: "form-control" %>
       </div>
     </div>
 
@@ -72,7 +72,7 @@
   <% unless @recipe.preparations.exists? %>
     <div>
       <label for="recipe_new_recipe">
-        <%= f.check_box :new_recipe, {}, false, true %>
+        <%= f.check_box :new_recipe, { readonly: @recipe.archived? }, false, true %>
         <label for="recipe_new_recipe" class="check-box"></label>
         I've made this
       </label>
@@ -82,11 +82,21 @@
     <div class="form-group">
       <br/><br/>
       <div>
-        <% if @recipe.persisted? %>
-          <%= link_to "Delete", @recipe, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+        <% if @recipe.persisted? && !@recipe.archived? %>
+          <% if @recipe.preparations.exists? %>
+            <%= link_to "Archive", @recipe, method: :delete, class: "btn btn-danger" %>
+          <% else %>
+            <%= link_to "Delete", @recipe, method: :delete, class: "btn btn-danger" %>
+          <% end %>
         <% end %>
 
-        <button type="submit" class="btn btn-primary pull-right"><%= @recipe.persisted? ? "Update" : "Create" %> Recipe</button>
+        <% if @recipe.archived? %>
+          <button type="submit" name="recipe[archived_at]" class="btn btn-primary pull-right">Unarchive</button>
+        <% elsif @recipe.persisted? %>
+          <button type="submit" class="btn btn-primary pull-right">Update Recipe</button>
+        <% else %>
+          <button type="submit" class="btn btn-primary pull-right">Create Recipe</button>
+        <% end %>
       </div>
     </div>
   <% end %>

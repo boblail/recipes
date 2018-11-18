@@ -47,6 +47,14 @@ class Recipe < ApplicationRecord
         copy.copy_of! recipe
       end
     end
+
+    def unarchived
+      where(archived_at: nil)
+    end
+
+    def archived
+      where.not(archived_at: nil)
+    end
   end
 
   def yumminess(user=nil)
@@ -78,7 +86,7 @@ class Recipe < ApplicationRecord
       "source",
       "photo_id")
   end
-  
+
   def parsed_ingredients
     ingredients.split(/\n/).map do |ingredient|
       begin
@@ -87,6 +95,18 @@ class Recipe < ApplicationRecord
         Ingreedy::Parser::Result.new(nil, nil, nil, nil, ingredient, ingredient)
       end
     end
+  end
+
+  def destroy
+    preparations.exists? ? archive : super
+  end
+
+  def archive
+    touch :archived_at
+  end
+
+  def archived?
+    archived_at.present?
   end
 
 protected

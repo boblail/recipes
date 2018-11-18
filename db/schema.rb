@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2017_08_19_185553) do
+ActiveRecord::Schema.define(version: 2018_11_18_204718) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 2017_08_19_185553) do
     t.bigint "copy_of_id"
     t.boolean "new_recipe", default: true, null: false
     t.date "last_prepared_on"
+    t.datetime "archived_at"
     t.index ["cookbook_id"], name: "index_recipes_on_cookbook_id"
     t.index ["copy_of_id"], name: "index_recipes_on_copy_of_id"
     t.index ["search_vector"], name: "index_recipes_on_search_vector", using: :gin

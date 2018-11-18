@@ -3,14 +3,14 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, only: [:my_recipes, :edit, :new, :create, :update, :destroy]
 
   def all_recipes
-    @recipes = Recipe.order(:name).preload(:photo, :tags).without_copies
+    @recipes = Recipe.order(:name).preload(:photo, :tags).without_copies.unarchived
     @recipes = @recipes.search params[:q] unless params[:q].blank?
   end
 
   def my_recipes
     @title = "My Recipes"
     @filter = params.fetch(:s, "a")
-    @recipes = current_user.cookbook.recipes.most_popular_first.preload(:photo, :tags)
+    @recipes = current_user.cookbook.recipes.most_popular_first.preload(:photo, :tags).unarchived
     @recipes = @recipes.where(new_recipe: false) if @filter == "m"
     @recipes = @recipes.where(new_recipe: true) if @filter == "n"
     @recipes = @recipes.search params[:q] unless params[:q].blank?
@@ -23,7 +23,6 @@ class RecipesController < ApplicationController
       format.html
       format.json { render json: @recipe }
     end
-
   end
 
   def new
@@ -92,7 +91,7 @@ private
   def recipe_params
     attributes = params
       .require(:recipe)
-      .permit(:name, :ingredients, :instructions, :source, :tags, :servings, :photo_id, :copy_of_id, :new_recipe)
+      .permit(:name, :ingredients, :instructions, :source, :tags, :servings, :photo_id, :copy_of_id, :new_recipe, :archived_at)
     attributes.merge(tags: attributes[:tags].to_s.split(","))
   end
 
