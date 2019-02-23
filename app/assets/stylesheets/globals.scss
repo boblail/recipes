@@ -1,12 +1,11 @@
 @import "variables";
 
-
 body {
-  padding: 2rem 0;
+  padding: $header-height 0 2rem;
 }
 
 nav + .container {
-  margin-top: 4rem; // nav height
+  margin-top: 2rem;
 }
 
 b, strong {
