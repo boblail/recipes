@@ -1,0 +1,75 @@
+@import "variables";
+
+// List of Recipes on Phones
+$button-size: 48px;
+
+.recipe-menu-plan {
+  font-size: 0.7em;
+
+  button {
+    width: 6em; // enough space for the phrase "remove from"
+    background: transparent;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+    font-weight: 900;
+
+    &:focus { outline: 0; }
+
+    &::after { white-space: pre; }
+    &::before {
+      display: block;
+      font-family: FontAwesome;
+      font-size: $button-size / 2;
+      line-height: ($button-size - 6px);
+      border-radius: $button-size;
+      width: ($button-size - 6px);
+      text-align: center;
+      color: white;
+      margin: 0 auto 6px;
+    }
+    &.menu-plan-remove-button {
+      color: #8dce0a;
+
+      &::after { content: 'in current\AMenu Plan'; }
+      &::before {
+        background: #8dce0a;
+        content: '\f00c';
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          color: $delete-red;
+
+          &::before {
+            background: $delete-red;
+            content: $minus-icon;
+          }
+
+          &::after {
+            content: 'remove from\AMenu Plan';
+          }
+        }
+      }
+    }
+    &.menu-plan-add-button {
+      color: $light-gray;
+
+      &::after { content: 'add to\AMenu Plan'; }
+
+      &::before {
+        background: $light-gray;
+        content: '\f067';
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          color: #badb00;
+
+          &::before { background: #badb00; }
+        }
+      }
+    }
+  }
+}
