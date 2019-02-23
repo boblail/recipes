@@ -2,36 +2,42 @@
 
 $button-size: 1.33em;
 
-#recipe_drawer_wrapper {
+#recipe_drawer_root {
   position: fixed;
-  bottom: 0px;
-  height: 48px;
-  z-index: 2000;
-  padding: 0px;
-  -webkit-transition: .25s ease-in-out;
-  -moz-transition: .25s ease-in-out;
-  -o-transition: .25s ease-in-out;
-  transition: .25s ease-in-out;
+  top: $header-height;
+  bottom: 0;
+  left: 0;
+  width: $menu-plan-width;
+  border-right: 1px solid $light-gray;
+  display: flex;
 
-  min-height: 0px; // Overwrites bootstrap default
-
-  #drawer_background {
-    background-color: white;
+  .recipe-drawer-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 
   .card-header {
-    background-color: $navbar-background;
-    color: $navbar-grey;
     border-radius: unset;
+    font-weight: 900;
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+
+  .list-group {
+    flex-grow: 1;
+    overflow-y: scroll;
   }
 
   .list-group-item {
     padding: 0;
     display: flex;
+    border: none;
 
     > a {
       display: block;
-      padding: 0.75rem 1.25rem;
+      padding: 0.66rem 1.33rem;
+      line-height: 1.33em;
     }
 
     a.recipe-link {
@@ -44,6 +50,7 @@ $button-size: 1.33em;
       height: $button-size;
       padding: 0;
       margin: (3em - $button-size) / 2;
+      flex-shrink: 0;
 
       overflow: hidden;
       color: transparent;
@@ -62,5 +69,11 @@ $button-size: 1.33em;
         content: $minus-icon;
       }
     }
+  }
+}
+
+@media only screen and (max-width : 768px) {
+  #recipe_drawer_root {
+    display: none;
   }
 }
