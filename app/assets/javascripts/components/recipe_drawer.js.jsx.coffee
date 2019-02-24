@@ -20,5 +20,4 @@ class @RecipeDrawer extends React.Component
                           open={this.state.open}
                           toggleDrawer={this.toggleDrawer} />
       <RecipeDrawerList recipes={recipes} />
-      <RecipeDrawerFooter />
     </div>`
