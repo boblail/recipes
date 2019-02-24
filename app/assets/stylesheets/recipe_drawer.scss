@@ -6,7 +6,8 @@
   bottom: 0;
   left: 0;
   width: $menu-plan-width;
-  border-right: 1px solid $light-gray;
+  background: #4c4c4c;
+  color: #a7a7a7;
   display: flex;
 
   .recipe-drawer-wrapper {
@@ -17,9 +18,11 @@
 
   .card-header {
     border-radius: unset;
+    background: rgba(0,0,0,0.25);
     font-weight: 900;
     flex-shrink: 0;
     flex-grow: 0;
+    color: white;
   }
 
   .list-group {
@@ -30,11 +33,14 @@
   .list-group-item {
     padding: 0;
     border: none;
+    background: transparent;
+    border-radius: unset;
 
     > a {
       display: block;
       padding: 0.66rem 1.33rem;
       line-height: 1.33em;
+      color: inherit;
     }
   }
 }
