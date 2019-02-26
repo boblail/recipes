@@ -23,6 +23,10 @@ module ApplicationHelper
     HTML
   end
 
+  def show_menu_plan?
+    @show_menu_plan == true
+  end
+
   PLACEHOLDERS = %w{
     chicken
     salad

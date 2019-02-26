@@ -9,6 +9,7 @@ class RecipesController < ApplicationController
 
   def my_recipes
     @title = "My Recipes"
+    @show_menu_plan = true
     @filter = params.fetch(:s, "a")
     @recipes = current_user.cookbook.recipes.most_popular_first.preload(:photo, :tags).unarchived
     @recipes = @recipes.favorites if @filter == "f"
@@ -20,6 +21,7 @@ class RecipesController < ApplicationController
 
   def show
     @title = @recipe.name
+    @show_menu_plan = true
 
     respond_to do |format|
       format.html

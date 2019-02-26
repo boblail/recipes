@@ -1,4 +1,4 @@
-<section class="recipe">
+<section class="recipe" id="recipe_<%= @recipe.id %>" data-id="<%= @recipe.id %>">
   <% if can?(:create, Recipe) && !current_user.owns?(@recipe) %>
     <%= link_to "Add to My Recipes", new_recipe_path(recipe_id: @recipe.id), class: "btn btn-primary pull-right" %>
   <% end %>
@@ -7,20 +7,14 @@
 
   <h1 class="snug">
     <%= @recipe.name %>
-
-    <% if can? :update, @recipe %>
-      <% if mobile_app? %>
-        <% content_for :meta do %>
-          <link rel="mobile-navigation" href="<%= edit_recipe_url(@recipe) %>" title="Edit" />
-        <% end %>
-      <% else %>
-        <%= link_to "Edit", edit_recipe_path(@recipe), class: "btn btn-primary btn-sm"  %>
-      <% end %>
-    <% end %>
   </h1>
 
   <div class="recipe-metadata">
-    <span class="recipe-author">Added by <%= describe_user @recipe.created_by %></span> <span class="recipe-created" title="<%= @recipe.created_at.strftime("%b %e %Y, %l:%M %p") %>"><%= time_ago_in_words @recipe.created_at %> ago</span>
+    <div>
+      <span class="recipe-author">Added by <%= describe_user @recipe.created_by %></span> <span class="recipe-created" title="<%= @recipe.created_at.strftime("%b %e %Y, %l:%M %p") %>"><%= time_ago_in_words @recipe.created_at %> ago</span>
+    </div>
+
+    <div class="recipe-menu-plan"></div>
 
     <div class="recipe-made">
       <%= last_preparation_of @recipe, link_to: "#history" %>
@@ -47,6 +41,16 @@
 
   <% unless @recipe.servings.blank? %>
     <p>Servings: <%= @recipe.servings %></p>
+  <% end %>
+
+  <% if can? :update, @recipe %>
+    <% if mobile_app? %>
+      <% content_for :meta do %>
+        <link rel="mobile-navigation" href="<%= edit_recipe_url(@recipe) %>" title="Edit" />
+      <% end %>
+    <% else %>
+      <%= link_to "Edit", edit_recipe_path(@recipe), class: "btn btn-primary btn-sm"  %>
+    <% end %>
   <% end %>
 
   <% if current_user %>

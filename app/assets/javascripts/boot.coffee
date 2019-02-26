@@ -9,7 +9,8 @@ drawRecipeMenuPlanControls = ($recipe) ->
 
 drawRecipeDrawer = ->
   recipeDrawer = document.getElementById("recipe_drawer_root")
-  ReactDOM.render(React.createElement(RecipeDrawer, recipes: window.currentMenuPlan.recipes()), recipeDrawer)
+  if recipeDrawer
+    ReactDOM.render(React.createElement(RecipeDrawer, recipes: window.currentMenuPlan.recipes()), recipeDrawer)
 
 $ ->
   $(document).on 'submit', 'form[method=get]', (e)->

@@ -7,7 +7,7 @@ section.recipe {
   & > .photo {
     float: right;
     clear: right;
-    margin: 0 0 3em 3em;
+    margin: 0 0 2rem 2rem;
     max-width: 320px;
     max-height: 50vh;
     border-radius: 5px;
@@ -16,6 +16,10 @@ section.recipe {
       width: 320px;
       height: 50vh;
     }
+  }
+
+  .recipe-menu-plan {
+    float: right;
   }
 
   .ingredients {

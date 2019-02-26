@@ -1,12 +1,11 @@
 @import "variables";
 
-
 body {
-  padding: 2rem 0;
+  padding: $header-height 0 2rem;
 }
 
 nav + .container {
-  margin-top: 4rem; // nav height
+  margin-top: 2rem;
 }
 
 b, strong {
@@ -61,8 +60,20 @@ img.avatar {
 }
 
 .container {
-  max-width: 960px;
-  max-width: 800px;
+  max-width: $main-max-width;
+}
+
+@media (min-width: 768px) {
+  .container.with-menu-plan {
+    max-width: none;
+    padding-left: $menu-plan-width + 2rem;
+    padding-right: 2rem;
+  }
+}
+
+
+main {
+  max-width: $main-max-width;
 }
 
 @media (max-width: 440px) {
