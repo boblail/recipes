@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "Add to Lailrecipes",
+  "description": "Add the current recipe to the Lailrecipes app",
+  "version": "1.0",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "permissions": [ "activeTab" ],
+  "background": {
+    "persistent": false,
+    "scripts": [ "background.js" ]
+  },
+  "browser_action": {
+    "default_title": "Add to my Recipes"
+  }
+}
