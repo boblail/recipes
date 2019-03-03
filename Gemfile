@@ -47,6 +47,9 @@ gem "jquery-rails"
 # For deploying to Heroku
 gem "rails_12factor", group: :production
 
+# For reporting exceptions
+gem "sentry-raven"
+
 group :development, :test do
   gem "pry"
   gem "awesome_print"
