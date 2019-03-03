@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/boblail/hangry.git
-  revision: 2563b9218df893d7b37dbca0bc63ff2dd6c1a85a
-  branch: master
+  revision: b87affeb31c718d76aa5e2da73de2d6d81e5bf5f
+  branch: 20190303
   specs:
     hangry (0.0.13)
       activesupport (>= 3.0)
@@ -187,7 +187,7 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
-    oj (3.7.8)
+    oj (3.7.9)
     omniauth (1.9.0)
       hashie (>= 3.4.6, < 3.7.0)
       rack (>= 1.6.2, < 3)
@@ -274,6 +274,8 @@ GEM
     selenium-webdriver (3.141.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2, >= 1.2.2)
+    sentry-raven (2.9.0)
+      faraday (>= 0.7.6, < 1.0)
     shoulda-context (1.2.2)
     spring (2.0.2)
       activesupport (>= 4.2)
@@ -340,6 +342,7 @@ DEPENDENCIES
   redcarpet
   sass-rails (~> 5.0)
   selenium-webdriver
+  sentry-raven
   shoulda-context
   spring
   spring-watcher-listen (~> 2.0.0)

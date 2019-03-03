@@ -13,7 +13,7 @@ gem "pg_search"
 gem "cancan"
 gem "omniauth-google-oauth2"
 gem "devise"
-gem "hangry", github: "boblail/hangry", branch: "master"
+gem "hangry", github: "boblail/hangry", branch: "20190303"
 gem "ingreedy", github: "cookpad/ingreedy", branch: "master"
 gem "redcarpet"
 
@@ -46,6 +46,9 @@ gem "jquery-rails"
 
 # For deploying to Heroku
 gem "rails_12factor", group: :production
+
+# For reporting exceptions
+gem "sentry-raven"
 
 group :development, :test do
   gem "pry"
