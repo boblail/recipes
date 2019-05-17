@@ -8,15 +8,13 @@
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
 
-
   <% if mobile_app? %>
-    <% if current_user %>
-      <%= yield :meta %>
-    <% else %>
+    <% unless current_user %>
       <link rel="mobile-navigation" href="<%= new_session_url %>" title="Sign in" />
     <% end %>
   <% end %>
 
+  <%= yield :meta %>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">

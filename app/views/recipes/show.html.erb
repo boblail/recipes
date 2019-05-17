@@ -1,3 +1,15 @@
+<% content_for :meta do -%>
+  <%= tag.meta name: "twitter:card", content: "summary" %>
+  <%= tag.meta name: "twitter:site", content: "lailrecipes.herokuapp.com" %>
+  <%= tag.meta name: "twitter:title", content: @title %>
+  <%= tag.meta name: "twitter:image", content: @recipe.photo.url if @recipe.photo %>
+
+  <%= tag.meta name: "og:type", content: "website" %>
+  <%= tag.meta name: "og:url", content: recipe_url(@recipe) %>
+  <%= tag.meta name: "og:title", content: @title %>
+  <%= tag.meta name: "og:image", content: @recipe.photo.url if @recipe.photo %>
+<% end -%>
+
 <section class="recipe" id="recipe_<%= @recipe.id %>" data-id="<%= @recipe.id %>">
   <% if can?(:create, Recipe) && !current_user.owns?(@recipe) %>
     <%= link_to "Add to My Recipes", new_recipe_path(recipe_id: @recipe.id), class: "btn btn-primary pull-right" %>
