@@ -27,4 +27,8 @@ Rails.application.routes.draw do
 
   root to: "recipes#all_recipes"
 
+  direct :chrome_extension do
+    "https://chrome.google.com/webstore/detail/add-to-lailrecipes/hcgmkgaknppcjpohhfnmkipmninochga"
+  end
+
 end
