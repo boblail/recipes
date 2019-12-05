@@ -22,7 +22,7 @@ gem "turbolinks", "~> 5.0.0"
 gem "carrierwave-aws"
 gem "mini_magick"
 
-gem "puma", "~> 3.11"
+gem "puma", "~> 3.12"
 gem "bootsnap", "~> 1.1"
 
 # Use SCSS for stylesheets
