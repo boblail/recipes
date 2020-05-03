@@ -1,5 +1,5 @@
 <h1>Sign in</h1>
 
-<%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-primary" do %>
+<%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-primary", method: :post do %>
   <i class="fa fa-google"></i>&nbsp;&nbsp;&nbsp;Sign in with Google
 <% end %>

@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.6.3"
+ruby "2.6.6"
 
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
@@ -12,6 +12,7 @@ gem "pg_search"
 
 gem "cancan"
 gem "omniauth-google-oauth2"
+gem "omniauth-rails_csrf_protection"
 gem "devise"
 gem "hangry", github: "boblail/hangry", branch: "20191027"
 gem "ingreedy", github: "cookpad/ingreedy", branch: "master"
