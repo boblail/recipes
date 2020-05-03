@@ -12,6 +12,7 @@ gem "pg_search"
 
 gem "cancan"
 gem "omniauth-google-oauth2"
+gem "omniauth-rails_csrf_protection"
 gem "devise"
 gem "hangry", github: "boblail/hangry", branch: "20191027"
 gem "ingreedy", github: "cookpad/ingreedy", branch: "master"
