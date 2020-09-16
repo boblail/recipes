@@ -17,7 +17,7 @@
     <div class="form-group">
       <%= f.label :name, class: "control-label" %>
       <div>
-        <%= f.text_field :name, autofocus: true, readonly: @recipe.archived?, class: "form-control" %>
+        <%= f.text_field :name, autofocus: true, readonly: @recipe.archived?, class: "form-control", maxlength: 255 %>
       </div>
     </div>
 
@@ -54,7 +54,7 @@
     <div class="form-group">
       <%= f.label :servings, class: "control-label" %>
       <div>
-        <%= f.text_field :servings, readonly: @recipe.archived?, value: @recipe.servings, class: "form-control" %>
+        <%= f.text_field :servings, readonly: @recipe.archived?, value: @recipe.servings, class: "form-control", maxlength: 255 %>
       </div>
     </div>
 

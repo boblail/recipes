@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_18_204718) do
+ActiveRecord::Schema.define(version: 2020_09_13_140218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 2018_11_18_204718) do
     t.integer "created_by_id", null: false
     t.tsvector "search_vector"
     t.integer "cookbook_id", null: false
-    t.string "source", limit: 255
+    t.text "source"
     t.string "servings", limit: 255, default: "", null: false
     t.uuid "photo_id"
     t.bigint "copy_of_id"

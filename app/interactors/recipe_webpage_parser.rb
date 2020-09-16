@@ -9,10 +9,10 @@ class RecipeWebpageParser
 
   def attributes
     {
-      name: recipe.name,
+      name: recipe.name[0...255],
       ingredients: recipe.ingredients.join("\n"),
       instructions: recipe.instructions,
-      servings: recipe.yield,
+      servings: recipe.yield.to_s[0...255],
       source: url,
       photo_id: photo&.id
     }
