@@ -2,7 +2,7 @@ module RecipeHelper
 
   def source_of(recipe)
     <<~HTML.html_safe unless recipe.source.blank?
-      <div class="recipe-source">#{format_source(recipe.source)}</div>
+      <p class="recipe-source">#{format_source(recipe.source)}</p>
     HTML
   end
 
