@@ -4,7 +4,7 @@ class RecipeTest < ActiveSupport::TestCase
 
   context "Assigning #copy_of" do
     setup do
-      @recipe = create(:recipe)
+      @recipe = create(:recipe, source: "SOURCE", photo_id: 9)
       @copy = Recipe.copy(@recipe)
     end
 

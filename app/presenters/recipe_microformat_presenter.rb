@@ -4,7 +4,7 @@ class RecipeMicroformatPresenter
   attr_reader :recipe
 
   def self.to_json(recipe)
-    MultiJson.dump(new(recipe))
+    Oj.dump(new(recipe).as_json, mode: :compat, time_format: :ruby, use_to_json: true)
   end
 
   def initialize(recipe)

@@ -6,7 +6,7 @@ class MenuPlanPresenter
   end
 
   def to_json
-    MultiJson.dump(as_json)
+    Oj.dump(as_json, mode: :compat, time_format: :ruby, use_to_json: true)
   end
 
   def as_json(*)
