@@ -10,7 +10,7 @@ module ApplicationHelper
 
   def bookmarklet_url
     script = "(function(){window.open('#{new_recipe_url}?url='+encodeURIComponent(window.location))})()"
-    "javascript:#{URI.encode(script)}"
+    "javascript:#{URI.encode_www_form_component(script)}"
   end
 
   def radio_button(name, value, label, model=nil, options={})
