@@ -28,10 +28,10 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-gem-
 
-    - name: Set up Ruby 2.7
+    - name: Set up Ruby 3.0.5
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.7.6
+        ruby-version: 3.0.5
 
     - name: Install PostgreSQL 11 client
       run: |

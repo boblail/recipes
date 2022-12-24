@@ -23,7 +23,7 @@ class RecipeWebpageParser
   end
 
   def body
-    @body ||= open(url).read
+    @body ||= URI.open(url).read
   end
 
   def photo
