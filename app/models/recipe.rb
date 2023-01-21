@@ -96,7 +96,7 @@ class Recipe < ApplicationRecord
   end
 
   def rating_for(user, name=user.name)
-    ratings.where(user_id: user.id, name: name.chomp).pluck(:value)[0]
+    ratings.find_or_initialize_by(user_id: user.id, name: name.chomp)
   end
 
   def tags=(values)

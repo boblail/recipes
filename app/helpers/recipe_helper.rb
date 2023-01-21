@@ -82,18 +82,19 @@ module RecipeHelper
   def ratings_for(recipe)
     html = '<div class="ratings"><table>'
     current_user.cookbook.users.each do |user|
-      if user == current_user
+      rating = recipe.rating_for(user)
+      if can? :update, rating
         html << <<~HTML
           <tr>
             <th>#{user.name}</th>
-            <td class="rating-yumminess"><form action="#{recipe_url(recipe)}"><input class="rating" data-clearable="Clear" data-max="5" data-min="1" type="number" name="#{user.name}" value="#{recipe.rating_for(user)}" /></form></td>
+            <td class="rating-yumminess"><form action="#{recipe_url(recipe)}"><input class="rating" data-clearable="Clear" data-max="5" data-min="1" type="number" name="#{user.name}" value="#{rating.value}" /></form></td>
           </tr>
         HTML
       else
         html << <<~HTML
           <tr>
             <th>#{user.name}</th>
-            <td>#{rating recipe.yumminess(user), class: "yumminess", glyph: "heart"}</td>
+            <td>#{rating rating.value, class: "yumminess", glyph: "heart"}</td>
           </tr>
         HTML
       end
