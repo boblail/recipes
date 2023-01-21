@@ -39,6 +39,7 @@ class User < ApplicationRecord
 private
 
   def create_cookbook_for_user
+    return if self.cookbook
     self.cookbook = Cookbook.create!(name: "#{name}'s Recipes")
   end
 
