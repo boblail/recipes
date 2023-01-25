@@ -87,7 +87,7 @@ module RecipeHelper
         html << <<~HTML
           <tr>
             <th>#{user.name}</th>
-            <td class="rating-yumminess"><form action="#{recipe_url(recipe)}"><input class="rating" data-clearable="Clear" data-max="5" data-min="1" type="number" name="#{user.name}" value="#{rating.value}" /></form></td>
+            <td class="rating-yumminess"><form action="#{recipe_url(recipe)}"><input class="rating" data-clearable="Clear" data-max="5" data-min="1" type="number" data-id="#{user.id}" value="#{rating.value}" /></form></td>
           </tr>
         HTML
       else
