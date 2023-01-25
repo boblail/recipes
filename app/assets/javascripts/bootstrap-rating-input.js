@@ -66,7 +66,7 @@
     if (options.clearable && !options.readonly) {
       $ratingEl.append('&nbsp;').append(
         '<a class="' + clearClass + '">' +
-          '<i class="' + options.iconLib + ' ' + options.clearableIcon + '"/>' +
+          '<i class="' + options.iconLib + ' ' + options.clearableIcon + '"></i>' +
           options.clearableLabel +
         '</a>'
       );
