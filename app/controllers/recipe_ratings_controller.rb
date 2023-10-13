@@ -3,20 +3,23 @@ class RecipeRatingsController < ApplicationController
   before_action :authenticate_user!
 
   def update
-    rating = @recipe.ratings.find_or_initialize_by(user_id: current_user.id, name: params[:name].chomp)
+    user = User.find(params.require(:userId))
+    rating = @recipe.ratings.find_or_initialize_by(user_id: user.id, name: user.name)
+    authorize! :update, rating
+
     if params[:value].blank?
       rating.delete
     else
-      rating.value = params[:value]
-      rating.save
+      rating.update! value: params[:value]
     end
+
     head :ok
   end
 
 private
 
   def find_recipe
-    @recipe = Recipe.find(params[:recipe_id])
+    @recipe = Recipe.find(params.require(:recipe_id))
   end
 
 end

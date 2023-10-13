@@ -32,7 +32,7 @@ document.addEventListener 'turbolinks:load', ->
       url = $form.attr('action') + '/ratings'
 
       $.put url,
-        name: $input.attr('name')
+        userId: $input.attr('data-id')
         value: $input.val()
 
   $('.datepicker-container')
