@@ -14,7 +14,7 @@ gem "cancan"
 gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection"
 gem "devise"
-gem "hangry", github: "boblail/hangry", branch: "20231013"
+gem "hangry", github: "boblail/hangry", branch: "master"
 gem "ingreedy", github: "cookpad/ingreedy", branch: "master"
 gem "redcarpet"
 
