@@ -1,7 +1,6 @@
 require "test_helper"
 
 class RecipeTest < ActiveSupport::TestCase
-
   context "Assigning #copy_of" do
     setup do
       @recipe = create(:recipe, source: "SOURCE", photo_id: 9)
@@ -33,6 +32,34 @@ class RecipeTest < ActiveSupport::TestCase
 
     should "return Ingreedy parsed ingredients" do
       assert_kind_of Ingreedy::Parser::Result, @recipe.parsed_ingredients.first
+    end
+  end
+
+  context "#tags" do
+    should "create a new Tag" do
+      assert_difference -> { Tag.count }, 1 do
+        create(:recipe, tags: %w{gluten-free})
+      end
+    end
+
+    should "associate an existing Tag" do
+      cookbook = create(:cookbook)
+      tag = create(:tag, cookbook: cookbook, name: "gluten-free")
+
+      assert_no_difference -> { Tag.count } do
+        recipe = create(:recipe, cookbook: cookbook, tags: [tag.name])
+        assert_equal [tag], recipe.tags.to_a
+      end
+    end
+
+    should "be case-insensitive" do
+      cookbook = create(:cookbook)
+      tag = create(:tag, cookbook: cookbook, name: "gluten-free")
+
+      assert_no_difference -> { Tag.count } do
+        recipe = create(:recipe, cookbook: cookbook, tags: %w{Gluten-Free})
+        assert_equal [tag], recipe.tags.to_a
+      end
     end
   end
 end

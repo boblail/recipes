@@ -16,15 +16,11 @@ class Tag < ApplicationRecord
   end
 
   def self.find_or_create_for(*names)
-    names = names.flatten
-    tags = named(names).to_a
-    missing_names = names - tags.map(&:name)
+    normal_names = names.flatten.map(&method(:normalize)).uniq
+    tags = where(name: normal_names).to_a
+    missing_names = normal_names - tags.map(&:name)
     tags.concat create(missing_names.map { |name| { name: name } }) if missing_names.any?
     tags
-  end
-
-  def self.named(*names)
-    where(name: names.flatten.map(&method(:normalize)).uniq)
   end
 
   def self.normalize(value)
