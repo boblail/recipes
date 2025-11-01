@@ -4,8 +4,7 @@ class ApplicationController < ActionController::Base
   end
 
   def mobile_app?
-    request.user_agent["RecipesApp"].present?
+    request.user_agent&.[]("RecipesApp").present?
   end
   helper_method :mobile_app?
-
 end
