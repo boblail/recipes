@@ -30,6 +30,20 @@ To run Origami
     bundle exec rails server
 
 
+### Chrome Extension
+
+This repo contains a Chrome Extension for adding recipes. It lives in `platforms/chrome`.
+
+Public page: https://chromewebstore.google.com/detail/add-to-lailrecipes/hcgmkgaknppcjpohhfnmkipmninochga
+Developer page: https://chrome.google.com/webstore/devconsole/ee7e7345-be02-4060-b1ee-0aff15b26b2f
+
+You can publish it by running
+```
+yarn install
+npm run publish:chrome
+```
+
+
 
 ### Contributing
 

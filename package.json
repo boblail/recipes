@@ -12,6 +12,12 @@
     "typeahead.js": "^0.11.1",
     "underscore": "^1.9.1"
   },
+  "devDependencies": {
+    "chrome-webstore-upload-cli": "^3.5.0"
+  },
+  "scripts": {
+    "publish:chrome": "CLIENT_ID=$GOOGLE_WEBSTORE_CLIENT_ID CLIENT_SECRET=$GOOGLE_WEBSTORE_CLIENT_SECRET REFRESH_TOKEN=$GOOGLE_WEBSTORE_REFRESH_TOKEN npx chrome-webstore-upload upload --source platforms/chrome/add-to-lailrecipes --extension-id hcgmkgaknppcjpohhfnmkipmninochga --auto-publish"
+  },
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:boblail/recipes.git",
