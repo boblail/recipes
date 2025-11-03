@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
   get "shopping-list", to: "menu_plans#shopping_list", as: :shopping_list
 
+  get "privacy", to: "pages#privacy", as: :privacy
+
   root to: "recipes#all_recipes"
 
   direct :chrome_extension do
